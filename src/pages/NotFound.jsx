@@ -39,7 +39,7 @@ const styles = {
     marginBottom: '20px',
   },
   link: {
-    fontSize: '1.1rem',
+    fontSize: 'var(--step-0)',
   },
 };
 

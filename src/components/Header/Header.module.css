@@ -1,0 +1,86 @@
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--separator);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem var(--margin);
+  background-color: var(--sunlight);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre el logo y el texto */
+}
+
+.logoImage {
+  height: var(--step-4);
+  width: auto;
+}
+
+.logoText {
+  font-size: var(--step-1);
+  font-weight: 700;
+  margin: 0;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  font-size: var(--step-3);
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .navList {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: var(--margin);
+    width: 200px;
+    background: var(--sunlight);
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition:
+      max-height 0.5s ease,
+      border 0.5s ease,
+      padding 1s ease;
+    max-height: 0;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .navLink {
+    margin: 0;
+  }
+
+  .navList.show {
+    max-height: 500px;
+    border-color: var(--separator);
+    padding: 10px 0 10px 15px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
