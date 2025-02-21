@@ -3,4 +3,27 @@
   --sunlight: #fff;
   --unimet: #f68629;
   --earth-sky: #00afa0;
+  background-color: var(--sunlight);
+  color: var(--forest);
+}
+
+h1 {
+  font-family: 'Poppins', serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+p {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a {
+  font-family: 'Poppins', serif;
+  font-weight: 500;
+  font-style: normal;
+}
+a:visited {
+  color: var(--forest);
 }
