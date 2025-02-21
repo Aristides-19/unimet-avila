@@ -2,6 +2,7 @@
 
 - [**Instalación**](#instalación)
 - [**Configurar ESLint y Prettier**](#configurar-eslint-y-prettier)
+- [**Configurar Firebase para Despliegues**](#configurar-firebase-para-despliegues)
 - [**Estructura del Proyecto**](#estructura-del-proyecto)
 
 ## **Instalación**
@@ -49,6 +50,34 @@
        "editor.defaultFormatter": "esbenp.prettier-vscode"
      }
    }
+   ```
+
+## **Configurar Firebase para Despliegues**
+
+1. **Instala Firebase Globalmente**
+
+   ```bash
+   npm install -g firebase-tools
+   ```
+
+2. **Inicia sesión en Firebase:**
+   Este comando abre un ventana en el navegador para iniciar sesión en Google,
+   hay que iniciar sesión con la cuenta UNIMET que está agregada en el proyecto de Firebase.
+
+   ```bash
+   firebase login
+   ```
+
+3. **Desplegar el Proyecto:**
+   Con la terminal abierta en la ruta del proyecto, se construye el proyecto, y la carpeta de salida queda en
+   `/dist`. Luego, esa carpeta se despliega automáticamente con el comando de Firebase.
+
+   El estado del despliegue se puede ver en la consola de Firebase.
+   **Nota:** no desplegar si no es una versión sin errores.
+
+   ```bash
+   npm run build
+   firebase deploy
    ```
 
 ---
