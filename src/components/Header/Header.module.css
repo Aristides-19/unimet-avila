@@ -51,6 +51,15 @@
   margin-left: auto;
 }
 
+.authLink {
+  display: none;
+}
+
+.authButtons {
+  display: flex;
+  flex-direction: row;
+}
+
 @media (max-width: 900px) {
   .navList {
     flex-direction: column;
@@ -72,6 +81,18 @@
 
   .navLink {
     margin: 0;
+  }
+
+  .contactLink {
+    margin-bottom: 15px;
+  }
+
+  .authLink {
+    display: flex;
+  }
+
+  .authButtons {
+    display: none;
   }
 
   .navList.show {

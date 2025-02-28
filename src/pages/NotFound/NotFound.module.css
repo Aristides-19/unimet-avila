@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  padding: 35px;
+}
+.img {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+.text {
+  margin-bottom: 20px;
+}
+.link {
+  font-size: var(--step-0);
+}

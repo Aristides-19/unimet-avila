@@ -55,7 +55,14 @@ a {
   font-style: normal;
   font-size: var(--step--1);
   color: var(--forest);
+  display: flex;
+  align-items: center;
 }
 a:visited {
   color: var(--forest);
+}
+
+li {
+  display: flex;
+  align-items: center;
 }

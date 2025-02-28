@@ -1,0 +1,18 @@
+.button {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: var(--step--1);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: var(--step--2) var(--step-3);
+  transition: transform 0.1s ease-in-out;
+}
+.button:active {
+  transform: scale(0.9); /* Scale down the button when clicked */
+}
