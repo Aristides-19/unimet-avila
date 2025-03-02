@@ -4,7 +4,6 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import NotFound from './pages/NotFound/NotFound';
 import Home from './pages/Home';
-import Gallery from './pages/Gallery/Gallery';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
         <main>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/gallery' element={<Gallery />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
