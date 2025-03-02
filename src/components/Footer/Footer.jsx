@@ -1,18 +1,23 @@
 import React from 'react';
-import './Footer.css';
+import styles from './Footer.module.css';
+import footerLogo from '../../assets/footerLogo.svg';
+import facebookIcon from '../../assets/facebook-icon.png';
+import twitterIcon from '../../assets/twitter-icon.png';
+import linkedinIcon from '../../assets/linkedin-icon.png';
+
 
 const Footer =()=> {
   return(
-    <footer className='footer'>
-      <div className='footer-left'>
-        <img src ='footerLogo.svg' alt='Logo de Unimet Avila' className='logo'/>
+    <footer className={styles.footer}>
+      <div className={styles['footer-left']}>
+        <img src ={footerLogo} alt='Logo de Unimet Avila' className={styles.logo}/>
         <p>
         Unimet Ávila conecta a los estudiantes con el Parque Nacional El Ávila, ofreciendo rutas y actividades recreativas en un entorno sustentable, promoviendo el cuidado de la naturaleza y la comunidad estudiantil.
         </p>
-        <p className='copyright'>Copyright © 2025 UNIMET Ávila - Todos los derechos reservados.</p>
+        <p className={styles.copyright}>Copyright © 2025 UNIMET Ávila - Todos los derechos reservados.</p>
       </div>
 
-      <div className='footer-right'>
+      <div className={styles['footer-right']}>
         <h4>Contáctanos</h4>
         <p>
           Universidad Metropolitana,<br />
@@ -24,17 +29,17 @@ const Footer =()=> {
         soporte@unimetavila.com<br />
         contacto@unimetavila.com
         </p>
-        <div className='social-section'>
+        <div className={styles['social-section']}>
           <h4>Síguenos</h4>
-          <div  className='social-media-icons'>
+          <div  className={styles['social-media-icons']}>
             <a href='#' aria-label='Facebook'>
-              <img src='src/assets/facebook-icon.png' alt='Facebook' />
+              <img src={facebookIcon} alt='Facebook' />
             </a>
             <a href='#' aria-label='Twitter'>
-              <img src='src/assets/twitter-icon.png' alt='Twitter' />
+              <img src={twitterIcon} alt='Twitter' />
             </a>
             <a href='#' aria-label='LinkedIN'>
-              <img src='src/assets/linkedin-icon.png' alt='LinkedIn' />
+              <img src={linkedinIcon} alt='LinkedIn' />
             </a>
           </div>
         </div>
