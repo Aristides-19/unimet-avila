@@ -1,0 +1,99 @@
+/* Gallery.module.css adaptado para usar variables globales */
+
+.galleryContainer {
+  /*  Estilos generales del contenedor principal */
+  display: flex; /* Usa flexbox para el layout */
+  border: var(--margin) solid transparent; /* Bordes del contenedor invisibles */
+  box-sizing: border-box; /*  Incluye padding y borde en el ancho total */
+  flex-direction: row; /*  Alinea los elementos en fila (columnas lado a lado en pantallas grandes) */
+  width: 100%; /*  Ocupa todo el ancho disponible */
+  color: var(--forest); /*  Color de texto principal, usando tu variable global */
+  text-align: center; /*  Alineación de texto al centro */
+  flex-wrap: wrap; /*  Permite que las columnas se envuelvan a la siguiente línea en pantallas pequeñas */
+  justify-content: center; /* Centra las columnas horizontalmente */
+  align-items: start; /*  Alinea las columnas en la parte superior verticalmente */
+  font-family: 'Poppins', serif; /* Usa la fuente Poppins, consistente con tu global.css */
+  font-size: var(--step-1); /*  Tamaño de fuente, usando tu variable global */
+  font-weight: 600; /*  Peso de fuente */
+}
+
+.leftColumn{
+  /* Estilos para las columnas izquierda y derecha */
+  display: flex;
+  flex-direction: column; /*  Alinea los elementos dentro de cada columna verticalmente */
+  flex: 1; /*  Permite que las columnas crezcan para llenar el espacio disponible */
+  gap: 20px; /* Espacio entre las tarjetas de fotos dentro de cada columna */
+  padding-right: var(--margin); /*  Padding a la derecha de la columna izquierda */
+  min-width: 240px; /* Ancho mínimo para cada columna */
+  overflow: hidden; /*  Oculta el contenido que se desborda */
+}
+
+
+.rightColumn {
+  /* Estilos para las columnas izquierda y derecha */
+  display: flex;
+  flex-direction: column; /*  Alinea los elementos dentro de cada columna verticalmente */
+  flex: 1; /*  Permite que las columnas crezcan para llenar el espacio disponible */
+  gap: 20px; /* Espacio entre las tarjetas de fotos dentro de cada columna */
+  min-width: 240px; /* Ancho mínimo para cada columna */
+  overflow: hidden; /*  Oculta el contenido que se desborda */
+}
+
+@media (max-width: 900px) {
+  /*  Media query para pantallas más pequeñas de 900px de ancho */
+  .galleryContainer {
+    display: block; /*  Cambia a un layout de bloque en pantallas pequeñas */
+  }
+
+  .leftColumn,
+  .rightColumn {
+    max-width: 100%; /*  Las columnas ocupan todo el ancho en pantallas pequeñas */
+    padding-left: var(--margin); /* Usa tu variable global para el padding izquierdo */
+    padding-right: var(--margin); /* Usa tu variable global para el padding derecho */
+  }
+}
+
+.photoCard {
+  /* Estilos para cada tarjeta de foto */
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px; /*  Radio de borde para las esquinas redondeadas */
+  overflow: hidden; /*  Oculta el contenido que se desborda de la tarjeta */
+  background-color: var(--sunlight); /*  Color de fondo, usando tu variable global */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*  Sombra suave para la tarjeta */
+  transition: transform 0.3s ease; /*  Transición suave para el efecto hover */
+}
+
+.photoCard:hover {
+  /*  Estilo para cuando el mouse pasa por encima de la tarjeta */
+  transform: translateY(-5px); /*  Pequeño efecto de elevación al pasar el mouse */
+}
+
+.photoImage,
+.wideImage {
+  /* Estilos comunes para las imágenes */
+  width: 100%; /*  Ocupan todo el ancho de la tarjeta */
+  height: auto; /*  Altura automática para mantener la proporción */
+  object-fit: cover; /*  Asegura que la imagen cubra el contenedor, recortando si es necesario */
+  border-radius: 8px; /* Radio de borde para las esquinas redondeadas */
+}
+
+
+.separator {
+  /* Estilos para el separador */
+  height: 2px; /*  Altura del separador */
+  width: 100%; /*  Ocupa todo el ancho disponible */
+  margin: 10px 0; /*  Márgenes arriba y abajo del separador */
+  background-color: var(--separator); /* Color del separador, usando tu variable global */
+}
+
+.photoTitle {
+  /* Estilos para el título de la foto */
+  padding: 0 15px 15px; /*  Padding alrededor del texto del título */
+  margin: 0; /*  Elimina márgenes por defecto */
+  font-family: 'Poppins', serif; /*  Asegura que usa la fuente Poppins */
+  font-weight: 600; /*  Peso de fuente */
+  font-size: var(--step--1); /* Tamaño de fuente, usando tu variable global */
+  color: var(--forest); /* Color del texto del título, usando tu variable global */
+  line-height: 1.5; /*  Espaciado entre líneas para el título */
+}
