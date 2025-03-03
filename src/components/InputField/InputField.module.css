@@ -1,0 +1,9 @@
+.inputField {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--separator);
+    border-radius: 5px;
+    font-family: 'Poppins', serif;
+    font-size: var(--step--1);
+  }

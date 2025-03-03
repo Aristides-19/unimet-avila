@@ -1,0 +1,24 @@
+.backButtonContainer {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.backButton {
+    text-align: left;
+    padding: 10px 20px;
+    background-color: transparent; /* Fondo transparente */
+    color: var(--forest); /* Color del texto */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', serif;
+    font-size: var(--step--1);
+}
+
+.backButton:hover {
+    color: var(--step--1); /* Color del texto al pasar el mouse */
+}
+
+.backButton:focus {
+    outline: none;
+}

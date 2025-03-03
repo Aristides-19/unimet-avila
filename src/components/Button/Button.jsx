@@ -35,7 +35,7 @@ Button.propTypes = {
   borderRadius: PropTypes.string,
   color: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   className: PropTypes.string,
 };
 
