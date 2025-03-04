@@ -9,10 +9,16 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import SuccessMessage from '../../components/SuccessMessage/SuccessMessage';
 import Button from '../../components/Button/Button';
 import BackButton from '../../components/BackButton/BackButton';
+import GoogleButton from '../../components/GoogleButton/GoogleButton';
 
 import styles from './Register.module.css';
 
+
+
 const Register = () => {
+
+    const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
@@ -133,6 +139,88 @@ const Register = () => {
               </div>
             </div>
 
+                        {/* Género y Número de Teléfono en la misma línea */}
+                        <div className={styles.row}>
+                            <div className={styles.formGroup}>
+                                <label>Genéro</label>
+                                <SelectField
+                                    name='genero'
+                                    value={formData.genero}
+                                    onChange={handleChange}
+                                    required
+                                    options={['Masculino', 'Femenino', 'Otro']}
+                                />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label>Número de Teléfono</label>
+                                <InputField
+                                    type='tel'
+                                    name='telefono'
+                                    placeholder='Número de Teléfono'
+                                    value={formData.telefono}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label>Correo Electrónico</label>
+                            <InputField
+                                type='email'
+                                name='correo'
+                                placeholder='Correo Electrónico'
+                                value={formData.correo}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>Contraseña</label>
+                            <InputField
+                                type='password'
+                                name='contrasena'
+                                placeholder='Contraseña'
+                                value={formData.contrasena}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>Confirmar Contraseña</label>
+                            <InputField
+                                type='password'
+                                name='confirmarContrasena'
+                                placeholder='Confirmar Contraseña'
+                                value={formData.confirmarContrasena}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <Button
+                            text='Crear Cuenta'
+                            type='submit'
+                            color='#fff'
+                            backgroundColor='var(--earth-sky)'
+                            borderRadius='6px'
+                            className={styles.createAccountButton}
+                        />
+                    </form>
+                    <p className={styles.loginLink}>¿Ya tienes una cuenta?<a href='/login'>Iniciar Sesión</a></p>
+                    <div className={styles.socialRegister}>
+                        <p>O regístrate con</p>
+                        <GoogleButton
+                            onSuccess={(message) => {
+                                setSuccess(message);
+                                //navigate(-1);; // Redirige a otra pagina
+                            }}
+                            onError={(message) => setError(message)}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
             {/* Género y Número de Teléfono en la misma línea */}
             <div className={styles.row}>
               <div className={styles.formGroup}>
