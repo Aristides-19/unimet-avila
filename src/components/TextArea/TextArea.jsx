@@ -1,28 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './InputField.module.css';
+import styles from './TextArea.module.css';
 
-const InputField = ({ type, name, placeholder, value, onChange, required }) => {
+const TextArea = ({ name, placeholder, value, onChange, required }) => {
   return (
-    <input
-      type={type}
+    <textarea
+      className={styles.textarea}
       name={name}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
       required={required}
-      className={styles.inputField}
     />
   );
 };
 
-InputField.propTypes = {
-  type: PropTypes.string.isRequired,
+TextArea.propTypes = {
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
 };
 
-export default InputField;
+TextArea.defaultProps = {
+  placeholder: '',
+  required: false,
+};
+
+export default TextArea;

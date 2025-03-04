@@ -1,0 +1,131 @@
+.page {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: var(--background);
+  min-height: 100vh;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .page {
+      flex-direction: column;
+      height: auto;
+  }
+}
+
+.pageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex:1;
+  height: 80px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--margin);
+  gap: 50px;
+  background-color: var(--background);
+}
+
+@media (max-width: 900px) {
+  .contact {
+      flex-direction: column;
+      height: auto;
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex: 1;
+  min-height: 1px;
+  max-height: 50px;
+  align-items: top;
+  justify-content: top;
+  gap: 50px;
+}
+
+.customImageStyle {
+  border-radius: 10%; 
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+  padding: var(--margin);
+  margin-bottom: var(--margin);
+  box-shadow: 0 0 20px #0000001a;
+  box-sizing: border-box;
+}
+
+.logoContainer {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: bottom;
+  gap: 10px; /* Espacio entre el logo y el texto */
+}
+
+.logoImage {
+  height: var(--step-4);
+  justify-content: center;
+  width: auto;
+}
+
+.logoText {
+  font-size: var(--step-1);
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  margin: 0;
+}
+
+.backButtonContainer {
+  margin-bottom: var(--margin);
+  text-align: left;
+}
+
+.backButton {
+  display: inline-flex;
+  font-family: 'Poppins', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--earth-sky);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.backButton:hover {
+  color: var(--forest);
+  transform: scale(1.02);
+}
+
+.formSection_form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap:10px;
+}
+
+.formTitle {
+  text-align: center;
+  margin-bottom: var(--margin);
+  font-family: 'Poppins', serif;
+  font-weight: 600;
+  font-size: var(--step-3);
+  color: var(--earth-sky);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}

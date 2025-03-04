@@ -13,6 +13,7 @@
   --step-5: clamp(2.4883rem, 2.027rem + 2.3067vw, 3.8147rem);
 
   /* Color Palette */
+  --background: #f9f9f9f9;
   --forest: #003333;
   --sunlight: #fff;
   --unimet: #f68629;
@@ -21,6 +22,7 @@
 
   /* Default Values */
   --margin: 40px; /* Use it when applying a margin/padding on a container */
+  --thin-margin: 10px; /* Use it when applying a margin/padding on a container */
   background-color: var(--sunlight);
   color: var(--forest);
 }
@@ -28,6 +30,7 @@
 @media (max-width: 900px) {
   :root {
     --margin: 20px;
+    --thin-margin: 5px;
   }
 }
 
