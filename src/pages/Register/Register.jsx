@@ -99,10 +99,7 @@ const Register = () => {
             <div className={styles.rightSection}>
                 <div className={styles.registerForm}>
                     <div className={styles.backButtonContainer}>
-                        <BackButton 
-                            className={styles.backButton} 
-                            text='Regresar'
-                        />
+                        <BackButton/>
                     </div>
                     <h2>Crear Cuenta</h2>
                     {error && <ErrorMessage message={error} />}
@@ -198,20 +195,22 @@ const Register = () => {
                             type='submit'
                             color='#fff'
                             backgroundColor='var(--earth-sky)'
+                            hoverBackgroundColor='var(--forest)'
                             borderRadius='6px'
-                            className={styles.createAccountButton}
                         />
                     </form>
                     <p className={styles.loginLink}>¿Ya tienes una cuenta?<a href='/login'>Iniciar Sesión</a></p>
                     <div className={styles.socialRegister}>
                         <p>O regístrate con</p>
-                        <GoogleButton
-                            onSuccess={(message) => {
-                                setSuccess(message);
-                                //navigate(-1);; // Redirige a otra pagina
-                            }}
-                            onError={(message) => setError(message)}
-                        />
+                        <div className={styles.socialRegister2}>
+                            <GoogleButton
+                                onSuccess={(message) => {
+                                    setSuccess(message);
+                                    //navigate(-1);; // Redirige a otra pagina
+                                }}
+                                onError={(message) => setError(message)}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

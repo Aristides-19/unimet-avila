@@ -1,7 +1,6 @@
 .button {
   font-family: 'Poppins', serif;
   font-weight: 400;
-  font-style: normal;
   font-size: var(--step--1);
   border: none;
   text-align: center;
@@ -11,7 +10,12 @@
   justify-content: center;
   cursor: pointer;
   padding: var(--step--2) var(--step-3);
-  transition: transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out, background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--hover-color); /* Define un color de fondo para el hover */
+  transform: scale(1.02);
 }
 
 .button:active {

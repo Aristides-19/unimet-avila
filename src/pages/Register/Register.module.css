@@ -93,29 +93,6 @@
     box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Efecto de enfoque */
 }
 
-
-
-.createAccountButton {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--earth-sky);
-    color: var(--sunlight);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'Poppins', serif;
-    transition: background-color 0.3s ease, transform 0.1s ease-in-out;
-}
-
-.createAccountButton:hover {
-    transform: scale(1.02);
-}
-
-.createAccountButton:active {
-    transform: scale(0.98);
-}
-
 .backButtonContainer {
     margin-bottom: 20px;
     text-align: left;
@@ -140,13 +117,18 @@
 }
 
 .loginLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 15px;
     font-family: 'Poppins', serif;
     font-size: 14px;
     color: var(--earth-sky);
+    margin-bottom: 40px;
 }
 
 .loginLink a {
+    margin-left: 5px;
     color: var(--forest);
     text-decoration: none;
 }
@@ -156,11 +138,31 @@
 }
 
 .socialRegister {
+    display: flow-root;
+    align-items: center;
     text-align: center;
     margin-top: 20px;
     font-family: 'Poppins', serif;
     font-size: 14px;
-    color: var(--earth-sky);
+    color: var(--forest);
+    position: relative;
+}
+
+.socialRegister::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--separator);
+}
+
+.socialRegister2 {
+    margin-top: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
