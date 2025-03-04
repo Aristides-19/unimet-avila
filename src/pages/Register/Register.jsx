@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { auth, db } from '../../firebase.js';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
+import classroomImage from './classroom.jpg'; // Importa la imagen
 import { useNavigate } from 'react-router-dom';
-
 import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -14,86 +14,91 @@ import GoogleButton from '../../components/GoogleButton/GoogleButton';
 
 import styles from './Register.module.css';
 
-
-
 const Register = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    nombre: '',
+    apellido: '',
+    genero: '',
+    telefono: '',
+    correo: '',
+    contrasena: '',
+    confirmarContrasena: '',
+  });
 
-    const [formData, setFormData] = useState({
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+
+    if (formData.contrasena !== formData.confirmarContrasena) {
+      setError('Las contraseñas no coinciden.');
+      return;
+    }
+
+    try {
+      // Registro del usuario con Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.correo,
+        formData.contrasena
+      );
+
+      const user = userCredential.user;
+
+      // Guardar datos adicionales en Firestore
+      await setDoc(doc(db, 'usuarios', user.uid), {
+        nombre: formData.nombre,
+        apellido: formData.apellido,
+        genero: formData.genero,
+        telefono: formData.telefono,
+        correo: formData.correo,
+        uid: user.uid,
+      });
+
+      setSuccess('¡Cuenta creada exitosamente!');
+      setFormData({
         nombre: '',
         apellido: '',
         genero: '',
-        telefono: '',
         correo: '',
+        telefono: '',
         contrasena: '',
         confirmarContrasena: '',
-    });
+      });
+    } catch (err) {
+      setError(
+        err.code === 'auth/email-already-in-use'
+          ? 'El correo ya esta registrado. Por favor, utiliza otro correo.'
+          : 'Error al registrar: ' + err.message
+      );
+    }
+  };
 
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
-        setSuccess('');
-
-        if (formData.contrasena !== formData.confirmarContrasena){
-            setError('Las contraseñas no coinciden.');
-            return;
-        }
-
-        try {
-            // Registro del usuario con Firebase Auth
-            const userCredential = await createUserWithEmailAndPassword(
-                auth,
-                formData.correo,
-                formData.contrasena
-            );
-
-            const user = userCredential.user;
-
-            // Guardar datos adicionales en Firestore
-            await setDoc(doc(db, 'usuarios', user.uid), {
-                nombre: formData.nombre,
-                apellido: formData.apellido,
-                genero: formData.genero,
-                telefono: formData.telefono,
-                correo: formData.correo,
-                uid: user.uid,
-            });
-
-            setSuccess('¡Cuenta creada exitosamente!');
-            setFormData({
-                nombre: '',
-                apellido: '',
-                genero: '',
-                correo: '',
-                telefono: '',
-                contrasena: '',
-                confirmarContrasena: '',
-            });
-        } catch(err){
-            setError(
-                err.code ==='auth/email-already-in-use' 
-                    ? 'El correo ya esta registrado. Por favor, utiliza otro correo.'
-                    : 'Error al registrar: ' + err.message
-            );
-        }
-    };
-
-    return(
-        <div className = {styles.pageContainer}>
-            {/*Imagen a la izquierda*/}
-            <div className={styles.leftSection}></div>
+  return (
+    <div className={styles.pageContainer}>
+      {/*Imagen a la izquierda*/}
+      <div className={styles.leftSection}>
+        <div className='registerCard'>
+          <img
+            src={classroomImage}
+            alt='Registro'
+            className={styles.registerImage}
+          />
+        </div>
+      </div>
 
             {/*Formulario de registro a la derecha*/}
             <div className={styles.rightSection}>
@@ -132,30 +137,30 @@ const Register = () => {
                             </div>
                         </div>
 
-                        {/* Género y Número de Teléfono en la misma línea */}
-                        <div className={styles.row}>
-                            <div className={styles.formGroup}>
-                                <label>Genéro</label>
-                                <SelectField
-                                    name='genero'
-                                    value={formData.genero}
-                                    onChange={handleChange}
-                                    required
-                                    options={['Masculino', 'Femenino', 'Otro']}
-                                />
-                            </div>
-                            <div className={styles.formGroup}>
-                                <label>Número de Teléfono</label>
-                                <InputField
-                                    type='tel'
-                                    name='telefono'
-                                    placeholder='Número de Teléfono'
-                                    value={formData.telefono}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                        </div>
+            {/* Género y Número de Teléfono en la misma línea */}
+            <div className={styles.row}>
+              <div className={styles.formGroup}>
+                <label>Genéro</label>
+                <SelectField
+                  name='genero'
+                  value={formData.genero}
+                  onChange={handleChange}
+                  required
+                  options={['Masculino', 'Femenino', 'Otro']}
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Número de Teléfono</label>
+                <InputField
+                  type='tel'
+                  name='telefono'
+                  placeholder='Número de Teléfono'
+                  value={formData.telefono}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
 
                         <div className={styles.formGroup}>
                             <label>Correo Electrónico</label>

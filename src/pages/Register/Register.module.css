@@ -3,24 +3,36 @@
     width: 100%;
     max-width: 1200px;
     height: 100%;
-    margin: 0 auto;
+    margin: var(--margin) auto;
     background-color: var(--sunlight);
     overflow: hidden;
 }
 
 .leftSection {
-    flex: 0.7;
-    background-image: url('classroom.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: auto;
-    min-height: 300px;
-    max-height: 90vh;
-    border-radius: 10px;
-    border: 1px solid var(--separator);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
+    margin: var(--margin);
 }
+
+.registerCard {
+    /* Estilos para cada tarjeta de foto */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra verticalmente */
+    border-radius: 8px; /*  Radio de borde para las esquinas redondeadas */
+    overflow: hidden; /*  Oculta el contenido que se desborda de la tarjeta */
+    background-color: var(--sunlight); /*  Color de fondo, usando tu variable global */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /*  Sombra suave para la tarjeta */
+}
+
+.registerImage {
+    /* Estilos comunes para las imágenes */
+    max-width: 80vw; /* Ancho máximo del 80% del ancho de la ventana */
+    max-height: 80vh; /* Altura máxima del 80% de la altura de la ventana */
+    height: auto; /*  Altura automática para mantener la proporción */
+    object-fit: cover; /*  Asegura que la imagen cubra el contenedor, recortando si es necesario */
+    border-radius: 8px; /* Radio de borde para las esquinas redondeadas */
+  }
 
 .rightSection {
     flex: 1;
