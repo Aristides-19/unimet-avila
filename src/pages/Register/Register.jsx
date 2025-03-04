@@ -10,10 +10,15 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import SuccessMessage from '../../components/SuccessMessage/SuccessMessage';
 import Button from '../../components/Button/Button';
 import BackButton from '../../components/BackButton/BackButton';
+import GoogleButton from '../../components/GoogleButton/GoogleButton';
 
 import styles from './Register.module.css';
 
+
+
 const Register = () => {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         nombre: '',
@@ -154,7 +159,7 @@ const Register = () => {
                                 />
                             </div>
                         </div>
-                        
+
                         <div className={styles.formGroup}>
                             <label>Correo Electrónico</label>
                             <InputField
@@ -200,6 +205,13 @@ const Register = () => {
                     <p className={styles.loginLink}>¿Ya tienes una cuenta?<a href='/login'>Iniciar Sesión</a></p>
                     <div className={styles.socialRegister}>
                         <p>O regístrate con</p>
+                        <GoogleButton
+                            onSuccess={(message) => {
+                                setSuccess(message);
+                                //navigate(-1);; // Redirige a otra pagina
+                            }}
+                            onError={(message) => setError(message)}
+                        />
                     </div>
                 </div>
             </div>
