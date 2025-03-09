@@ -1,120 +1,208 @@
-/* General Styles */
+.pageContainer {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: var(--margin) auto;
+  background-color: var(--sunlight);
+  overflow: hidden;
+}
+
+.leftSection {
+  flex: 1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
+  margin: var(--margin);
+}
+
+.registerCard {
+  /* Estilos para cada tarjeta de foto */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra verticalmente */
+  border-radius: 8px; /*  Radio de borde para las esquinas redondeadas */
+  overflow: hidden; /*  Oculta el contenido que se desborda de la tarjeta */
+  background-color: var(
+    --sunlight
+  ); /*  Color de fondo, usando tu variable global */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /*  Sombra suave para la tarjeta */
+}
+
+.registerImage {
+  /* Estilos comunes para las imágenes */
+  max-width: 80vw; /* Ancho máximo del 80% del ancho de la ventana */
+  max-height: 80vh; /* Altura máxima del 80% de la altura de la ventana */
+  height: auto; /*  Altura automática para mantener la proporción */
+  object-fit: cover; /*  Asegura que la imagen cubra el contenedor, recortando si es necesario */
+  border-radius: 8px; /* Radio de borde para las esquinas redondeadas */
+}
+
+.rightSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: var(--step-4);
+}
 
 .registerForm {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-h2 {
-  text-align: center;
-  color: #003366;
-  font-size: 26px;
-  margin-bottom: 25px;
-}
-
-/*form styles*/
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-input,
-select {
   width: 100%;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  box-sizing: border-box;
+  padding: var(--step-2);
+  align-items: center;
+}
+
+.registerForm h2 {
+  text-align: center;
+  margin-bottom: var(--margin);
+  font-family: 'Poppins', serif;
+  font-weight: 600;
+  font-size: var(--step-3);
+  color: var(--earth-sky);
+}
+
+.registerForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.formGroup label {
+  font-family: 'Poppins', serif;
+  font-size: 12px;
+  color: var(--forest);
+}
+
+.row {
+  display: flex;
+  gap: 35px;
+  margin-bottom: 15px;
+}
+
+.row .formGroup {
+  flex: 1;
+}
+
+.registerForm input,
+.registerForm select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Poppins', serif;
   background-color: #f9f9f9;
 }
 
-input:focus,
-select:focus {
+.registerForm input:focus,
+.registerForm select:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+  border-color: var(--earth-sky);
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Efecto de enfoque */
 }
 
-input::placeholder {
-  color: #aaa;
-  font-size: 14px;
+.backButtonContainer {
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-/* Button styles */
-button {
-  padding: 12px;
-  background-color: #28a745;
-  color: #ffffff;
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Poppins', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--earth-sky);
+  background-color: transparent;
   border: none;
-  border-radius: 6px;
-  font-size: 18px;
   cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
+  text-decoration: none;
 }
 
-button:hover {
-  background-color: #218838;
-  transform: translateY(-2px);
+.backButton:hover {
+  color: var(--forest);
+  transform: scale(1.02);
 }
 
-button:active {
-  background-color: #1e7e34;
-  transform: translateY(0);
-}
-
-/* Feedback messages */
-.error {
-  color: red;
+.loginLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  font-family: 'Poppins', serif;
   font-size: 14px;
-  text-align: center;
-  margin-bottom: 10px;
+  color: var(--earth-sky);
+  margin-bottom: 40px;
 }
 
-.success {
-  color: green;
+.loginLink a {
+  margin-left: 5px;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.loginLink a:hover {
+  text-decoration: underline;
+}
+
+.socialRegister {
+  display: flow-root;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Poppins', serif;
   font-size: 14px;
-  text-align: center;
-  margin-bottom: 10px;
+  color: var(--forest);
+  position: relative;
 }
 
-/* Responsive adjustments */
+.socialRegister::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--separator);
+}
+
+.socialRegister2 {
+  margin-top: 20px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
+  .pageContainer {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .leftSection {
+    height: 250px;
+  }
+
+  .rightSection {
+    padding-top: var(--step-3);
+  }
+
   .registerForm {
-    padding: 20px;
-  }
-
-  input,
-  select,
-  button {
-    font-size: 14px;
-  }
-
-  h2 {
-    font-size: 22px;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .registerForm {
-    width: 90%;
-    padding: 15px;
+  .leftSection {
+    height: 150px; /* Reduce aún más la altura */
   }
 
-  h2 {
-    font-size: 20px;
+  .registerForm h2 {
+    font-size: var(--step-2); /* Tamaño ajustado del encabezado */
   }
 
   input,

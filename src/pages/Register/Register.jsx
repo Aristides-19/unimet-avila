@@ -2,13 +2,26 @@ import React, { useState } from 'react';
 import { auth, db } from '../../firebase.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
+import classroomImage from './classroom.jpg'; // Importa la imagen
+import { useNavigate } from 'react-router-dom';
+import InputField from '../../components/InputField/InputField';
+import SelectField from '../../components/SelectField/SelectField';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import SuccessMessage from '../../components/SuccessMessage/SuccessMessage';
+import Button from '../../components/Button/Button';
+import BackButton from '../../components/BackButton/BackButton';
+import GoogleButton from '../../components/GoogleButton/GoogleButton';
+
 import styles from './Register.module.css';
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
     genero: '',
+    telefono: '',
     correo: '',
     contrasena: '',
     confirmarContrasena: '',
@@ -50,6 +63,7 @@ const Register = () => {
         nombre: formData.nombre,
         apellido: formData.apellido,
         genero: formData.genero,
+        telefono: formData.telefono,
         correo: formData.correo,
         uid: user.uid,
       });
@@ -60,6 +74,7 @@ const Register = () => {
         apellido: '',
         genero: '',
         correo: '',
+        telefono: '',
         contrasena: '',
         confirmarContrasena: '',
       });
@@ -73,64 +88,139 @@ const Register = () => {
   };
 
   return (
-    <div className={styles.registerForm}>
-      <h2>Crear Cuenta</h2>
-      {error && <p className={styles.error}>{error}</p>}
-      {success && <p className={styles.success}>{success}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          name='nombre'
-          placeholder='Nombre'
-          value={formData.nombre}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type='text'
-          name='apellido'
-          placeholder='Apellido'
-          value={formData.apellido}
-          onChange={handleChange}
-          required
-        />
-        <select
-          name='genero'
-          value={formData.genero}
-          onChange={handleChange}
-          required
-        >
-          <option value=''>Selecciona tu género</option>
-          <option value='Masculino'>Masculino</option>
-          <option value='Femenino'>Femenino</option>
-          <option value='Otro'>Otro</option>
-        </select>
-        <input
-          type='email'
-          name='correo'
-          placeholder='Correo Electrónico'
-          value={formData.correo}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type='password'
-          name='contrasena'
-          placeholder='Contraseña'
-          value={formData.contrasena}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type='password'
-          name='confirmarContrasena'
-          placeholder='Confirmar Contraseña'
-          value={formData.confirmarContrasena}
-          onChange={handleChange}
-          required
-        />
-        <button type='submit'>Crear Cuenta</button>
-      </form>
+    <div className={styles.pageContainer}>
+      {/*Imagen a la izquierda*/}
+      <div className={styles.leftSection}>
+        <div className='registerCard'>
+          <img
+            src={classroomImage}
+            alt='Registro'
+            className={styles.registerImage}
+          />
+        </div>
+      </div>
+
+      {/*Formulario de registro a la derecha*/}
+      <div className={styles.rightSection}>
+        <div className={styles.registerForm}>
+          <div className={styles.backButtonContainer}>
+            <BackButton />
+          </div>
+          <h2>Crear Cuenta</h2>
+          {error && <ErrorMessage message={error} />}
+          {success && <SuccessMessage message={success} />}
+
+          <form onSubmit={handleSubmit}>
+            {/* Nombre y Apellido en la misma línea */}
+            <div className={styles.row}>
+              <div className={styles.formGroup}>
+                <label>Nombre</label>
+                <InputField
+                  type='text'
+                  name='nombre'
+                  placeholder='Nombre'
+                  value={formData.nombre}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Apellido</label>
+                <InputField
+                  type='text'
+                  name='apellido'
+                  placeholder='Apellido'
+                  value={formData.apellido}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Género y Número de Teléfono en la misma línea */}
+            <div className={styles.row}>
+              <div className={styles.formGroup}>
+                <label>Genéro</label>
+                <SelectField
+                  name='genero'
+                  value={formData.genero}
+                  onChange={handleChange}
+                  required
+                  options={['Masculino', 'Femenino', 'Otro']}
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Número de Teléfono</label>
+                <InputField
+                  type='tel'
+                  name='telefono'
+                  placeholder='Número de Teléfono'
+                  value={formData.telefono}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label>Correo Electrónico</label>
+              <InputField
+                type='email'
+                name='correo'
+                placeholder='Correo Electrónico'
+                value={formData.correo}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Contraseña</label>
+              <InputField
+                type='password'
+                name='contrasena'
+                placeholder='Contraseña'
+                value={formData.contrasena}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Confirmar Contraseña</label>
+              <InputField
+                type='password'
+                name='confirmarContrasena'
+                placeholder='Confirmar Contraseña'
+                value={formData.confirmarContrasena}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <Button
+              text='Crear Cuenta'
+              type='submit'
+              color='#fff'
+              backgroundColor='var(--earth-sky)'
+              hoverBackgroundColor='var(--forest)'
+              borderRadius='6px'
+            />
+          </form>
+          <p className={styles.loginLink}>
+            ¿Ya tienes una cuenta?<a href='/login'>Iniciar Sesión</a>
+          </p>
+          <div className={styles.socialRegister}>
+            <p>O regístrate con</p>
+            <div className={styles.socialRegister2}>
+              <GoogleButton
+                onSuccess={(message) => {
+                  setSuccess(message);
+                  navigate(-1); // Redirige a otra pagina
+                }}
+                onError={(message) => setError(message)}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
