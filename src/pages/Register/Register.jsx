@@ -3,7 +3,6 @@ import { auth, db } from '../../firebase.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import classroomImage from './classroom.jpg'; // Importa la imagen
-import { useNavigate } from 'react-router-dom';
 import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -15,7 +14,7 @@ import GoogleButton from '../../components/GoogleButton/GoogleButton';
 import styles from './Register.module.css';
 
 const Register = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -100,42 +99,42 @@ const Register = () => {
         </div>
       </div>
 
-            {/*Formulario de registro a la derecha*/}
-            <div className={styles.rightSection}>
-                <div className={styles.registerForm}>
-                    <div className={styles.backButtonContainer}>
-                        <BackButton/>
-                    </div>
-                    <h2>Crear Cuenta</h2>
-                    {error && <ErrorMessage message={error} />}
-                    {success && <SuccessMessage message={success} />}
-                    
-                    <form onSubmit={handleSubmit}>
-                        {/* Nombre y Apellido en la misma línea */}
-                        <div className={styles.row}>
-                            <div className={styles.formGroup}>
-                                <label>Nombre</label>
-                                <InputField
-                                    type='text'
-                                    name='nombre'
-                                    placeholder='Nombre'
-                                    value={formData.nombre}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className={styles.formGroup}>
-                                <label>Apellido</label>
-                                <InputField 
-                                    type='text'
-                                    name='apellido'
-                                    placeholder='Apellido'
-                                    value={formData.apellido}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                        </div>
+      {/*Formulario de registro a la derecha*/}
+      <div className={styles.rightSection}>
+        <div className={styles.registerForm}>
+          <div className={styles.backButtonContainer}>
+            <BackButton />
+          </div>
+          <h2>Crear Cuenta</h2>
+          {error && <ErrorMessage message={error} />}
+          {success && <SuccessMessage message={success} />}
+
+          <form onSubmit={handleSubmit}>
+            {/* Nombre y Apellido en la misma línea */}
+            <div className={styles.row}>
+              <div className={styles.formGroup}>
+                <label>Nombre</label>
+                <InputField
+                  type='text'
+                  name='nombre'
+                  placeholder='Nombre'
+                  value={formData.nombre}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Apellido</label>
+                <InputField
+                  type='text'
+                  name='apellido'
+                  placeholder='Apellido'
+                  value={formData.apellido}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
 
             {/* Género y Número de Teléfono en la misma línea */}
             <div className={styles.row}>
@@ -162,65 +161,67 @@ const Register = () => {
               </div>
             </div>
 
-                        <div className={styles.formGroup}>
-                            <label>Correo Electrónico</label>
-                            <InputField
-                                type='email'
-                                name='correo'
-                                placeholder='Correo Electrónico'
-                                value={formData.correo}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-                        <div className={styles.formGroup}>
-                            <label>Contraseña</label>
-                            <InputField
-                                type='password'
-                                name='contrasena'
-                                placeholder='Contraseña'
-                                value={formData.contrasena}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-                        <div className={styles.formGroup}>
-                            <label>Confirmar Contraseña</label>
-                            <InputField
-                                type='password'
-                                name='confirmarContrasena'
-                                placeholder='Confirmar Contraseña'
-                                value={formData.confirmarContrasena}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-                        <Button
-                            text='Crear Cuenta'
-                            type='submit'
-                            color='#fff'
-                            backgroundColor='var(--earth-sky)'
-                            hoverBackgroundColor='var(--forest)'
-                            borderRadius='6px'
-                        />
-                    </form>
-                    <p className={styles.loginLink}>¿Ya tienes una cuenta?<a href='/login'>Iniciar Sesión</a></p>
-                    <div className={styles.socialRegister}>
-                        <p>O regístrate con</p>
-                        <div className={styles.socialRegister2}>
-                            <GoogleButton
-                                onSuccess={(message) => {
-                                    setSuccess(message);
-                                    //navigate(-1);; // Redirige a otra pagina
-                                }}
-                                onError={(message) => setError(message)}
-                            />
-                        </div>
-                    </div>
-                </div>
+            <div className={styles.formGroup}>
+              <label>Correo Electrónico</label>
+              <InputField
+                type='email'
+                name='correo'
+                placeholder='Correo Electrónico'
+                value={formData.correo}
+                onChange={handleChange}
+                required
+              />
             </div>
+            <div className={styles.formGroup}>
+              <label>Contraseña</label>
+              <InputField
+                type='password'
+                name='contrasena'
+                placeholder='Contraseña'
+                value={formData.contrasena}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Confirmar Contraseña</label>
+              <InputField
+                type='password'
+                name='confirmarContrasena'
+                placeholder='Confirmar Contraseña'
+                value={formData.confirmarContrasena}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <Button
+              text='Crear Cuenta'
+              type='submit'
+              color='#fff'
+              backgroundColor='var(--earth-sky)'
+              hoverBackgroundColor='var(--forest)'
+              borderRadius='6px'
+            />
+          </form>
+          <p className={styles.loginLink}>
+            ¿Ya tienes una cuenta?<a href='/login'>Iniciar Sesión</a>
+          </p>
+          <div className={styles.socialRegister}>
+            <p>O regístrate con</p>
+            <div className={styles.socialRegister2}>
+              <GoogleButton
+                onSuccess={(message) => {
+                  setSuccess(message);
+                  //navigate(-1);; // Redirige a otra pagina
+                }}
+                onError={(message) => setError(message)}
+              />
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Register;

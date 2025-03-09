@@ -6,6 +6,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import styles from './GoogleButton.module.css';
 import googleIcon from '../../assets/google-icon.png';
 
+// eslint-disable-next-line react/prop-types
 const GoogleButton = ({ onSuccess, onError }) => {
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
@@ -19,10 +20,10 @@ const GoogleButton = ({ onSuccess, onError }) => {
         const nameParts = displayName.split(' ');
         const nombre = nameParts[0];
         const apellido = nameParts.slice(1).join(' ');
-        return{ nombre, apellido};
+        return { nombre, apellido };
       };
 
-      const { nombre, apellido} = splitDisplayName(user.displayName || '');
+      const { nombre, apellido } = splitDisplayName(user.displayName || '');
 
       // Verificar si el usuario es nuevo
       if (result._tokenResponse.isNewUser) {
@@ -45,17 +46,11 @@ const GoogleButton = ({ onSuccess, onError }) => {
   };
 
   return (
-    <button
-      className={styles.googleButton}
-      onClick={handleGoogleLogin}>
-      <img src={googleIcon} alt="Google Icon" className={styles.googleIcon} />
-      
+    <button className={styles.googleButton} onClick={handleGoogleLogin}>
+      <img src={googleIcon} alt='Google Icon' className={styles.googleIcon} />
       Continuar con Google
     </button>
   );
 };
-
-
-
 
 export default GoogleButton;
