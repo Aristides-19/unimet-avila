@@ -15,7 +15,7 @@ const ImageDisplay = ({
       <img
         src={imagePath}
         alt={altText}
-        className={`${styles.image} ${imageClassName}`}
+        className={`${styles.image} ${imageClassName}`} // agrega nuevos estilos de imagen al css
       />
     </div>
   );
@@ -27,13 +27,6 @@ ImageDisplay.propTypes = {
   altText: PropTypes.string, // altText is optional, but should be a string if provided
   containerClassName: PropTypes.string, // Optional prop to add extra CSS classes to the container div
   imageClassName: PropTypes.string, // Optional prop to add extra CSS classes to the image
-};
-
-// Optional: Default props if you want to set default values
-ImageDisplay.defaultProps = {
-  altText: 'Image', // Default alt text if not provided
-  containerClassName: '', // Default empty string for containerClassName
-  imageClassName: '', // Default empty string for imageClassName
 };
 
 export default ImageDisplay;

@@ -1,20 +1,7 @@
 .imageContainer {
   display: flex;  
-  flex: 1;    
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
-  width: 100%;           /* Example: Container takes full width of parent */
-  object-fit: cover;    /* Ensure image covers the container, cropping if necessary */
-  border: 1px solid var(--separator); /* Example: Add a border */
-  border-radius: 8px;    /* Example: Rounded corners */
-  padding: var(--padding); /* Example: Add padding */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Example: Add shadow */
 }
 
 .image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;    /* Ensure image covers the container, cropping if necessary */
-  border-radius: 8px;    /* Match container's border-radius */
-  display: block;       /* Remove extra space below image in some cases */
+  display: flex;
 }
