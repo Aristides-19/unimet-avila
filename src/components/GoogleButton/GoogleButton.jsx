@@ -4,7 +4,7 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import styles from './GoogleButton.module.css';
-import googleIcon from '../../assets/google-icon.png';
+import {FcGoogle} from 'react-icons/fc';
 
 const GoogleButton = ({ onSuccess, onError }) => {
   const handleGoogleLogin = async () => {
@@ -48,8 +48,7 @@ const GoogleButton = ({ onSuccess, onError }) => {
     <button
       className={styles.googleButton}
       onClick={handleGoogleLogin}>
-      <img src={googleIcon} alt="Google Icon" className={styles.googleIcon} />
-      
+      <FcGoogle className={styles.googleIcon} />
       Continuar con Google
     </button>
   );
