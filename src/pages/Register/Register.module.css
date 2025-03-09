@@ -1,45 +1,30 @@
 .pageContainer {
     display: flex;
-    width: 100%;
-    max-width: 1200px;
-    height: 100%;
-    margin: var(--margin) auto;
-    background-color: var(--sunlight);
-    overflow: hidden;
+    flex-direction: row;
+    align-items: top;
+    background-color: var(--unimet);
+    height: 120vh;
 }
 
 .leftSection {
-    flex: 1;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
-    margin: var(--margin);
+    flex: 0.7;
+    background-image: url('classroom.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: auto;
+    min-height: 300px;
+    max-height: 90vh;
+    border-radius: 10px;
+    border: 1px solid var(--separator);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-.registerCard {
-    /* Estilos para cada tarjeta de foto */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Centra verticalmente */
-    border-radius: 8px; /*  Radio de borde para las esquinas redondeadas */
-    overflow: hidden; /*  Oculta el contenido que se desborda de la tarjeta */
-    background-color: var(--sunlight); /*  Color de fondo, usando tu variable global */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /*  Sombra suave para la tarjeta */
-}
-
-.registerImage {
-    /* Estilos comunes para las imágenes */
-    max-width: 80vw; /* Ancho máximo del 80% del ancho de la ventana */
-    max-height: 80vh; /* Altura máxima del 80% de la altura de la ventana */
-    height: auto; /*  Altura automática para mantener la proporción */
-    object-fit: cover; /*  Asegura que la imagen cubra el contenedor, recortando si es necesario */
-    border-radius: 8px; /* Radio de borde para las esquinas redondeadas */
-  }
 
 .rightSection {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
     padding: var(--step-4);
     
 }
@@ -105,6 +90,29 @@
     box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Efecto de enfoque */
 }
 
+
+
+.createAccountButton {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--earth-sky);
+    color: var(--sunlight);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Poppins', serif;
+    transition: background-color 0.3s ease, transform 0.1s ease-in-out;
+}
+
+.createAccountButton:hover {
+    transform: scale(1.02);
+}
+
+.createAccountButton:active {
+    transform: scale(0.98);
+}
+
 .backButtonContainer {
     margin-bottom: 20px;
     text-align: left;
@@ -129,18 +137,13 @@
 }
 
 .loginLink {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 15px;
     font-family: 'Poppins', serif;
     font-size: 14px;
     color: var(--earth-sky);
-    margin-bottom: 40px;
 }
 
 .loginLink a {
-    margin-left: 5px;
     color: var(--forest);
     text-decoration: none;
 }
@@ -150,31 +153,11 @@
 }
 
 .socialRegister {
-    display: flow-root;
-    align-items: center;
     text-align: center;
     margin-top: 20px;
     font-family: 'Poppins', serif;
     font-size: 14px;
-    color: var(--forest);
-    position: relative;
-}
-
-.socialRegister::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--separator);
-}
-
-.socialRegister2 {
-    margin-top: 20px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+    color: var(--earth-sky);
 }
 
 @media (max-width: 768px) {

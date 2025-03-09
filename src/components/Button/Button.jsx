@@ -8,7 +8,6 @@ function Button({
   borderRadius = '8px',
   color,
   backgroundColor,
-  hoverBackgroundColor, // Nueva propiedad
   onClick,
   className = '',
 }) {
@@ -24,8 +23,6 @@ function Button({
       style={buttonStyle}
       onClick={onClick}
       className={`${styles.button} ${className}`}
-      onMouseEnter={(e) => e.target.style.backgroundColor = hoverBackgroundColor} // Cambiar color al hover
-      onMouseLeave={(e) => e.target.style.backgroundColor = backgroundColor} // Restaurar color original
     >
       {text}
     </button>
@@ -36,9 +33,8 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   borderRadius: PropTypes.string,
-  color: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  hoverBackgroundColor: PropTypes.string, 
+  color: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   className: PropTypes.string,
 };

@@ -15,6 +15,7 @@
   font-family: 'Poppins', serif; /* Usa la fuente Poppins, consistente con tu global.css */
   font-size: var(--step-1); /*  Tamaño de fuente, usando tu variable global */
   font-weight: 600; /*  Peso de fuente */
+  background-color: #f9f9f9f9;
 }
 
 .leftColumn{
