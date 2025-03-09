@@ -40,11 +40,18 @@ export default [
         {
           semi: true,
           singleQuote: true,
-          tabWidth: 2,
           trailingComma: 'es5',
           jsxSingleQuote: true,
+          tabWidth: 2,
           endOfLine: 'auto',
-          printWidth: 120,
+          overrides: [
+            {
+              files: '*.js',
+              options: {
+                printWidth: 120,
+              },
+            },
+          ],
         },
       ], // Marca errores si el código no sigue las reglas de Prettier
     },
