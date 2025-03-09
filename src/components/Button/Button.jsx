@@ -24,8 +24,10 @@ function Button({
       style={buttonStyle}
       onClick={onClick}
       className={`${styles.button} ${className}`}
-      onMouseEnter={(e) => e.target.style.backgroundColor = hoverBackgroundColor} // Cambiar color al hover
-      onMouseLeave={(e) => e.target.style.backgroundColor = backgroundColor} // Restaurar color original
+      onMouseEnter={(e) =>
+        (e.target.style.backgroundColor = hoverBackgroundColor)
+      } // Cambiar color al hover
+      onMouseLeave={(e) => (e.target.style.backgroundColor = backgroundColor)} // Restaurar color original
     >
       {text}
     </button>
@@ -34,13 +36,13 @@ function Button({
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  borderRadius: PropTypes.string,
-  color: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  hoverBackgroundColor: PropTypes.string, 
-  onClick: PropTypes.func,
-  className: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']).isRequired,
+  borderRadius: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
+  hoverBackgroundColor: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default Button;

@@ -1,10 +1,11 @@
 // GoogleButton.jsx
 import React from 'react';
+import PropTypes from 'prop-types'; // Importa PropTypes
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import styles from './GoogleButton.module.css';
-import {FcGoogle} from 'react-icons/fc';
+import { FcGoogle } from 'react-icons/fc';
 
 const GoogleButton = ({ onSuccess, onError }) => {
   const handleGoogleLogin = async () => {
@@ -19,10 +20,10 @@ const GoogleButton = ({ onSuccess, onError }) => {
         const nameParts = displayName.split(' ');
         const nombre = nameParts[0];
         const apellido = nameParts.slice(1).join(' ');
-        return{ nombre, apellido};
+        return { nombre, apellido };
       };
 
-      const { nombre, apellido} = splitDisplayName(user.displayName || '');
+      const { nombre, apellido } = splitDisplayName(user.displayName || '');
 
       // Verificar si el usuario es nuevo
       if (result._tokenResponse.isNewUser) {
@@ -45,16 +46,16 @@ const GoogleButton = ({ onSuccess, onError }) => {
   };
 
   return (
-    <button
-      className={styles.googleButton}
-      onClick={handleGoogleLogin}>
+    <button className={styles.googleButton} onClick={handleGoogleLogin}>
       <FcGoogle className={styles.googleIcon} />
       Continuar con Google
     </button>
   );
 };
 
-
-
+GoogleButton.propTypes = {
+  onSuccess: PropTypes.func.isRequired, // Agrega validación de tipo para onSuccess
+  onError: PropTypes.func.isRequired, // Agrega validación de tipo para onError
+};
 
 export default GoogleButton;
