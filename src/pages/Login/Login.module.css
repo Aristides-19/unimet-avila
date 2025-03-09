@@ -1,120 +1,128 @@
 /* General Styles */
 
 .registerForm {
-    max-width: 800px;
-    margin: 60px;
-    padding: 60px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  max-width: 800px;
+  margin: 60px;
+  padding: 60px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 h2 {
-    text-align: center;
-    color: #003366;
-    font-size: 26px;
-    margin-bottom: 25px;
+  text-align: center;
+  color: #003366;
+  font-size: 26px;
+  margin-bottom: 25px;
 }
 
 /*form styles*/
 
-form{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-input, select{
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
+input,
+select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
 }
 
-input:focus, select:focus{
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
 }
 
-input::placeholder{
-    color: #aaa;
-    font-size: 14px;
+input::placeholder {
+  color: #aaa;
+  font-size: 14px;
 }
 
 /* Button styles */
 button {
-    padding: 12px;
-    background-color: #28a745;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 12px;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+  background-color: #218838;
+  transform: translateY(-2px);
 }
 
-button:active{
-    background-color: #1e7e34;
-    transform: translateY(0);
+button:active {
+  background-color: #1e7e34;
+  transform: translateY(0);
 }
 
 /* Feedback messages */
 .error {
-    color: red;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 10px;
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .success {
-    color: green;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 10px;
+  color: green;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .registerForm {
-        padding: 20px;
-    }
+  .registerForm {
+    padding: 20px;
+  }
 
-    input, select, button {
-        font-size: 14px;
-    }
+  input,
+  select,
+  button {
+    font-size: 14px;
+  }
 
-    h2{
-        font-size: 22px;
-    }
+  h2 {
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 480px) {
-    .registerForm {
-        width: 90%;
-        padding: 15px;
-    }
+  .registerForm {
+    width: 90%;
+    padding: 15px;
+  }
 
-    h2 {
-        font-size: 20px;
-    }
+  h2 {
+    font-size: 20px;
+  }
 
-    input, select, button {
-        font-size: 14px;
-        padding: 10px;
-    }
+  input,
+  select,
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
