@@ -35,10 +35,10 @@ function App() {
   );
 }
 
-const AppWrapper = () => (
+const AppWithRouter = () => (
   <Router>
     <App />
   </Router>
 );
 
-export default AppWrapper;
+export default AppWithRouter;

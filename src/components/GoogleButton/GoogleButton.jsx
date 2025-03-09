@@ -1,12 +1,12 @@
 // GoogleButton.jsx
 import React from 'react';
+import PropTypes from 'prop-types'; // Importa PropTypes
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import styles from './GoogleButton.module.css';
-import googleIcon from '../../assets/google-icon.png';
+import { FcGoogle } from 'react-icons/fc';
 
-// eslint-disable-next-line react/prop-types
 const GoogleButton = ({ onSuccess, onError }) => {
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
@@ -47,10 +47,15 @@ const GoogleButton = ({ onSuccess, onError }) => {
 
   return (
     <button className={styles.googleButton} onClick={handleGoogleLogin}>
-      <img src={googleIcon} alt='Google Icon' className={styles.googleIcon} />
+      <FcGoogle className={styles.googleIcon} />
       Continuar con Google
     </button>
   );
+};
+
+GoogleButton.propTypes = {
+  onSuccess: PropTypes.func.isRequired, // Agrega validación de tipo para onSuccess
+  onError: PropTypes.func.isRequired, // Agrega validación de tipo para onError
 };
 
 export default GoogleButton;

@@ -36,13 +36,13 @@ function Button({
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  borderRadius: PropTypes.string,
-  color: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  hoverBackgroundColor: PropTypes.string,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']).isRequired,
+  borderRadius: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
+  hoverBackgroundColor: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default Button;
