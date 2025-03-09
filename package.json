@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "format": "prettier --write .",
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "precheck": "prettier --check \"**/*.{js,jsx,html,css}\"",
+    "format": "prettier \"**/*.{js,jsx,html,css}\" --write",
     "preview": "vite preview"
   },
   "dependencies": {
