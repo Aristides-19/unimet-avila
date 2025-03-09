@@ -33,7 +33,7 @@
     - `date` (Timestamp): Fecha y hora de la excursión.
     - `route` (String): Ruta de la excursión.
     - `price` (Number): Precio de la excursión.
-    - `haveLunch` (Boolean): Dice si la excursión incluye el almuerzo.
+    - `hasLunch` (Boolean): Dice si la excursión incluye el almuerzo.
     - `images` (Array[String]): URL de las fotos relacionadas con la excursión en Supabase, máximo de 5.
     - `guideId` (Reference): Referencia al guía asignado a la excursión (referencia a `users`).
     - `maxStudents` (Number): Número máximo de estudiantes.
