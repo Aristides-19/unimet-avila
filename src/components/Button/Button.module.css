@@ -10,11 +10,15 @@
   justify-content: center;
   cursor: pointer;
   padding: var(--step--2) var(--step-3);
-  transition: transform 0.1s ease-in-out, background-color 0.3s ease;
+  transition:
+    transform 0.1s ease-in-out,
+    background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: var(--hover-color); /* Define un color de fondo para el hover */
+  background-color: var(
+    --hover-color
+  ); /* Define un color de fondo para el hover */
   transform: scale(1.02);
 }
 

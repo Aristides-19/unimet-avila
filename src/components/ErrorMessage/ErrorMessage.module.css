@@ -1,7 +1,7 @@
 .error {
-    color: red;
-    text-align: center;
-    margin-bottom: 10px;
-    font-family: 'Poppins', serif;
-    font-size: var(--step--1);
-  }
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1);
+}
