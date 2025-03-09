@@ -61,7 +61,7 @@
    ```
 
 2. **Inicia sesión en Firebase:**
-   Este comando abre un ventana en el navegador para iniciar sesión en Google,
+   Este comando abre una ventana en el navegador para iniciar sesión en Google,
    hay que iniciar sesión con la cuenta UNIMET que está agregada en el proyecto de Firebase.
 
    ```bash
