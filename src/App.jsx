@@ -6,7 +6,6 @@ import NotFound from './pages/NotFound/NotFound';
 import Home from './pages/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Register from './pages/Register/Register';
-import './styles/global.css';
 
 function App() {
   const location = useLocation();
@@ -29,11 +28,4 @@ function App() {
     );
 };
 
-const AppWrapper = () => (
-  <Router>
-    <App />
-  </Router>
-);
-
-
-export default AppWrapper;
+export default App;
