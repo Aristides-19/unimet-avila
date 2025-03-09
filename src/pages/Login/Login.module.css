@@ -1,15 +1,17 @@
 /* General Styles */
 
 .registerForm {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
+    max-width: 800px;
+    margin: 60px;
+    padding: 60px;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 

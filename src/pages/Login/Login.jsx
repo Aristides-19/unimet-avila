@@ -1,6 +1,10 @@
 import React, {useState} from "react"
-import { auth, db } from '../../firebase.js';
+import { auth, db , googleProvider} from '../../firebase.js';
+import ResponsiveImage from "./ResponsiveIMGlogin.jsx";
 import styles from './Login.module.css'
+import GoogleButton from '../../components/GoogleButton/GoogleButton';
+import Button from '../../components/Button/Button';
+import BackButton from '../../components/BackButton/BackButton';
 
 
 function Login(){
@@ -16,11 +20,26 @@ function Login(){
         try{
             await auth.signInWithEmailAndPassword(email, password);
         }catch(err){
+            console.log(err.message)
             setError(err.message)
         }
     };
 
-    return (<div className={styles.registerForm}>
+    const signInWithGoogle = async () => {
+        try {
+          await auth.signInWithPopup(googleProvider);
+        } catch (error) {
+          console.error('Error signing in with Google', error);
+        }
+      };
+
+    return (<div style={{ display: 'flex', height: '80vh' }}>
+        <div style={{flex: 1, justifyContent: "center"}}>
+            <ResponsiveImage/>
+        </div>
+    
+    <div className={styles.registerForm}>
+        <BackButton/>
         <h2>Iniciar sesión</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <form onSubmit={handleSubmit}>
@@ -38,9 +57,20 @@ function Login(){
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
-            <button type="submit">Iniciar sesión</button>
+            <Button
+                text='Iniciar sesión'
+                type='submit'
+                color='#fff'
+                backgroundColor='var(--earth-sky)'
+                hoverBackgroundColor='var(--forest)'
+                borderRadius='6px'
+            />
+            <GoogleButton/>
         </form>
-    </div>)
+    </div>
+
+    </div>
+    )
 
 }
 
