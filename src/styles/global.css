@@ -35,6 +35,10 @@ body {
   margin: 0;
 }
 
+button {
+  background-color: transparent; /* Asegúrate de que los botones tengan fondo transparente por defecto */
+}
+
 h1 {
   font-family: 'Poppins', serif;
   font-weight: 600;

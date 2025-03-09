@@ -1,0 +1,30 @@
+.googleButton {
+  display: flex;
+  background-color: #fff; 
+  color: var(--forest);
+  border: 1px solid #ddd;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease-in-out;
+}
+  
+.googleButton:hover {
+  background-color: #c23321; 
+  transform: scale(1.02);
+  color: #fff;
+}
+
+.googleIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+  
+.googleButton:active {
+  transform: scale(0.98); 
+}
+  
