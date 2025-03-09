@@ -13,7 +13,7 @@ function Gallery() {
       } else {
         const photoUrls = data.map((item) => {
           const { data: urlData } = supabase.storage
-            .from('imagenes-galeria')
+            .from('generics')
             .getPublicUrl(item.name);
 
           return {

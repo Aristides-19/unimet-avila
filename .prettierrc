@@ -4,5 +4,13 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "jsxSingleQuote": true,
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "*.js",
+      "options": {
+        "printWidth": 120
+      }
+    }
+  ]
 }
