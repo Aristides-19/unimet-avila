@@ -1,0 +1,78 @@
+.carousel {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--sunlight);
+}
+
+.heading {
+  font-family: 'Poppins', serif;
+  font-size: var(--step-4);
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--forest);
+}
+
+.subheading {
+  font-family: 'Poppins', serif;
+  font-size: var(--step-1);
+  color: var(--earth-sky);
+  margin-bottom: var(--margin);
+}
+
+.carouselContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px; /* Espaciado entre botones y testimonios */
+}
+
+.testimonialGrid {
+  display: flex;
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px; /* Espaciado entre testimonios */
+}
+
+.testimonialGrid > div {
+  flex: 0 0 auto; /* cada tarjeta mantenga su tamaño */
+}
+
+.navButton {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.navButton:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .testimonialGrid {
+    gap: 15px; /* Reduce el espacio entre testimonios */
+  }
+
+  .navButton {
+    font-size: 20px; /* Reduce el tamaño de las flechas */
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 22px;
+  }
+
+  .subheading {
+    font-size: 16px;
+  }
+
+  .testimonialGrid {
+    gap: 0; /* Sin espacio entre testimonios */
+  }
+}
