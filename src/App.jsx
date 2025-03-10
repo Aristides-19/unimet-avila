@@ -15,7 +15,7 @@ import Login from './pages/Login/Login';
 
 function App() {
   const location = useLocation();
-  const hideHeaderRoutes = ['/register'];
+  const hideHeaderRoutes = ['/register', '/login'];
 
   return (
     <>

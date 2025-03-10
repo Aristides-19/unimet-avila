@@ -89,29 +89,35 @@ unimet-avila/
 ├── public/               # Archivos estáticos
 │   └── logo.svg
 ├── src/
-│   ├── assets/           # Recursos como imágenes, fuentes, íconos
+│   ├── assets/           # Recursos como vectores generales
 │   │   └── footerLogo.svg
-│   ├── components/       # Componentes reutilizables de React
+│   ├── components/       # Componentes reutilizables de React (sin lógica de backend)
 │   │   ├── Header.jsx
 │   │   ├── Footer.jsx
 │   │   └── ...
-│   ├── pages/            # Páginas principales de la aplicación manejadas por App.jsx
+│   ├── pages/            # Páginas principales de la aplicación manejadas por App.jsx (sin lógica de backend)
 │   │   ├── Home.jsx
 │   │   ├── Contact.jsx
 │   │   └── ...
-│   ├── services/         # Servicios/API para interactuar con Firestore
-│   │   └── firestoreService.js
-│   ├── hooks/            # Hooks personalizados para los componentes
-│   │   └── useFirestore.js
-│   ├── context/          # Debería manejarse la autenticación con Firebase como un contexto
-│   │   └── AuthContext.js
+│   ├── services/         # Servicios para interactuar con Firestore
+│   │   ├── auth.js
+│   │   ├── excursions.js
+│   │   └── ...
+│   ├── hooks/            # Hooks para ser consumidos por los componentes. (estos consumen services)
+│   │   ├── useAuth.js
+│   │   ├── useExcursions.jsx
+│   │   └── ...
+│   ├── context/          # Contexto para manejar autenticación en la App
+│   │   └── AuthContext.jsx
 │   ├── App.jsx           # Contenedor principal, aquí se maneja la navegación entre pages
 │   ├── main.jsx          # Punto de entrada que importa y renderiza App.jsx en el div-root
 │   ├── firebase.js       # Configuración de Firebase
-│   └── styles/           # Estilos globales o componentizados
+│   ├── supabaseClient.js       # Configuración de Supabase
+│   └── styles/           # Estilos y variables globales de CSS
 │       └── global.css
 ├── .prettierrc           # Reglas de Prettier
+├── eslint.config.js      # Reglas de Prettier
 ├── package.json          # Dependencias y scripts (npm run...)
-├── index.html        # Establece el div-root e invoca main.jsx
+├── index.html            # Establece el div-root e invoca main.jsx
 └── ...
 ```
