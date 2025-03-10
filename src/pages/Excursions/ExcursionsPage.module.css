@@ -1,0 +1,18 @@
+.app {
+  background-color: #fff;
+  min-height: 100vh;
+  font-family: 'Poppins', serif;
+}
+
+.content {
+  gap: 24px;
+  padding: 0 104px;
+  display: flex;
+}
+
+@media (width <= 991px) {
+  .content {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+}

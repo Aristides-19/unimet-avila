@@ -1,0 +1,17 @@
+.customCalendar {
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-family: 'Poppins', serif;
+  padding: 10px;
+}
+
+.react-calendar__tile--active {
+  background-color: #00AFA0;
+  color: #fff;
+}
+
