@@ -55,7 +55,7 @@ export const getExcursionsSize = async () => {
     const snapshot = await getCountFromServer(excursionsCollection);
     return snapshot.data().count;
   } catch (error) {
-    console.error('Failed to fetch excursions size', error);
+    console.error('Failed to fetch excursions size: ', error);
     throw error;
   }
 };
