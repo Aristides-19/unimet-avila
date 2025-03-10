@@ -18,7 +18,7 @@
 h2 {
   text-align: center;
   color: #003366;
-  font-size: 26px;
+  font-size: 2vw;
   margin-bottom: 25px;
 }
 
@@ -36,7 +36,7 @@ select {
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 2vw;
   box-sizing: border-box;
   background-color: #f9f9f9;
 }
@@ -50,7 +50,7 @@ select:focus {
 
 input::placeholder {
   color: #aaa;
-  font-size: 14px;
+  font-size: 2vw;
 }
 
 /* Button styles */
@@ -60,7 +60,7 @@ button {
   color: #ffffff;
   border: none;
   border-radius: 6px;
-  font-size: 18px;
+  font-size: 2vw;
   cursor: pointer;
   transition:
     background-color 0.3s ease,
@@ -80,14 +80,14 @@ button:active {
 /* Feedback messages */
 .error {
   color: red;
-  font-size: 14px;
+  font-size: 2vw;
   text-align: center;
   margin-bottom: 10px;
 }
 
 .success {
   color: green;
-  font-size: 14px;
+  font-size: 2vw;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -101,11 +101,11 @@ button:active {
   input,
   select,
   button {
-    font-size: 14px;
+    font-size: 2vw;
   }
 
   h2 {
-    font-size: 22px;
+    font-size: 2vw;
   }
 }
 
@@ -116,13 +116,13 @@ button:active {
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 2vw;
   }
 
   input,
   select,
   button {
-    font-size: 14px;
+    font-size: 2vw;
     padding: 10px;
   }
 }

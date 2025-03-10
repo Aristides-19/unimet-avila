@@ -11,8 +11,6 @@ import NotFound from './pages/NotFound/NotFound';
 import Home from './pages/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Register from './pages/Register/Register';
-import Login from './pages/Login/Login';
-import './styles/global.css';
 
 function App() {
   const location = useLocation();
