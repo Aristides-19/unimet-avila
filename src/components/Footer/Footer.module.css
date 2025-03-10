@@ -36,17 +36,20 @@
 
 .footer-right {
   flex: 1;
+  font-family: 'poppins';
   min-width: 300px;
   text-align: right;
 }
 
 .footer-right h4 {
+  font-family: 'poppins';
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: var(--step-1);
   font-weight: bold;
 }
 
 .footer-right p {
+  font-family: 'poppins';
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 15px;
@@ -84,12 +87,12 @@
 
   .footer-left,
   .footer-right {
-    text-align: center;
+    text-align: top;
     margin-bottom: 20px;
   }
 
   .social-section {
-    justify-content: center;
+    justify-content: top;
   }
 
   .social-media-icons {

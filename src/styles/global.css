@@ -18,10 +18,13 @@
   --unimet: #f68629;
   --earth-sky: #00afa0;
   --separator: #bdbdbd;
+  --background: #f9f9f9f9;
 
   /* Default Values */
-  --margin: 40px; /* Use it when applying a margin/padding on a container */
-  background-color: var(--sunlight);
+  --margin: 40px;
+  --radio: 5px;
+  --thin-margin: 10px;
+  background-color: var(--background);
   color: var(--forest);
 }
 

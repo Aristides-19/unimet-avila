@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { auth, db } from '../../firebase.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import classroomImage from './classroom.jpg'; // Importa la imagen
 import { useNavigate } from 'react-router-dom';
+import logo from '/logo.svg'; // Importa logo
+import classroomImage from './classroom.jpg'; // Importa imagen classroom
+import ImageDisplay from '../../components/ImageDisplay/ImageDisplay.jsx';
 import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -92,10 +94,10 @@ const Register = () => {
       {/*Imagen a la izquierda*/}
       <div className={styles.leftSection}>
         <div className='registerCard'>
-          <img
-            src={classroomImage}
-            alt='Registro'
-            className={styles.registerImage}
+          <ImageDisplay
+            imagePath={classroomImage} // Path de la imagen (desde src)
+            altText={'salon de clases'}
+            imageClassName={styles.registerImage}
           />
         </div>
       </div>
@@ -103,6 +105,10 @@ const Register = () => {
       {/*Formulario de registro a la derecha*/}
       <div className={styles.rightSection}>
         <div className={styles.registerForm}>
+          <div className={styles.logoContainer}>
+            <img src={logo} alt='Unimet Ávila' className={styles.logoImage} />
+            <h1 className={styles.logoText}>UNIMET Ávila</h1>
+          </div>
           <div className={styles.backButtonContainer}>
             <BackButton />
           </div>
