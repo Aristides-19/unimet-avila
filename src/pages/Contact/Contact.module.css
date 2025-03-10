@@ -7,21 +7,21 @@
 }
 
 .contactContainer {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-    padding: var(--margin);
-    gap: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: var(--margin);
+  gap: 50px;
 }
 
 @media (max-width: 900px) {
-    .contact {
-        flex-direction: column;
-        height: auto;
-    }
+  .contact {
+    flex-direction: column;
+    height: auto;
+  }
 }
 
 .contactInfo {
@@ -71,7 +71,7 @@
 }
 
 .contactItem {
-    font-size: var(--step--1);
+  font-size: var(--step--1);
 }
 
 .contactForm {
@@ -119,10 +119,10 @@
 }
 
 .inputsContainer {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    gap: 20px; /* Espacio entre los campos */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 20px; /* Espacio entre los campos */
 }
 
 .inputsContainer > * {

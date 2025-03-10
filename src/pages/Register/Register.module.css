@@ -21,7 +21,9 @@
   align-items: center; /* Centra verticalmente */
   border-radius: 8px; /*  Radio de borde para las esquinas redondeadas */
   overflow: hidden; /*  Oculta el contenido que se desborda de la tarjeta */
-  background-color: var(--sunlight); /*  Color de fondo, usando tu variable global */
+  background-color: var(
+    --sunlight
+  ); /*  Color de fondo, usando tu variable global */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /*  Sombra suave para la tarjeta */
 }
 
@@ -60,7 +62,6 @@
   font-size: var(--step-1);
   margin: 0;
 }
-
 
 .registerForm {
   display: block;

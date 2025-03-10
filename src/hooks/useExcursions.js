@@ -17,8 +17,7 @@ export const useExcursions = (limitVal = 5) => {
   useEffect(() => {
     const loadInitialExcursions = async () => {
       try {
-        const { excursions: initialExcursions, lastDoc: initialLastDoc } =
-          await getExcursions(null, limitVal);
+        const { excursions: initialExcursions, lastDoc: initialLastDoc } = await getExcursions(null, limitVal);
         setExcursions(initialExcursions);
         setLastDoc(initialLastDoc);
         setHasMore(initialExcursions.length === limitVal);
@@ -37,8 +36,7 @@ export const useExcursions = (limitVal = 5) => {
 
     setLoading(true);
     try {
-      const { excursions: newExcursions, lastDoc: newLastDoc } =
-        await getExcursions(lastDoc, limitVal);
+      const { excursions: newExcursions, lastDoc: newLastDoc } = await getExcursions(lastDoc, limitVal);
       setExcursions((prev) => [...prev, ...newExcursions]);
       setLastDoc(newLastDoc);
       setHasMore(newExcursions.length === limitVal);
