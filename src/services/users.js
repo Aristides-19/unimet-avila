@@ -1,5 +1,13 @@
 import { db } from '../firebase';
-import { doc, getDoc, collection, getCountFromServer, setDoc, query, where } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  collection,
+  getCountFromServer,
+  setDoc,
+  query,
+  where,
+} from 'firebase/firestore';
 
 /**
  * Fetch user by id.

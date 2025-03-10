@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound/NotFound';
 import Home from './pages/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Register from './pages/Register/Register';
+import Contact from './pages/Contact/Contact';
 import Login from './pages/Login/Login';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<NotFound />} />
           <Route path='/login' element={<Login />} />
         </Routes>
