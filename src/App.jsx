@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Register from './pages/Register/Register';
 import Contact from './pages/Contact/Contact';
+import Login from './pages/Login/Login';
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<NotFound />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </main>
       <Footer />
