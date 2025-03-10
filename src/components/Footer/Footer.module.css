@@ -87,12 +87,12 @@
 
   .footer-left,
   .footer-right {
-    text-align: top;
+    text-align: center;
     margin-bottom: 20px;
   }
 
   .social-section {
-    justify-content: top;
+    justify-content: center;
   }
 
   .social-media-icons {
