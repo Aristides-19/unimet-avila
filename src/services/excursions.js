@@ -1,5 +1,13 @@
 import { db } from '../firebase';
-import { collection, getDocs, orderBy, limit, query, startAfter, getCountFromServer } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  orderBy,
+  limit,
+  query,
+  startAfter,
+  getCountFromServer,
+} from 'firebase/firestore';
 
 /**
  * Fetch excursions with pagination.
@@ -11,9 +19,18 @@ import { collection, getDocs, orderBy, limit, query, startAfter, getCountFromSer
 export const getExcursions = async (lastDoc = null, limitVal = 5) => {
   let q;
   if (lastDoc) {
-    q = query(collection(db, 'excursions'), orderBy('averageRating', 'desc'), startAfter(lastDoc), limit(limitVal));
+    q = query(
+      collection(db, 'excursions'),
+      orderBy('averageRating', 'desc'),
+      startAfter(lastDoc),
+      limit(limitVal)
+    );
   } else {
-    q = query(collection(db, 'excursions'), orderBy('averageRating', 'desc'), limit(limitVal));
+    q = query(
+      collection(db, 'excursions'),
+      orderBy('averageRating', 'desc'),
+      limit(limitVal)
+    );
   }
   const querySnapshot = await getDocs(q);
   const excursions = querySnapshot.docs.map((doc) => {
@@ -21,7 +38,9 @@ export const getExcursions = async (lastDoc = null, limitVal = 5) => {
 
     const date = data.date.toDate();
 
-    const guideId = data.guideId ? { id: data.guideId.id, path: data.guideId.path } : null;
+    const guideId = data.guideId
+      ? { id: data.guideId.id, path: data.guideId.path }
+      : null;
 
     const meetingLocation = {
       latitude: data.meetingLocation.latitude,
