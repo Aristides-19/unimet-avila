@@ -1,0 +1,136 @@
+.contact {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  height: 90vh;
+  background-color: var(--background);
+}
+
+.contactContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: var(--margin);
+    gap: 50px;
+}
+
+@media (max-width: 900px) {
+    .contact {
+        flex-direction: column;
+        height: auto;
+    }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  width: 35%;
+}
+
+@media (max-width: 900px) {
+  .contactInfo {
+    width: 100%;
+  }
+}
+
+.title {
+  color: #011334;
+  font-size: var(--step-3);
+  margin: 0px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #011334;
+  margin: 0px;
+  font-size: var(--step--1);
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: var(--thin-margin);
+}
+
+.iconWrapper {
+  display: inline-flex;
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+  margin: 8px;
+  fill: orange;
+  outline-color: aqua;
+}
+
+
+.contactItem {
+    font-size: var(--step--1);
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+  width: 40%;
+  padding: 50px;
+  box-shadow: 0 0 20px #0000001a;
+}
+
+@media (max-width: 900px) {
+  .contactForm {
+    width: 100%;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactForm {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactForm {
+    padding: 10px;
+  }
+}
+
+.nameSurnameContainer {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 20px; /* Espacio entre los campos */
+}
+
+.nameSurnameContainer > * {
+  flex: 1; /* Asegura que ambos campos ocupen el mismo espacio */
+}
+
+.inputsContainer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Espacio entre los campos */
+}
+
+.inputsContainer > * {
+  flex: 1; /* Asegura que ambos campos ocupen el mismo espacio */
+}
+
+.form {
+  width: 100%;
+}
