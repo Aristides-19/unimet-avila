@@ -63,14 +63,12 @@
   display: inline-flex;
 }
 
-.svg {
+.icon {
   width: 20px;
   height: 20px;
   margin: 8px;
-  fill: orange;
-  outline-color: aqua;
+  fill: var(--forest);
 }
-
 
 .contactItem {
     font-size: var(--step--1);
