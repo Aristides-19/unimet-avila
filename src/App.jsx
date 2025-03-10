@@ -25,7 +25,6 @@ function App() {
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/register' element={<Register />} />
           <Route path='*' element={<NotFound />} />
-          <Route path='/login' element={<Login />} />
         </Routes>
       </main>
       <Footer />
