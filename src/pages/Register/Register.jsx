@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { auth, db } from '../../firebase.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import classroomImage from './classroom.jpg'; // Importa la imagen
-import { useNavigate } from 'react-router-dom';
+
 import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -15,8 +14,6 @@ import GoogleButton from '../../components/GoogleButton/GoogleButton';
 import styles from './Register.module.css';
 
 const Register = () => {
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
@@ -90,15 +87,7 @@ const Register = () => {
   return (
     <div className={styles.pageContainer}>
       {/*Imagen a la izquierda*/}
-      <div className={styles.leftSection}>
-        <div className='registerCard'>
-          <img
-            src={classroomImage}
-            alt='Registro'
-            className={styles.registerImage}
-          />
-        </div>
-      </div>
+      <div className={styles.leftSection}></div>
 
       {/*Formulario de registro a la derecha*/}
       <div className={styles.rightSection}>
@@ -213,7 +202,7 @@ const Register = () => {
               <GoogleButton
                 onSuccess={(message) => {
                   setSuccess(message);
-                  navigate(-1); // Redirige a otra pagina
+                  //navigate(-1);; // Redirige a otra pagina
                 }}
                 onError={(message) => setError(message)}
               />
