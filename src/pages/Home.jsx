@@ -2,10 +2,12 @@ import React from 'react';
 import MissionVision from '../components/MissionVision/MissionVision';
 import imageMission from '../assets/Imagen Mision.jpg';
 import imageVision from '../assets/Imagen_Vision.jpg';
+import Goals from '../components/Goals/Goals';
 
 function Home() {
   return (
     <>
+      <Goals />
       <MissionVision
         title='Misión'
         text='Buscamos reconectar a los estudiantes de la Universidad Metropolitana con el Parque Nacional El Ávila, a través de una plataforma accesible e intuitiva, con información completa y actualizada sobre rutas y actividades recreativas, en un entorno de honestidad, sustentabilidad y compromiso con la naturaleza.'
