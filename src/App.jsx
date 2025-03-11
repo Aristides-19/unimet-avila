@@ -12,6 +12,7 @@ import Home from './pages/Home/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
+import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 
 function App() {
   const location = useLocation();
@@ -24,10 +25,25 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/gallery' element={<Gallery />} />
-          <Route path='/register' element={<Register />} />
+
           <Route path='/home' element={<Home />} />
           <Route path='*' element={<NotFound />} />
-          <Route path='/login' element={<Login />} />
+          <Route
+            path='/register'
+            element={
+              <UnauthenticatedRoute>
+                <Register />
+              </UnauthenticatedRoute>
+            }
+          />
+          <Route
+            path='/login'
+            element={
+              <UnauthenticatedRoute>
+                <Login />
+              </UnauthenticatedRoute>
+            }
+          />
         </Routes>
       </main>
       <Footer />
