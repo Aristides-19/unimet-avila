@@ -30,10 +30,12 @@ function Login() {
       </div>
 
       <div className={styles.registerForm}>
-        <BackButton />
+        <div className={styles.backButtonContainer}>
+          <BackButton />
+        </div>
         <h2>Iniciar sesión</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.formLogin}>
           <input
             type='email'
             placeholder='Correo Electronico'

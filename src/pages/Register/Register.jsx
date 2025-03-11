@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { auth, db } from '../../firebase.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
 
 import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
@@ -15,8 +14,6 @@ import GoogleButton from '../../components/GoogleButton/GoogleButton';
 import styles from './Register.module.css';
 
 const Register = () => {
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
