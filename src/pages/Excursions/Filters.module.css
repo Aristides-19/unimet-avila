@@ -1,0 +1,138 @@
+.filters {
+  width: 373px;
+}
+
+.filtersHeader {
+  color: #033;
+  margin-bottom: 32px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+}
+
+.filterSection {
+  margin-bottom: 32px;
+}
+
+.filterLabel {
+  color: #033;
+  margin-bottom: 16px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+}
+
+.filterLabelWithIcon {
+  color: #033;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  display: flex;
+}
+
+.durationSlider,
+.priceSlider {
+  height: 24px;
+  margin: 20px 0 40px;
+  position: relative;
+}
+
+.sliderTrack {
+  background-color: #033;
+  height: 2px;
+  position: absolute;
+  top: 11px;
+  left: 23px;
+  right: 23px;
+}
+
+.sliderHandleLeft,
+.sliderHandleRight {
+  cursor: pointer;
+  background-color: #00afa0;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 0;
+}
+
+.durationLabels,
+.priceLabels {
+  color: #033;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1);
+  display: flex;
+}
+
+.divider {
+  opacity: 0.25;
+  background-color: #033;
+  height: 1px;
+  margin: 32px 0;
+  border: none;
+}
+
+.ratingButtons {
+  gap: 16px;
+  display: flex;
+}
+
+.ratingBtn {
+  color: #033;
+  background: transparent;
+  border: 1px solid #00afa0;
+  border-radius: 4px;
+  width: 40px;
+  height: 32px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--2);
+  cursor: pointer;
+}
+
+.selectedRatingBtn {
+  background-color: #00afa0;
+  color: #fff;
+}
+
+.checkboxGroup {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.checkboxItem {
+  color: #033;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--2);
+  display: flex;
+  cursor: pointer;
+}
+
+.checkboxItem input[type='checkbox'] {
+  appearance: none;
+  background-color: transparent; /* Fondo transparente */
+  border: 2px solid black; /* Borde negro */
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkboxItem input[type='checkbox']:checked {
+  background-color: #00afa0; /* Fondo #00AFA0 cuando está seleccionado */
+}
+
+@media (width <= 991px) {
+  .filters {
+    width: 100%;
+  }
+}

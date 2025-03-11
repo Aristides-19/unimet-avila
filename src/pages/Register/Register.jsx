@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { auth, db } from '../../firebase.js';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import classroomImage from './classroom.jpg'; // Importa la imagen
+import React, { useEffect, useState } from 'react';
+import { useRegisterUser, useRegisterValidation } from '../../hooks/useAuth.js';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
+
 import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -11,129 +10,93 @@ import SuccessMessage from '../../components/SuccessMessage/SuccessMessage';
 import Button from '../../components/Button/Button';
 import BackButton from '../../components/BackButton/BackButton';
 import GoogleButton from '../../components/GoogleButton/GoogleButton';
-
 import styles from './Register.module.css';
 
 const Register = () => {
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
-    genero: '',
-    telefono: '',
-    correo: '',
-    contrasena: '',
-    confirmarContrasena: '',
+    name: '',
+    lastName: '',
+    genre: '',
+    phone: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
 
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const { errors, validateForm } = useRegisterValidation();
+  const { register, error: error } = useRegisterUser();
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
-
-    if (formData.contrasena !== formData.confirmarContrasena) {
-      setError('Las contraseñas no coinciden.');
-      return;
-    }
-
-    try {
-      // Registro del usuario con Firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        formData.correo,
-        formData.contrasena
-      );
-
-      const user = userCredential.user;
-
-      // Guardar datos adicionales en Firestore
-      await setDoc(doc(db, 'usuarios', user.uid), {
-        nombre: formData.nombre,
-        apellido: formData.apellido,
-        genero: formData.genero,
-        telefono: formData.telefono,
-        correo: formData.correo,
-        uid: user.uid,
-      });
-
-      setSuccess('¡Cuenta creada exitosamente!');
-      setFormData({
-        nombre: '',
-        apellido: '',
-        genero: '',
-        correo: '',
-        telefono: '',
-        contrasena: '',
-        confirmarContrasena: '',
-      });
-    } catch (err) {
-      setError(
-        err.code === 'auth/email-already-in-use'
-          ? 'El correo ya esta registrado. Por favor, utiliza otro correo.'
-          : 'Error al registrar: ' + err.message
-      );
+    if (validateForm(formData)) {
+      await register(formData);
     }
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      setSuccessMessage('Registro exitoso. Redirigiendo...');
+      setTimeout(() => {
+        navigate('/home');
+      }, 2000);
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    setErrorMessage(error);
+  }, [error]);
 
   return (
     <div className={styles.pageContainer}>
       {/*Imagen a la izquierda*/}
-      <div className={styles.leftSection}>
-        <div className='registerCard'>
-          <img
-            src={classroomImage}
-            alt='Registro'
-            className={styles.registerImage}
-          />
-        </div>
-      </div>
+      <div className={styles.leftSection}></div>
 
       {/*Formulario de registro a la derecha*/}
       <div className={styles.rightSection}>
         <div className={styles.registerForm}>
+          {/*Boton de regresae*/}
           <div className={styles.backButtonContainer}>
             <BackButton />
           </div>
           <h2>Crear Cuenta</h2>
-          {error && <ErrorMessage message={error} />}
-          {success && <SuccessMessage message={success} />}
+          {successMessage && <SuccessMessage message={successMessage} />}
+          {errorMessage && <ErrorMessage message={errorMessage} />}
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} noValidate>
             {/* Nombre y Apellido en la misma línea */}
             <div className={styles.row}>
               <div className={styles.formGroup}>
                 <label>Nombre</label>
                 <InputField
                   type='text'
-                  name='nombre'
+                  name='name'
                   placeholder='Nombre'
-                  value={formData.nombre}
+                  value={formData.name}
                   onChange={handleChange}
-                  required
                 />
+                {errors.name && <span>{errors.name}</span>}
               </div>
               <div className={styles.formGroup}>
                 <label>Apellido</label>
                 <InputField
                   type='text'
-                  name='apellido'
+                  name='lastName'
                   placeholder='Apellido'
-                  value={formData.apellido}
+                  value={formData.lastName}
                   onChange={handleChange}
-                  required
                 />
+                {errors.lastName && <span>{errors.lastName}</span>}
               </div>
             </div>
 
@@ -142,23 +105,23 @@ const Register = () => {
               <div className={styles.formGroup}>
                 <label>Genéro</label>
                 <SelectField
-                  name='genero'
-                  value={formData.genero}
+                  name='genre'
+                  value={formData.genre}
                   onChange={handleChange}
-                  required
-                  options={['Masculino', 'Femenino', 'Otro']}
+                  options={['Masculino', 'Femenino', 'N/A']}
                 />
+                {errors.genre && <span>{errors.genre}</span>}
               </div>
               <div className={styles.formGroup}>
                 <label>Número de Teléfono</label>
                 <InputField
                   type='tel'
-                  name='telefono'
+                  name='phone'
                   placeholder='Número de Teléfono'
-                  value={formData.telefono}
+                  value={formData.phone}
                   onChange={handleChange}
-                  required
                 />
+                {errors.phone && <span>{errors.phone}</span>}
               </div>
             </div>
 
@@ -166,42 +129,41 @@ const Register = () => {
               <label>Correo Electrónico</label>
               <InputField
                 type='email'
-                name='correo'
+                name='email'
                 placeholder='Correo Electrónico'
-                value={formData.correo}
+                value={formData.email}
                 onChange={handleChange}
-                required
               />
+              {errors.email && <span>{errors.email}</span>}
             </div>
             <div className={styles.formGroup}>
               <label>Contraseña</label>
               <InputField
                 type='password'
-                name='contrasena'
+                name='password'
                 placeholder='Contraseña'
-                value={formData.contrasena}
+                value={formData.password}
                 onChange={handleChange}
-                required
               />
+              {errors.password && <span>{errors.password}</span>}
             </div>
             <div className={styles.formGroup}>
               <label>Confirmar Contraseña</label>
               <InputField
                 type='password'
-                name='confirmarContrasena'
+                name='confirmPassword'
                 placeholder='Confirmar Contraseña'
-                value={formData.confirmarContrasena}
+                value={formData.confirmPassword}
                 onChange={handleChange}
-                required
               />
+              {errors.confirmPassword && <span>{errors.confirmPassword}</span>}
             </div>
             <Button
               text='Crear Cuenta'
               type='submit'
-              color='#fff'
+              color='var(--sunlight)'
               backgroundColor='var(--earth-sky)'
               hoverBackgroundColor='var(--forest)'
-              borderRadius='6px'
             />
           </form>
           <p className={styles.loginLink}>
@@ -210,13 +172,7 @@ const Register = () => {
           <div className={styles.socialRegister}>
             <p>O regístrate con</p>
             <div className={styles.socialRegister2}>
-              <GoogleButton
-                onSuccess={(message) => {
-                  setSuccess(message);
-                  navigate(-1); // Redirige a otra pagina
-                }}
-                onError={(message) => setError(message)}
-              />
+              <GoogleButton onError={(message) => setErrorMessage(message)} />
             </div>
           </div>
         </div>

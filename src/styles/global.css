@@ -18,6 +18,7 @@
   --unimet: #f68629;
   --earth-sky: #00afa0;
   --separator: #bdbdbd;
+  --gray-text: #828282;
 
   /* Default Values */
   --margin: 40px; /* Use it when applying a margin/padding on a container */
@@ -74,6 +75,13 @@ a {
   color: var(--forest);
   display: flex;
   align-items: center;
+}
+
+span {
+  font-family: 'Poppins', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: var(--step--2);
 }
 
 a:visited {

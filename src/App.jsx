@@ -8,13 +8,16 @@ import {
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import NotFound from './pages/NotFound/NotFound';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Register from './pages/Register/Register';
+import Login from './pages/Login/Login';
+import Excursions from './pages/Excursions/ExcursionsPage';
+import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 
 function App() {
   const location = useLocation();
-  const hideHeaderRoutes = ['/register'];
+  const hideHeaderRoutes = ['/register', '/login'];
 
   return (
     <>
@@ -23,8 +26,25 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/gallery' element={<Gallery />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/excursions' element={<Excursions />} />
           <Route path='*' element={<NotFound />} />
+          <Route
+            path='/register'
+            element={
+              <UnauthenticatedRoute>
+                <Register />
+              </UnauthenticatedRoute>
+            }
+          />
+          <Route
+            path='/login'
+            element={
+              <UnauthenticatedRoute>
+                <Login />
+              </UnauthenticatedRoute>
+            }
+          />
         </Routes>
       </main>
       <Footer />
