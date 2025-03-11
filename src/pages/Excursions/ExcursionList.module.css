@@ -1,0 +1,60 @@
+.excursions {
+  flex: 1;
+}
+
+.excursionsHeader {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  display: flex;
+}
+
+.resultsCount {
+  color: #033;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--2);
+  font-weight: 600;
+  margin: 0;
+}
+
+.highlight {
+  color: #f68629;
+}
+
+.sort {
+  color: #033;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1);
+  font-weight: 700;
+  display: flex;
+}
+
+.sortButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+}
+
+.excursionCards {
+  flex-direction: column;
+  gap: 24px;
+  display: flex;
+}
+
+.loadMore {
+  color: #fff;
+  cursor: pointer;
+  background-color: #033;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 24px;
+  padding: 8px 16px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--2);
+  font-weight: 600;
+}

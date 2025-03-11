@@ -1,6 +1,8 @@
 import React from 'react';
 import Testimonial from '../../components/Testimonial/Testimonial';
 import profile from '../../components/Testimonial/profile.png';
+import GridBlogContainer from '../../components/NoticeBlogCard/GridBlogContainer';
+import image from '../../assets/classroom.jpg';
 
 function Home() {
   const testimonialsData = [
@@ -49,9 +51,24 @@ function Home() {
   ];
 
   return (
-    <div>
-      <Testimonial testimonials={testimonialsData} />
-    </div>
+    <>
+      <div>
+        <GridBlogContainer
+          imageUrl1={image}
+          title1='Mezcla perfecta de naturaleza y salud'
+          content1='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
+          imageUrl2={image}
+          title2='Mezcla perfecta de naturaleza y salud'
+          content2='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
+          imageUrl3={image}
+          title3='Mezcla perfecta de naturaleza y salud'
+          content3='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
+        />
+      </div>
+      <div>
+        <Testimonial testimonials={testimonialsData} />
+      </div>
+    </>
   );
 }
 
