@@ -38,7 +38,7 @@
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas de igual ancho */
-  gap: 7.5px; /* Espacio entre las columnas (opcional) */
+  gap: 1px; /* Espacio entre las columnas (opcional) */
 }
 
 .cardGrid1 {
