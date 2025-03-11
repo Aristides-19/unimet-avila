@@ -1,8 +1,11 @@
 import React from 'react';
 import Testimonial from '../../components/Testimonial/Testimonial';
 import profile from '../../components/Testimonial/profile.png';
+import styles from './Home.module.css';
+import { useImage } from '../../hooks/useGenerics.js';
 
 function Home() {
+  const { imageUrl } = useImage('presentation.jpeg');
   const testimonialsData = [
     {
       name: 'Carlos Martinez',
@@ -49,9 +52,28 @@ function Home() {
   ];
 
   return (
-    <div>
-      <Testimonial testimonials={testimonialsData} />
-    </div>
+    <>
+      <div
+        style={{
+          backgroundImage: `linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%), url(${imageUrl})`,
+        }}
+        className={styles.backgroundDiv}
+      >
+        <h1 className={styles.title}>Más Naturaleza.</h1>
+        <h1 style={{ color: 'var(--earth-sky)' }} className={styles.title}>
+          Más Aventura.
+        </h1>
+        <p className={styles.text}>
+          Descubre la magia de la naturaleza y la emoción de nuevas aventuras
+          con
+          <br />
+          tus compañeros de la Universidad Metropolitana.
+        </p>
+      </div>
+      <div>
+        <Testimonial testimonials={testimonialsData} />
+      </div>
+    </>
   );
 }
 
