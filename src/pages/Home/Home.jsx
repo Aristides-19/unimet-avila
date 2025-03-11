@@ -3,6 +3,8 @@ import Testimonial from '../../components/Testimonial/Testimonial';
 import profile from '../../components/Testimonial/profile.png';
 import styles from './Home.module.css';
 import { useImage } from '../../hooks/useGenerics.js';
+import GridBlogContainer from '../../components/NoticeBlogCard/GridBlogContainer';
+import image from '../../assets/classroom.jpg';
 
 function Home() {
   const { imageUrl } = useImage('presentation.jpeg');
@@ -69,6 +71,19 @@ function Home() {
           <br />
           tus compañeros de la Universidad Metropolitana.
         </p>
+      </div>
+      <div>
+        <GridBlogContainer
+          imageUrl1={image}
+          title1='Mezcla perfecta de naturaleza y salud'
+          content1='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
+          imageUrl2={image}
+          title2='Mezcla perfecta de naturaleza y salud'
+          content2='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
+          imageUrl3={image}
+          title3='Mezcla perfecta de naturaleza y salud'
+          content3='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
+        />
       </div>
       <div>
         <Testimonial testimonials={testimonialsData} />

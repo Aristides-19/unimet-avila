@@ -40,7 +40,9 @@ function Login() {
   return (
     <div style={{ display: 'flex', height: '80vh' }}>
       <div className={styles.registerForm}>
-        <BackButton />
+        <div className={styles.backButtonContainer}>
+          <BackButton />
+        </div>
         <h2>Iniciar sesión</h2>
         {error && <ErrorMessage message={error} />}
         <form onSubmit={handleSubmit} noValidate>

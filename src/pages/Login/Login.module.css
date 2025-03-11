@@ -15,23 +15,16 @@
   gap: 20px;
 }
 
-h2 {
-  text-align: center;
-  color: #003366;
-  font-size: 2vw;
-  margin-bottom: 25px;
-}
-
 /*form styles*/
 
-form {
+.formLogin {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-input,
-select {
+.formLogin input,
+.selectLogin {
   width: 100%;
   padding: 15px;
   border: 1px solid #ccc;
@@ -41,20 +34,20 @@ select {
   background-color: #f9f9f9;
 }
 
-input:focus,
-select:focus {
+.formLogin :focus,
+.formLogin select:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
 }
 
-input::placeholder {
+.formLogin ::placeholder {
   color: #aaa;
   font-size: 2vw;
 }
 
 /* Button styles */
-button {
+.buttonLgin {
   padding: 12px;
   background-color: #28a745;
   color: #ffffff;
@@ -67,12 +60,12 @@ button {
     transform 0.2s ease;
 }
 
-button:hover {
+.buttonLogin :hover {
   background-color: #218838;
   transform: translateY(-2px);
 }
 
-button:active {
+.buttonLogin :active {
   background-color: #1e7e34;
   transform: translateY(0);
 }
@@ -90,6 +83,11 @@ button:active {
   font-size: 2vw;
   text-align: center;
   margin-bottom: 10px;
+}
+
+.backButtonContainer {
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 /* Responsive adjustments */
