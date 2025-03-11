@@ -1,9 +1,11 @@
 .selectField {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: var(--thin-margin);
+  background-color: var(--background);
+  margin-bottom: var(--thin-margin);
   border: 1px solid var(--separator);
-  border-radius: 5px;
+  border-radius: var(--radio);
   font-family: 'Poppins', serif;
   font-size: var(--step--1);
+  box-sizing: border-box;
 }

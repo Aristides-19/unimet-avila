@@ -11,6 +11,7 @@
   --step-3: clamp(1.728rem, 1.4799rem + 1.2407vw, 2.4414rem);
   --step-4: clamp(2.0736rem, 1.7334rem + 1.7011vw, 3.0518rem);
   --step-5: clamp(2.4883rem, 2.027rem + 2.3067vw, 3.8147rem);
+  --step-6: clamp(2.9859rem, 2.3664rem + 3.0009vw, 4.7684rem);
 
   /* Color Palette */
   --forest: #003333;
@@ -19,10 +20,13 @@
   --earth-sky: #00afa0;
   --separator: #bdbdbd;
   --gray-text: #828282;
+  --background: #f9f9f9f9;
 
   /* Default Values */
-  --margin: 40px; /* Use it when applying a margin/padding on a container */
-  background-color: var(--sunlight);
+  --margin: 40px;
+  --radio: 5px;
+  --thin-margin: 10px;
+  background-color: var(--background);
   color: var(--forest);
 }
 
@@ -57,7 +61,14 @@ h1 {
   font-family: 'Poppins', serif;
   font-weight: 600;
   font-style: normal;
-  font-size: var(--step-4);
+  font-size: var(--step-6);
+}
+
+h2 {
+  font-family: 'Poppins', serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: var(--step-5);
 }
 
 p {

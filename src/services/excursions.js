@@ -28,7 +28,10 @@ export const getExcursions = async (lastDoc = null, limitVal = 5) => {
       longitude: data.meetingLocation.longitude,
     };
 
-    const enrolledStudents = data.enrolledStudents.map((student) => ({ id: student.id, path: student.path }));
+    const enrolledStudents = data.enrolledStudents.map((student) => ({
+      id: student.id,
+      path: student.path,
+    }));
 
     return {
       id: doc.id,

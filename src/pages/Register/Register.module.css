@@ -2,10 +2,10 @@
   display: flex;
   width: 100%;
   max-width: 1200px;
-  height: 100%;
-  margin: 0 auto;
-  background-color: var(--sunlight);
-  overflow: hidden;
+  height: 100vh;
+  margin: var(--margin) auto;
+  background-color: var(--background);
+  overflow: auto;
 }
 
 .leftSection {
@@ -24,17 +24,36 @@
 
 .rightSection {
   flex: 1;
-  display: flex;
+  display: block;
+  width: 100%;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
   padding: var(--step-4);
+  box-sizing: border-box;
+}
+
+.logoContainer {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 10px; /* Espacio entre el logo y el texto */
+}
+
+.logoImage {
+  height: var(--step-4);
+  justify-content: center;
+  width: auto;
+}
+
+.logoText {
+  font-size: var(--step-1);
+  margin: 0;
 }
 
 .registerForm {
+  display: block;
   width: 100%;
-  padding: var(--step-2);
   align-items: center;
+  box-sizing: border-box;
 }
 
 .registerForm h2 {
@@ -49,7 +68,6 @@
 .registerForm form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .formGroup {
@@ -66,8 +84,7 @@
 
 .row {
   display: flex;
-  gap: 35px;
-  margin-bottom: 15px;
+  gap: var(--thin-margin);
 }
 
 .row .formGroup {

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useRegisterUser, useRegisterValidation } from '../../hooks/useAuth.js';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
-
+import logo from '/logo.svg'; // Importa logo
+import classroomImage from './classroom.jpg'; // Importa imagen classroom
+import ImageDisplay from '../../components/ImageDisplay/ImageDisplay.jsx';
 import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -60,12 +62,23 @@ const Register = () => {
   return (
     <div className={styles.pageContainer}>
       {/*Imagen a la izquierda*/}
-      <div className={styles.leftSection}></div>
+      <div className={styles.leftSection}>
+        <div className='registerCard'>
+          <ImageDisplay
+            imagePath={classroomImage} // Path de la imagen (desde src)
+            altText={'salon de clases'}
+            imageClassName={styles.registerImage}
+          />
+        </div>
+      </div>
 
       {/*Formulario de registro a la derecha*/}
       <div className={styles.rightSection}>
         <div className={styles.registerForm}>
-          {/*Boton de regresae*/}
+          <div className={styles.logoContainer}>
+            <img src={logo} alt='Unimet Ávila' className={styles.logoImage} />
+            <h1 className={styles.logoText}>UNIMET Ávila</h1>
+          </div>
           <div className={styles.backButtonContainer}>
             <BackButton />
           </div>
