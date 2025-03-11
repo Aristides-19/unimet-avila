@@ -9,16 +9,6 @@ const Filters = () => {
   const [duration, setDuration] = React.useState([1, 6]);
   const [price, setPrice] = React.useState([5, 100]);
 
-  const handleDurationChange = (event) => {
-    const value = Array.from(event.target.value).map(Number);
-    setDuration(value);
-  };
-
-  const handlePriceChange = (event) => {
-    const value = Array.from(event.target.value).map(Number);
-    setPrice(value);
-  };
-
   const toggleRating = (rating) => {
     setSelectedRating(selectedRating === rating ? null : rating);
   };

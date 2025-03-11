@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   FaMapMarkerAlt,
   FaUser,
@@ -81,4 +83,17 @@ const ExcursionCard = ({
   );
 };
 
+ExcursionCard.propTypes = {
+  title: PropTypes.isRequired,
+  image: PropTypes.isRequired,
+  price: PropTypes.number.isRequired,
+  location: PropTypes.isRequired,
+  date: PropTypes.isRequired, // O PropTypes.instanceOf(Date) si usas objetos Date
+  guide: PropTypes.isRequired,
+  difficulty: PropTypes.isRequired,
+  status: PropTypes.isRequired,
+  rating: PropTypes.number,
+  ratingText: PropTypes,
+  meal: PropTypes,
+};
 export default ExcursionCard;
