@@ -13,6 +13,7 @@ import Gallery from './pages/Gallery/Gallery';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Excursions from './pages/Excursions/ExcursionsPage';
+import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 
 function App() {
   const location = useLocation();
@@ -25,11 +26,25 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/gallery' element={<Gallery />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/excursions' element={<Excursions />} />
           <Route path='/home' element={<Home />} />
           <Route path='*' element={<NotFound />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/excursions' element={<Excursions />} />
+          <Route
+            path='/register'
+            element={
+              <UnauthenticatedRoute>
+                <Register />
+              </UnauthenticatedRoute>
+            }
+          />
+          <Route
+            path='/login'
+            element={
+              <UnauthenticatedRoute>
+                <Login />
+              </UnauthenticatedRoute>
+            }
+          />
         </Routes>
       </main>
       <Footer />

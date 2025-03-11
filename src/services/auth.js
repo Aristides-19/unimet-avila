@@ -56,6 +56,7 @@ export const registerUser = async (firstName, lastName, genre, phone, email, pas
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const userData = generateUserData(userCredential.user, { name: firstName + ' ' + lastName, genre, phone });
     await saveUser(userData);
+    console.log('User registered successfully: ', email);
   } catch (error) {
     handleFirebaseError(error);
   }
@@ -67,6 +68,7 @@ export const registerUser = async (firstName, lastName, genre, phone, email, pas
 export const loginUser = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    console.log('User logged in successfully: ', email);
   } catch (error) {
     handleFirebaseError(error);
   }
@@ -84,6 +86,7 @@ export const signInUserWithGoogle = async () => {
       const userData = generateUserData(user);
       await saveUser(userData);
     }
+    console.log('User signed in with Google: ', user.email);
   } catch (error) {
     handleFirebaseError(error);
   }
