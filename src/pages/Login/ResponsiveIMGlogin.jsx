@@ -1,10 +1,11 @@
 import React from 'react';
-import image from './classroom.jpg'; // Importa tu imagen
+import { useImage } from '../../hooks/useGenerics.js';
 
 function ResponsiveImage() {
+  const { imageUrl } = useImage('login.jpeg');
   return (
     <img
-      src={image}
+      src={imageUrl}
       alt='Imagen de Login'
       style={{
         width: '80%',
