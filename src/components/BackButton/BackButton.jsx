@@ -10,7 +10,7 @@ const BackButton = ({ text = 'Regresar', onClick }) => {
     if (onClick) {
       onClick();
     } else {
-      navigate(-1); // navega hacia atras en el historial
+      navigate('/home'); // navega hacia atras en el historial
     }
   };
 

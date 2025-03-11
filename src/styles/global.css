@@ -19,6 +19,7 @@
   --unimet: #f68629;
   --earth-sky: #00afa0;
   --separator: #bdbdbd;
+  --gray-text: #828282;
   --background: #f9f9f9f9;
 
   /* Default Values */
@@ -85,6 +86,13 @@ a {
   color: var(--forest);
   display: flex;
   align-items: center;
+}
+
+span {
+  font-family: 'Poppins', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: var(--step--2);
 }
 
 a:visited {

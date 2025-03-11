@@ -16,9 +16,6 @@
 }
 
 .button:hover {
-  background-color: var(
-    --hover-color
-  ); /* Define un color de fondo para el hover */
   transform: scale(1.02);
 }
 
