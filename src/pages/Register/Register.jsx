@@ -65,6 +65,7 @@ const Register = () => {
       {/*Formulario de registro a la derecha*/}
       <div className={styles.rightSection}>
         <div className={styles.registerForm}>
+          {/*Boton de regresae*/}
           <div className={styles.backButtonContainer}>
             <BackButton />
           </div>

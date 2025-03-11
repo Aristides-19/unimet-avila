@@ -1,88 +1,40 @@
 /* General Styles */
 
-.registerForm {
-  max-width: 800px;
-  margin: 60px;
-  padding: 60px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  font-family: Arial, sans-serif;
+.pageContainer {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: var(--sunlight);
+  overflow: hidden;
+}
+
+/* Sección izquierda (Formulario) */
+.leftSection {
+  flex: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  background-color: #ffffff;
+  padding: var(--step-4);
 }
 
-/*form styles*/
-
-.formLogin {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.formLogin input,
-.selectLogin {
+.loginForm input,
+.loginForm select {
   width: 100%;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 2vw;
-  box-sizing: border-box;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Poppins', serif;
   background-color: #f9f9f9;
 }
 
-.formLogin :focus,
-.formLogin select:focus {
+.loginForm input:focus,
+.loginForm select:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
-}
-
-.formLogin ::placeholder {
-  color: #aaa;
-  font-size: 2vw;
-}
-
-/* Button styles */
-.buttonLgin {
-  padding: 12px;
-  background-color: #28a745;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  font-size: 2vw;
-  cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
-}
-
-.buttonLogin :hover {
-  background-color: #218838;
-  transform: translateY(-2px);
-}
-
-.buttonLogin :active {
-  background-color: #1e7e34;
-  transform: translateY(0);
-}
-
-/* Feedback messages */
-.error {
-  color: red;
-  font-size: 2vw;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.success {
-  color: green;
-  font-size: 2vw;
-  text-align: center;
-  margin-bottom: 10px;
+  border-color: var(--earth-sky);
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Efecto de enfoque */
 }
 
 .backButtonContainer {
@@ -90,37 +42,169 @@
   text-align: left;
 }
 
-/* Responsive adjustments */
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Poppins', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--earth-sky);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loginForm h2 {
+  text-align: center;
+  margin-bottom: var(--margin);
+  font-family: 'Poppins', serif;
+  font-weight: 600;
+  font-size: var(--step-3);
+  color: var(--earth-sky);
+}
+
+.botonInicioSesion {
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  font-family: 'Poppins', serif;
+  font-size: 12px;
+  color: var(--forest);
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Poppins', serif;
+  background-color: #f9f9f9;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: var(--earth-sky);
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+}
+
+.registerLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', serif;
+  font-size: 14px;
+  color: var(--earth-sky);
+  margin-top: 40px;
+}
+
+.registerLink a {
+  margin-left: 5px;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.registerLink a:hover {
+  text-decoration: underline;
+}
+
+.socialLogin {
+  display: flow-root;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Poppins', serif;
+  font-size: 14px;
+  color: var(--forest);
+  position: relative;
+}
+
+.socialLogin::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--separator);
+}
+
+.backButton:hover {
+  color: var(--forest);
+  transform: scale(1.02);
+}
+
+.socialLogin2 {
+  margin-top: 20px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+/* Sección derecha (Imagen) */
+.rightSection {
+  flex: 0.7;
+  background-image: url('login.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: auto;
+  min-height: 300px;
+  max-height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
-  .registerForm {
+  .pageContainer {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .rightSection {
+    height: 250px;
+  }
+
+  .leftSection {
+    padding-top: var(--step-3);
+  }
+
+  .loginForm {
+    max-width: 100%;
     padding: 20px;
-  }
-
-  input,
-  select,
-  button {
-    font-size: 2vw;
-  }
-
-  h2 {
-    font-size: 2vw;
   }
 }
 
 @media (max-width: 480px) {
-  .registerForm {
-    width: 90%;
-    padding: 15px;
+  .rightSection {
+    height: 150px;
   }
 
-  h2 {
-    font-size: 2vw;
+  .loginForm h2 {
+    font-size: var(--step-2);
   }
 
-  input,
-  select,
-  button {
-    font-size: 2vw;
+  .inputField {
+    font-size: 14px;
     padding: 10px;
   }
 }
