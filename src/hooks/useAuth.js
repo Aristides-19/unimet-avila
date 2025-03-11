@@ -86,7 +86,7 @@ export const useSignInWithGoogle = () => {
 /**
  * Custom hook to validate registration form data.
  *
- * @returns {{errors: {}, validateForm: (function(formData): boolean)}}
+ * @returns {{errors: {}, validateForm: (function(Object): boolean)}}
  * An object containing the error state and the validateForm function.
  */
 export const useRegisterValidation = () => {
@@ -138,4 +138,38 @@ export const useRegisterValidation = () => {
   };
 
   return { errors, validateForm };
+};
+
+/**
+ * Custom hook to validate login form data.
+ *
+ * @returns {{errors: {}, validateLoginForm: (function({email: string, password: string}): boolean)}}
+ * An object containing the error state and the validateLoginForm function.
+ */
+export const useLoginValidation = () => {
+  const [errors, setErrors] = useState({});
+
+  const validateLoginForm = ({ email, password }) => {
+    const newErrors = {};
+
+    // Validación del email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim()) {
+      newErrors.email = 'El correo es obligatorio.';
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = 'El correo no es válido.';
+    }
+
+    // Validación de la contraseña
+    if (!password.trim()) {
+      newErrors.password = 'La contraseña es obligatoria.';
+    } else if (password.length < 6) {
+      newErrors.password = 'La contraseña debe tener al menos 6 caracteres.';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  return { errors, validateLoginForm };
 };
