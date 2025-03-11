@@ -5,6 +5,7 @@ import styles from './Home.module.css';
 import { useImage } from '../../hooks/useGenerics.js';
 import GridBlogContainer from '../../components/NoticeBlogCard/GridBlogContainer';
 import image from '../../assets/classroom.jpg';
+import Estadisticas from '../../components/DataBar/DataBar';
 
 function Home() {
   const { imageUrl } = useImage('presentation.jpeg');
@@ -71,6 +72,9 @@ function Home() {
           <br />
           tus compañeros de la Universidad Metropolitana.
         </p>
+      </div>
+      <div>
+        <Estadisticas />
       </div>
       <div>
         <GridBlogContainer
