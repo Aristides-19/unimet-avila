@@ -3,6 +3,7 @@ import Testimonial from '../../components/Testimonial/Testimonial';
 import profile from '../../components/Testimonial/profile.png';
 import GridBlogContainer from '../../components/NoticeBlogCard/GridBlogContainer';
 import image from '../../assets/classroom.jpg';
+import Estadisticas from '../../components/DataBar/DataBar';
 
 function Home() {
   const testimonialsData = [
@@ -52,6 +53,9 @@ function Home() {
 
   return (
     <>
+      <div>
+        <Estadisticas />
+      </div>
       <div>
         <GridBlogContainer
           imageUrl1={image}
