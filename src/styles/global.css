@@ -76,6 +76,13 @@ a {
   align-items: center;
 }
 
+span {
+  font-family: 'Poppins', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: var(--step--2);
+}
+
 a:visited {
   color: var(--forest);
 }
