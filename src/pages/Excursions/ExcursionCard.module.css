@@ -1,0 +1,167 @@
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 4px 16px #1122110d;
+}
+
+.image {
+  object-fit: cover;
+  width: 300px;
+  height: 299px;
+}
+
+.details {
+  flex: 1;
+  padding: 24px;
+}
+
+.header {
+  justify-content: space-between;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.title {
+  color: #033;
+  font-family: 'Poppins', serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  margin: 0;
+}
+
+.price {
+  text-align: right;
+  color: #033;
+  opacity: 0.75;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--2);
+}
+
+.amount {
+  color: #f68629;
+  font-family: 'Poppins', serif;
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.info {
+  margin-bottom: 24px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1); /* Reduced font size */
+}
+
+.infoRow {
+  justify-content: space-between;
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.infoItem {
+  color: #033;
+  opacity: 0.75;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1); /* Reduced font size */
+  display: flex;
+}
+
+.statusRow {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.statusBadge {
+  color: #033;
+  border: 1px solid #00afa0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--2);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ratingNumber {
+  color: #033;
+  border: 1px solid #00afa0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--2);
+}
+
+.ratingText {
+  color: #033;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--2);
+}
+
+.mealInfo {
+  color: #033;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1); /* Reduced font size */
+  display: flex;
+}
+
+.divider {
+  opacity: 0.25;
+  background-color: #033;
+  height: 1px;
+  margin: 32px 0;
+  border: none;
+}
+
+.detailsButton {
+  color: #fff;
+  cursor: pointer;
+  background-color: #00afa0;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px 16px;
+  font-family: 'Poppins', serif;
+  font-size: var(--step--1);
+}
+
+@media (width <= 991px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .image {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (width <= 640px) {
+  .details {
+    padding: 16px;
+  }
+
+  .info {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .infoRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .statusRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
