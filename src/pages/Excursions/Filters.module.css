@@ -116,7 +116,7 @@
   cursor: pointer;
 }
 
-.checkboxItem input[type="checkbox"] {
+.checkboxItem input[type='checkbox'] {
   appearance: none;
   background-color: transparent; /* Fondo transparente */
   border: 2px solid black; /* Borde negro */
@@ -127,8 +127,8 @@
   position: relative;
 }
 
-.checkboxItem input[type="checkbox"]:checked {
-  background-color: #00AFA0; /* Fondo #00AFA0 cuando está seleccionado */
+.checkboxItem input[type='checkbox']:checked {
+  background-color: #00afa0; /* Fondo #00AFA0 cuando está seleccionado */
 }
 
 @media (width <= 991px) {

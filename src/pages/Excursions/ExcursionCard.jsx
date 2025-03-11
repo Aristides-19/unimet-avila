@@ -1,6 +1,12 @@
-import React from "react";
-import { FaMapMarkerAlt, FaUser, FaCalendarAlt, FaStar, FaCoffee } from "react-icons/fa";
-import styles from "./ExcursionCard.module.css";
+import React from 'react';
+import {
+  FaMapMarkerAlt,
+  FaUser,
+  FaCalendarAlt,
+  FaStar,
+  FaCoffee,
+} from 'react-icons/fa';
+import styles from './ExcursionCard.module.css';
 
 const ExcursionCard = ({
   title,

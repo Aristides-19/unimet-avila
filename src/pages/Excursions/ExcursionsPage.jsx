@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import Filters from "./Filters";
-import ExcursionList from "./ExcursionList";
-import styles from "./ExcursionsPage.module.css";
+'use client';
+import React from 'react';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import Filters from './Filters';
+import ExcursionList from './ExcursionList';
+import styles from './ExcursionsPage.module.css';
 
 const ExcursionsPage = () => {
   return (

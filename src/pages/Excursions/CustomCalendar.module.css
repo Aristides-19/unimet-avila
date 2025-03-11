@@ -11,7 +11,6 @@
 }
 
 .react-calendar__tile--active {
-  background-color: #00AFA0;
+  background-color: #00afa0;
   color: #fff;
 }
-
