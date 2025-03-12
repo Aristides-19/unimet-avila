@@ -20,7 +20,7 @@ const Goals = () => {
       </div>
       <div className={styles.rightContainer}>
         <div className={styles.pairGroup}>
-          <div className={styles.article}>
+          <div>
             <h2 className={styles.headingSecondary}>Informar</h2>
             <p className={styles.articleParagraph}>
               Explora las mejores rutas con información clave: puntos de
@@ -28,7 +28,7 @@ const Goals = () => {
               aventura perfecta!
             </p>
           </div>
-          <div className={styles.article}>
+          <div>
             <h2 className={styles.headingSecondary}>Simplificar</h2>
             <p className={styles.articleParagraph}>
               Reserva tus actividades en segundos con un sistema seguro, fácil y
@@ -37,14 +37,14 @@ const Goals = () => {
           </div>
         </div>
         <div className={styles.pairGroup}>
-          <div className={styles.article}>
+          <div>
             <h2 className={styles.headingSecondary}>Optimizar</h2>
             <p className={styles.articleParagraph}>
               Disfruta de una navegación fluida con un diseño simple de usar que
               se adapta a cualquier dispositivo. ¡Fácil, rápido y sin límites!
             </p>
           </div>
-          <div className={styles.article}>
+          <div>
             <h2 className={styles.headingSecondary}>Conservar</h2>
             <p className={styles.articleParagraph}>
               Consejos para excursionistas y educación sobre la conservación del

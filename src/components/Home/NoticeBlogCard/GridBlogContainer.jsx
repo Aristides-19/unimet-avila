@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './NoticeBlogCard.module.css'; // Importa el archivo CSS para estilos
 import PropTypes from 'prop-types';
-import Card from './NoticeBlogCard';
+import Card from './NoticeBlogCard.jsx';
 
 const GridBlogContainer = ({
   imageUrl1,

@@ -1,15 +1,15 @@
 import React from 'react';
-import Testimonial from '../../components/Testimonial/Testimonial';
-import profile from '../../components/Testimonial/profile.png';
+import Testimonial from '../../components/Home/Testimonial/Testimonial';
+import profile from '../../components/Home/Testimonial/profile.png';
 import styles from './Home.module.css';
 import { useImage } from '../../hooks/useGenerics.js';
-import GridBlogContainer from '../../components/NoticeBlogCard/GridBlogContainer';
-import image from '../../assets/classroom.jpg';
+// import GridBlogContainer from '../../components/Home/NoticeBlogCard/GridBlogContainer'; // modificar
+// import image from '../../assets/classroom.jpg';
 import imageMission from '../../assets/Imagen Mision.jpg';
 import imageVision from '../../assets/Imagen_Vision.jpg';
-import MissionVision from '../../components/MissionVision/MissionVision';
-import Estadisticas from '../../components/DataBar/DataBar';
-import Goals from '../../components/Goals/Goals';
+import MissionVision from '../../components/Home/MissionVision/MissionVision';
+import HomeStats from '../../components/Home/HomeStats/HomeStats.jsx';
+import Goals from '../../components/Home/Goals/Goals';
 
 function Home() {
   const { imageUrl } = useImage('presentation.jpeg');
@@ -17,44 +17,42 @@ function Home() {
     {
       name: 'Carlos Martinez',
       title: 'Desconexión Total del Estrés Académico',
-      review: 'El senderismo en el Ávila fue el escape perfecto...',
+      review:
+        'El senderismo en El Ávila fue el escape perfecto. Respirar aire fresco y compartir risas con amigos hizo que todo valiera la pena. ¡Totalmente recomendable!',
       image: profile,
       stars: 5,
     },
     {
-      name: 'María López',
-      title: 'Una experiencia inolvidable',
-      review: 'El tour por los llanos venezolanos me dejó sin palabras...',
-      image: profile,
-      stars: 4,
-    },
-    {
-      name: 'semana 12',
-      title: 'Una experiencia inolvidable',
-      review: 'El tour por los llanos venezolanos me dejó sin palabras...',
-      image: profile,
-      stars: 4,
-    },
-    {
-      name: 'azul',
-      title: 'Una experiencia inolvidable',
-      review: 'El tour por los llanos venezolanos me dejó sin palabras...',
-      image: profile,
-      stars: 1,
-    },
-    {
-      name: 'verde',
-      title: 'Una experiencia inolvidable',
-      review: 'El tour por los llanos venezolanos me dejó sin palabras...',
-      image: profile,
-      stars: 2,
-    },
-    {
-      name: 'si',
-      title: 'Una experiencia inolvidable',
-      review: 'El tour por los llanos venezolanos me dejó sin palabras...',
+      name: 'Javier Ramírez',
+      title: 'Inolvidables Aventuras en el Ávila',
+      review:
+        '¡Una experiencia increíble! Disfrutamos de la naturaleza y aprendimos mucho sobre el entorno. ¡No puedo esperar para hacerlo de nuevo!',
       image: profile,
       stars: 3,
+    },
+    {
+      name: 'Ana Rodríguez',
+      title: 'Relajación y Diversión',
+      review:
+        'Desconectar del campus y sumergirnos en la serenidad del Ávila fue la terapia perfecta para el estrés universitario. Una experiencia que todos deberían probar.',
+      image: profile,
+      stars: 4,
+    },
+    {
+      name: 'Isabella Torres',
+      title: 'Conexión con la Naturaleza',
+      review:
+        'La excursión al Ávila me permitió conectar con la naturaleza y conmigo misma. Los paisajes son impresionantes y la compañía inmejorable. ¡Una experiencia enriquecedora!',
+      image: profile,
+      stars: 5,
+    },
+    {
+      name: 'Daniel Pérez',
+      title: 'Aventura y Amistad en el Ávila',
+      review:
+        'Una aventura emocionante que fortaleció la amistad con mis compañeros. Superamos retos juntos y disfrutamos de la belleza del Ávila. ¡Definitivamente repetiré!',
+      image: profile,
+      stars: 4,
     },
   ];
 
@@ -77,9 +75,7 @@ function Home() {
           tus compañeros de la Universidad Metropolitana.
         </p>
       </div>
-      <div>
-        <Estadisticas />
-      </div>
+      <HomeStats />
       <Goals />
       <MissionVision
         title='Misión'
@@ -92,22 +88,7 @@ function Home() {
         image={imageVision}
         imageRight
       />
-      <div>
-        <GridBlogContainer
-          imageUrl1={image}
-          title1='Mezcla perfecta de naturaleza y salud'
-          content1='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
-          imageUrl2={image}
-          title2='Mezcla perfecta de naturaleza y salud'
-          content2='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
-          imageUrl3={image}
-          title3='Mezcla perfecta de naturaleza y salud'
-          content3='EL senderismo es una actividad física aeróbica, que tonifica, relaja y permite conocer lugares únicos'
-        />
-      </div>
-      <div>
-        <Testimonial testimonials={testimonialsData} />
-      </div>
+      <Testimonial testimonials={testimonialsData} />
     </>
   );
 }

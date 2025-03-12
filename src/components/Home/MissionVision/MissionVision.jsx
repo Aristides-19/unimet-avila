@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 const Section = ({ title, text, image, imageRight = false }) => {
   return (
     <div
-      className={`${styles.sectionContainer} ${imageRight ? styles.reverseMargins : ''}`}
+      className={`${styles.sectionContainer} ${
+        imageRight ? styles.reverseMargins : ''
+      }`}
     >
       {/* Contenedor de la imagen */}
       <div
         className={`${styles.imageContainer} ${
-          imageRight ? styles.imageRight : ''
+          imageRight ? styles.imageRight : styles.imageLeft
         }`}
       >
         <img src={image} alt={title} className={styles.sectionImage} />
@@ -31,7 +33,7 @@ const Section = ({ title, text, image, imageRight = false }) => {
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
   imageRight: PropTypes.bool,
 };
 

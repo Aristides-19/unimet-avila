@@ -26,7 +26,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/gallery' element={<Gallery />} />
-          <Route path='/home' element={<Home />} />
           <Route path='/excursions' element={<Excursions />} />
           <Route path='*' element={<NotFound />} />
           <Route
