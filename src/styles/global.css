@@ -19,6 +19,7 @@
   --earth-sky: #00afa0;
   --separator: #bdbdbd;
   --gray-text: #828282;
+  --outline: #e0e0e0;
 
   /* Default Values */
   --margin: 40px; /* Use it when applying a margin/padding on a container */
@@ -58,6 +59,27 @@ h1 {
   font-weight: 600;
   font-style: normal;
   font-size: var(--step-4);
+}
+
+h2 {
+  font-family: 'Poppins', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: var(--step-3);
+}
+
+h3 {
+  font-family: 'Poppins', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: var(--step-2);
+}
+
+h4 {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: var(--step-2);
 }
 
 p {

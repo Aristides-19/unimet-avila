@@ -1,14 +1,13 @@
 import React from 'react';
 import styles from './Footer.module.css';
 import footerLogo from '../../assets/footerLogo.svg';
-import facebookIcon from '../../assets/facebook-icon.png';
-import twitterIcon from '../../assets/twitter-icon.png';
-import linkedinIcon from '../../assets/linkedin-icon.png';
+import { LuFacebook } from 'react-icons/lu';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className={styles['footer-left']}>
+      <div className={styles.footerLeft}>
         <img
           src={footerLogo}
           alt='Logo de Unimet Avila'
@@ -25,8 +24,8 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className={styles['footer-right']}>
-        <h4>Contáctanos</h4>
+      <div className={styles.footerRight}>
+        <h4 className={styles.contact}>Contáctanos</h4>
         <p>
           Universidad Metropolitana,
           <br />
@@ -41,19 +40,14 @@ const Footer = () => {
           <br />
           contacto@unimetavila.com
         </p>
-        <div className={styles['social-section']}>
-          <h4>Síguenos</h4>
-          <div className={styles['social-media-icons']}>
-            <a href='#' aria-label='Facebook'>
-              <img src={facebookIcon} alt='Facebook' />
-            </a>
-            <a href='#' aria-label='Twitter'>
-              <img src={twitterIcon} alt='Twitter' />
-            </a>
-            <a href='#' aria-label='LinkedIN'>
-              <img src={linkedinIcon} alt='LinkedIn' />
-            </a>
-          </div>
+        <div className={styles.socialSection}>
+          <p style={{ fontSize: 'var(--step--2)', margin: 0 }}>Síguenos</p>
+          <a href='#' aria-label='Facebook'>
+            <LuFacebook style={{ color: 'var(--sunlight)' }} size={22} />
+          </a>
+          <a href='#' aria-label='Twitter'>
+            <FaXTwitter style={{ color: 'var(--sunlight)' }} size={24} />
+          </a>
         </div>
       </div>
     </footer>

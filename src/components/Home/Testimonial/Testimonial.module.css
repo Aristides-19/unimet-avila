@@ -1,0 +1,76 @@
+.container {
+  text-align: center;
+  padding: 25px var(--margin);
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.subheading {
+  font-size: var(--step-2);
+  color: var(--forest);
+  margin: 0;
+  font-weight: 500;
+}
+
+.heading {
+  font-size: var(--step-4);
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: var(--forest);
+}
+
+.carouselContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px; /* Espaciado entre botones y testimonios */
+}
+
+.testimonialsContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 30px;
+  margin-top: 40px;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+.testimonialsContainer::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+.testimonialsContainer > div {
+  flex: 0 0 auto; /* cada tarjeta mantenga su tamaño */
+  scroll-snap-align: start;
+}
+
+.navButtonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.navButton {
+  background-color: var(--earth-sky);
+  border: none;
+  color: var(--forest);
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 60px;
+  transition: transform 0.1s ease-in-out;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navButton:hover {
+  transform: scale(1.02);
+}
+
+.navButton:active {
+  transform: scale(0.9); /* Scale down the button when clicked */
+}

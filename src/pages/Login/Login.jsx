@@ -36,18 +36,18 @@ function Login() {
         navigate('/home');
       }, 2000);
     }
-  }, [currentUser, navigate]);
+  }, [currentUser]);
 
   useEffect(() => {
     setErrorMessage(errorLogin);
   }, [errorLogin]);
 
   return (
-    <div className={styles.container}>
-      {/* seccion del formulario*/}
+    <div>
+      {/* Sección del formulario*/}
       <div className={styles.leftSection}>
         <div className={styles.loginForm}>
-          {/* boton de regresar*/}
+          {/* Botón de regresar*/}
           <div className={styles.backButtonContainer}>
             <BackButton />
           </div>
@@ -98,7 +98,7 @@ function Login() {
             </div>
           </div>
         </div>
-        <div className={styles.imageContainer}>
+        <div>
           <ResponsiveImage />
         </div>
       </div>
