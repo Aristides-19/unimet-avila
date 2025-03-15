@@ -1,53 +1,44 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from 'react-router-dom';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import NotFound from './pages/NotFound/NotFound';
 import Home from './pages/Home/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Excursions from './pages/Excursions/ExcursionsPage';
+import Blog from './pages/Blog/Blog';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
+import Layout from './components/Layout.jsx';
 
 function App() {
-  const location = useLocation();
-  const hideHeaderRoutes = ['/register', '/login'];
-
   return (
-    <>
-      {!hideHeaderRoutes.includes(location.pathname) && <Header />}
-      <main>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/gallery' element={<Gallery />} />
-          <Route path='/excursions' element={<Excursions />} />
-          <Route path='*' element={<NotFound />} />
-          <Route
-            path='/register'
-            element={
-              <UnauthenticatedRoute>
-                <Register />
-              </UnauthenticatedRoute>
-            }
-          />
-          <Route
-            path='/login'
-            element={
-              <UnauthenticatedRoute>
-                <Login />
-              </UnauthenticatedRoute>
-            }
-          />
-        </Routes>
-      </main>
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path='/' element={<Home />} />
+        <Route path='/gallery' element={<Gallery />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/excursions' element={<Excursions />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='*' element={<NotFound />} />
+        <Route
+          path='/register'
+          element={
+            <UnauthenticatedRoute>
+              <Register />
+            </UnauthenticatedRoute>
+          }
+        />
+        <Route
+          path='/login'
+          element={
+            <UnauthenticatedRoute>
+              <Login />
+            </UnauthenticatedRoute>
+          }
+        />
+      </Route>
+    </Routes>
   );
 }
 
