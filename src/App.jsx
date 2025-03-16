@@ -8,6 +8,9 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Excursions from './pages/Excursions/ExcursionsPage';
 import Blog from './pages/Blog/Blog';
+{
+  /*import Foro from './pages/Foro/Foro';*/
+}
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 import Layout from './components/Layout.jsx';
 
@@ -20,6 +23,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/excursions' element={<Excursions />} />
         <Route path='/blog' element={<Blog />} />
+        {/*<Route path='/forum' element={<Foro />} />*/}
         <Route path='*' element={<NotFound />} />
         <Route
           path='/register'
