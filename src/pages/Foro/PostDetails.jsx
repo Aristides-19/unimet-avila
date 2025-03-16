@@ -1,17 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './ForumLayout.module.css';
+import { useParams } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import PostList from './PostList';
+import ThreadContent from './ThreadContent';
+import styles from './PostDetails.module.css';
 import Button from '../../components/Button/Button';
 
-const ForumLayout = () => {
-  const navigate = useNavigate(); // Hook para manejar la navegación
+const PostDetails = () => {
+  const { postId } = useParams();
 
-  // Redirigir al formulario de creación de post
   const handleCreatePost = () => {
-    navigate('/CreatePost');
+    alert('Abrir modal o redirigir para crear un post'); // Definición de la función handleCreatePost
   };
+
   return (
     <div className={styles.layout}>
       <main className={styles.mainContent}>
@@ -19,7 +19,7 @@ const ForumLayout = () => {
           <Sidebar />
         </div>
 
-        <PostList />
+        <ThreadContent postId={postId} />
 
         <div>
           <Button
@@ -37,4 +37,4 @@ const ForumLayout = () => {
   );
 };
 
-export default ForumLayout;
+export default PostDetails;

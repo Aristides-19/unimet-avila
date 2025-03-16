@@ -2,8 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './PostCard.module.css';
 import { IoChatboxOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 const PostCard = ({ post }) => {
+  const navigate = useNavigate(); // Hook para la navegacion
+
+  const handleViewPost = () => {
+    navigate(`/post/${post.id}`); // Redirigir a la pagina del post usando el ID
+  };
+
   return (
     <article className={styles.postCard}>
       <header className={styles.postHeader}>
@@ -18,7 +25,7 @@ const PostCard = ({ post }) => {
         </div>
       </header>
 
-      <div className={styles.postContent}>
+      <div className={styles.postContent} onClick={handleViewPost}>
         <h2 className={styles.postTitle}>{post.title}</h2>
         <p className={styles.postText}>{post.content}</p>
 
@@ -34,14 +41,12 @@ const PostCard = ({ post }) => {
 };
 PostCard.propTypes = {
   post: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     timeAgo: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-    views: PropTypes.number.isRequired,
     comments: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
   }).isRequired,
 };
 

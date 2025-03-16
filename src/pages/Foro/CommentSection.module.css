@@ -1,0 +1,64 @@
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  color: #111827;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.inputSection {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.input {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cancelButton {
+  color: #4b5563;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.submitButton {
+  color: #fff;
+  background-color: #0a3b3d;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
