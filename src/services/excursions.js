@@ -1,5 +1,15 @@
 import { db } from '../firebase';
-import { collection, getDocs, orderBy, limit, query, startAfter, getCountFromServer } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  orderBy,
+  limit,
+  query,
+  startAfter,
+  getCountFromServer,
+  doc,
+  setDoc,
+} from 'firebase/firestore';
 
 /**
  * Fetch excursions with pagination.
@@ -18,25 +28,11 @@ export const getExcursions = async (lastDoc = null, limitVal = 5) => {
   const querySnapshot = await getDocs(q);
   const excursions = querySnapshot.docs.map((doc) => {
     const data = doc.data();
-
     const date = data.date.toDate();
-
-    const guideId = data.guideId ? { id: data.guideId.id, path: data.guideId.path } : null;
-
-    const meetingLocation = {
-      latitude: data.meetingLocation.latitude,
-      longitude: data.meetingLocation.longitude,
-    };
-
-    const enrolledStudents = data.enrolledStudents.map((student) => ({ id: student.id, path: student.path }));
-
     return {
       id: doc.id,
       ...data,
       date,
-      guideId,
-      meetingLocation,
-      enrolledStudents,
     };
   });
   const newLastDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
@@ -53,6 +49,70 @@ export const getExcursionsSize = async () => {
     return snapshot.data().count;
   } catch (error) {
     console.error('Failed to fetch excursions size: ', error);
+    throw error;
+  }
+};
+
+/**
+ * Save or edit an excursion
+ * @param excursionData Excursion data object
+ * @returns {Promise<{title, description, type, duration, date, route, price, hasLunch, images, guideId, maxStudents, enrolledStudents, status, averageRating}>}
+ */
+export const saveExcursion = async (excursionData) => {
+  const {
+    excursionIdOrPath,
+    title,
+    meetingLocation,
+    description,
+    type,
+    duration,
+    date,
+    route,
+    price,
+    hasLunch,
+    images,
+    guideId,
+    maxStudents,
+    enrolledStudents,
+    status,
+    averageRating,
+  } = excursionData;
+
+  try {
+    let excursionRef;
+    if (!excursionIdOrPath) {
+      excursionRef = doc(collection(db, 'excursions'));
+    } else {
+      excursionRef =
+        excursionIdOrPath.startsWith('excursions') || excursionIdOrPath.startsWith('/excursions')
+          ? doc(db, excursionIdOrPath)
+          : doc(db, 'excursions', excursionIdOrPath);
+    }
+
+    const excursion = {
+      title,
+      meetingLocation,
+      description,
+      type,
+      duration,
+      date,
+      route,
+      price,
+      hasLunch,
+      images,
+      guideId,
+      maxStudents,
+      enrolledStudents,
+      status,
+      averageRating,
+    };
+
+    await setDoc(excursionRef, excursion, { merge: true });
+
+    console.log('Excursion saved/updated successfully: ', excursionIdOrPath);
+    return excursion;
+  } catch (error) {
+    console.error('Error saving/updating excursion ' + excursionIdOrPath + ': ', error);
     throw error;
   }
 };

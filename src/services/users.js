@@ -4,7 +4,7 @@ import { doc, getDoc, collection, getCountFromServer, setDoc, query, where } fro
 /**
  * Fetch user by id.
  * @param userIdOrPath User ID or path to the document.
- * @returns {Promise<DocumentData>}
+ * @returns {Promise<{userId: string, email: any, name: any, bio: any, phone: any, genre: any, role: any, profilePicture: any, bannerPicture: any, excursionsHistory: (*|*[]), forumEntries: (*|*[]), likes: (*|*[])}>}
  * Resolved with a user object.
  */
 export const getUser = async (userIdOrPath) => {
@@ -17,7 +17,12 @@ export const getUser = async (userIdOrPath) => {
     const userDoc = await getDoc(userRef);
 
     if (userDoc.exists()) {
-      return userDoc.data();
+      const data = userDoc.data();
+
+      return {
+        userId: userDoc.id,
+        ...data,
+      };
     } else {
       console.log('Not found user by id: ', userIdOrPath);
       return null;

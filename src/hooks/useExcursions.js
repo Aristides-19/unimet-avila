@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getExcursions, getExcursionsSize } from '../services/excursions';
+import { getExcursions, getExcursionsSize, saveExcursion } from '../services/excursions';
 
 /**
  * Custom hook to fetch excursions with pagination.
@@ -76,4 +76,66 @@ export const useExcursionsSize = () => {
   }, []);
 
   return { size, loading, error };
+};
+
+/**
+ * Custom hook to save/edit excursion data.
+ * @returns {{saveExcursionData: ((function({excursionId: *, title: *, meetingLocation: *, description: *, type: *, duration: *, date: *, route: *, price: *, hasLunch: *, images: *, guideId: *, maxStudents: *, enrolledStudents: *, status: *, averageRating: *}): Promise<void>)|*), excursion: unknown, loading: boolean, error: unknown}}
+ * An object containing a function to save excursion data, excursion, loading state, and error.
+ */
+export const useSaveExcursion = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [excursion, setExcursion] = useState(null);
+
+  const saveExcursionData = async ({
+    excursionId,
+    title,
+    meetingLocation,
+    description,
+    type,
+    duration,
+    date,
+    route,
+    price,
+    hasLunch,
+    images,
+    guideId,
+    maxStudents,
+    enrolledStudents,
+    status,
+    averageRating,
+  }) => {
+    setLoading(true);
+    setError(null);
+    setExcursion(null);
+
+    try {
+      const savedExcursion = await saveExcursion({
+        excursionId,
+        title,
+        meetingLocation,
+        description,
+        type,
+        duration,
+        date,
+        route,
+        price,
+        hasLunch,
+        images,
+        guideId,
+        maxStudents,
+        enrolledStudents,
+        status,
+        averageRating,
+      });
+      setExcursion(savedExcursion);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { saveExcursionData, excursion, loading, error };
 };
