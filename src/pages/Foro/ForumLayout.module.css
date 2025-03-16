@@ -1,0 +1,48 @@
+.layout {
+  background-color: #fff;
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+}
+
+.mainContent {
+  background-color: #f9fafb;
+  gap: 24px;
+  padding: 24px;
+  display: flex;
+}
+
+.createPostButton {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #38a169;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  height: 30%;
+  transition: background-color 0.3s ease;
+  max-height: 10%;
+  max-width: 20%;
+}
+
+.createPostButton:hover {
+  background-color: #2f855a;
+  transform: scale(1.05);
+}
+
+@media (max-width: 991px) {
+  .mainContent {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainContent {
+    padding: 16px;
+  }
+}

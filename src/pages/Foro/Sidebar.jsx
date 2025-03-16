@@ -1,19 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './Sidebar.module.css';
+import { HiOutlineQuestionMarkCircle } from 'react-icons/hi';
+import { FiMessageCircle } from 'react-icons/fi';
 
-const Sidebar = ({ onNavigate }) => {
+const Sidebar = () => {
   return (
-    <div className={styles.sidebar}>
-      <button onClick={() => onNavigate('preguntas')}>Preguntas</button>
-      <button onClick={() => onNavigate('miEspacio')}>Mi espacio</button>
-      <button onClick={() => onNavigate('misPreguntas')}>Mis preguntas</button>
-      <button onClick={() => onNavigate('misLikes')}>Mis Likes</button>
-    </div>
+    <aside className={styles.sidebar}>
+      <nav className={styles.sidebarNav}>
+        <a href='#' className={styles.navItem}>
+          Mi Espacio
+        </a>
+        <a href='#' className={styles.navItem}>
+          <HiOutlineQuestionMarkCircle className={styles.icon} />
+          <span>Más Preguntas</span>
+        </a>
+        <a href='#' className={styles.navItem}>
+          <FiMessageCircle className={styles.icon} />
+          <span>Mis Respuestas</span>
+        </a>
+        {/* <a href='#' className={styles.navItem}>
+          <i className={styles.icon}>heart</i>
+          <span>Mis Likes</span>
+        </a> */}
+      </nav>
+    </aside>
   );
-};
-Sidebar.propTypes = {
-  onNavigate: PropTypes.func.isRequired,
 };
 
 export default Sidebar;
