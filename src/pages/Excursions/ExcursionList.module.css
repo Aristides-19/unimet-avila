@@ -1,5 +1,9 @@
-.excursions {
-  flex: 1;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .excursionsHeader {
@@ -10,25 +14,28 @@
 }
 
 .resultsCount {
-  color: #033;
-  font-family: 'Poppins', serif;
+  color: var(--forest);
   font-size: var(--step--2);
   font-weight: 600;
   margin: 0;
 }
 
 .highlight {
-  color: #f68629;
+  color: var(--unimet);
+  font-size: var(--step--2);
+  font-weight: 600;
 }
 
 .sort {
-  color: #033;
+  color: var(--forest);
   align-items: center;
   gap: 8px;
-  font-family: 'Poppins', serif;
   font-size: var(--step--1);
-  font-weight: 700;
   display: flex;
+}
+
+.sort span {
+  font-weight: 500;
 }
 
 .sortButton {
@@ -46,15 +53,6 @@
 }
 
 .loadMore {
-  color: #fff;
-  cursor: pointer;
-  background-color: #033;
-  border: none;
-  border-radius: 4px;
   width: 100%;
-  margin-top: 24px;
-  padding: 8px 16px;
-  font-family: 'Poppins', serif;
-  font-size: var(--step--2);
-  font-weight: 600;
+  color: var(--forest);
 }

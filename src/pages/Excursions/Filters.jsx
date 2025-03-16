@@ -58,6 +58,11 @@ const Filters = ({
       }
     }
 
+    const isNoneSelected = types.every((key) => !newState[key]);
+    if (isNoneSelected) {
+      newState.all = true;
+    }
+
     setState(newState);
   };
 

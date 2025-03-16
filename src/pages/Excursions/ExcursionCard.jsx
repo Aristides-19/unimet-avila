@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useUser } from '../../hooks/useUsers';
+import { Card } from '../../components/Card/Card';
 
 import {
   FaMapMarkerAlt,
@@ -9,23 +11,40 @@ import {
   FaCoffee,
 } from 'react-icons/fa';
 import styles from './ExcursionCard.module.css';
+import { Rating } from 'react-simple-star-rating';
 
 const ExcursionCard = ({
   title,
-  image,
+  images,
   price,
-  location,
+  route,
   date,
-  guide,
-  difficulty,
+  guideId,
+  type,
   status,
-  rating,
-  ratingText,
-  meal,
+  averageRating,
+  hasLunch,
 }) => {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  const { user: guide } = useUser(guideId ? guideId.id : null);
+
   return (
-    <article className={styles.card} style={{ minWidth: '700px' }}>
-      <img src={image} alt={title} className={styles.image} />
+    <Card
+      padding='0'
+      gap='0'
+      alignItems=''
+      textAlign=''
+      additionalStyles={styles.card}
+    >
+      <img
+        src={
+          images[0] ? images[0] : 'https://placehold.co/200x200/4a7c59/4a7c59'
+        }
+        alt={title}
+        className={styles.image}
+      />
 
       <div className={styles.details}>
         <header className={styles.header}>
@@ -35,65 +54,61 @@ const ExcursionCard = ({
             <div className={styles.amount}>${price}</div>
           </div>
         </header>
-
         <div className={styles.info}>
           <div className={styles.infoRow}>
             <div className={styles.infoItem}>
               <FaMapMarkerAlt />
-              <span>{location}</span>
+              <span>{route}</span>
             </div>
             <div className={styles.infoItem}>
               <FaCalendarAlt />
-              <span>{date}</span>
+              <span>{`${day}-${month}-${year}`}</span>
             </div>
           </div>
 
           <div className={styles.infoRow}>
             <div className={styles.infoItem}>
               <FaUser />
-              <span>Guía: {guide}</span>
+              <span>Guía: {guide ? guide.name : 'No Asignado'}</span>
             </div>
             <div className={styles.infoItem}>
               <FaStar />
-              <span>{difficulty}</span>
+              <span>{type}</span>
             </div>
           </div>
 
           <div className={styles.statusRow}>
-            {status ? (
+            {status === 'Disponible' ? (
               <div className={styles.statusBadge}>{status}</div>
             ) : (
-              <div className={styles.rating}>
-                <span className={styles.ratingNumber}>{rating}</span>
-                <span className={styles.ratingText}>{ratingText}</span>
-              </div>
+              <Rating
+                initialValue={averageRating}
+                readonly={true}
+                size={20}
+                fillColor={'var(--unimet)'}
+              ></Rating>
             )}
-            <div className={styles.mealInfo}>
+            <div className={styles.infoItem}>
               <FaCoffee />
-              <span>+ {meal}</span>
+              <span>+ {hasLunch ? 'Almuerzo' : 'No incluye'}</span>
             </div>
           </div>
         </div>
-
-        <hr className={styles.divider} />
-
-        <button className={styles.detailsButton}>Ver Detalles</button>
       </div>
-    </article>
+    </Card>
   );
 };
 
 ExcursionCard.propTypes = {
-  title: PropTypes.isRequired,
-  image: PropTypes.isRequired,
+  title: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
   price: PropTypes.number.isRequired,
-  location: PropTypes.isRequired,
-  date: PropTypes.isRequired, // O PropTypes.instanceOf(Date) si usas objetos Date
-  guide: PropTypes.isRequired,
-  difficulty: PropTypes.isRequired,
-  status: PropTypes.isRequired,
-  rating: PropTypes.number,
-  ratingText: PropTypes,
-  meal: PropTypes,
+  route: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date), // O PropTypes.instanceOf(Date) si usas objetos Date
+  guideId: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  averageRating: PropTypes.number.isRequired,
+  hasLunch: PropTypes.bool.isRequired,
 };
 export default ExcursionCard;
