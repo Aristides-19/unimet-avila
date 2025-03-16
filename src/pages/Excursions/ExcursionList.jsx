@@ -1,4 +1,3 @@
-'use client';
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import ExcursionCard from './ExcursionCard';
@@ -30,7 +29,7 @@ const excursions = [
     ratingText: 'Muy Bueno',
     meal: 'Caramelo Raro',
   },
-  // Add other excursions data...
+  // Add other excursions data
 ];
 
 const ExcursionList = () => {

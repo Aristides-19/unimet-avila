@@ -1,18 +1,29 @@
-.app {
-  background-color: #fff;
-  min-height: 100vh;
-  font-family: 'Poppins', serif;
+.container {
+  padding: 0 var(--margin) 50px var(--margin);
 }
 
 .content {
   gap: 24px;
-  padding: 0 104px;
   display: flex;
+}
+
+.separator {
+  background-color: var(--separator);
+  border: none;
+  opacity: 0.25;
+  width: 1px;
 }
 
 @media (width <= 991px) {
   .content {
     flex-direction: column;
-    padding: 0 20px;
+    gap: 0;
+  }
+
+  .separator {
+    margin-top: 10px;
+    margin-bottom: 24px;
+    width: 98%;
+    height: 1px;
   }
 }
