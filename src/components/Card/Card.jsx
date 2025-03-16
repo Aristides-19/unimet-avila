@@ -8,6 +8,7 @@ export const Card = ({
   textAlign = 'left',
   alignItems = 'flex-start',
   additionalStyles = '', // Should be used for width as class from CSS module
+  onClick,
   children,
 }) => {
   const defaultStyle = {
@@ -17,7 +18,11 @@ export const Card = ({
     textAlign: textAlign,
   };
   return (
-    <div style={defaultStyle} className={`${styles.card} ${additionalStyles}`}>
+    <div
+      style={defaultStyle}
+      className={`${styles.card} ${additionalStyles}`}
+      onClick={onClick}
+    >
       {children}
     </div>
   );
@@ -30,4 +35,5 @@ Card.propTypes = {
   alignItems: PropTypes.string,
   additionalStyles: PropTypes.string,
   children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
 };

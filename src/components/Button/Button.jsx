@@ -11,6 +11,7 @@ function Button({
   hoverBackgroundColor = backgroundColor,
   onClick,
   icon = <></>,
+  className = '',
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const buttonStyle = {
@@ -24,7 +25,7 @@ function Button({
       type={type}
       style={buttonStyle}
       onClick={onClick}
-      className={styles.button}
+      className={`${styles.button} ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -43,6 +44,7 @@ Button.propTypes = {
   hoverBackgroundColor: PropTypes.string,
   onClick: PropTypes.func,
   icon: PropTypes.node,
+  className: PropTypes.string,
 };
 
 export default Button;
