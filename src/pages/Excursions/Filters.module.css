@@ -3,10 +3,19 @@
 }
 
 .filtersHeader {
-  color: #033;
-  margin-bottom: 32px;
-  font-family: 'Poppins', serif;
-  font-size: var(--step-2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.filtersHeader svg {
+  cursor: pointer;
+}
+
+.filtersText {
+  margin: 16px 0;
+  font-size: var(--step-1);
   font-weight: 600;
 }
 
@@ -14,68 +23,17 @@
   margin-bottom: 32px;
 }
 
-.filterLabel {
-  color: #033;
-  margin-bottom: 16px;
-  font-family: 'Poppins', serif;
-  font-size: var(--step--1);
-  font-weight: 500;
-}
-
-.filterLabelWithIcon {
-  color: #033;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  font-family: 'Poppins', serif;
-  font-size: var(--step--1);
-  font-weight: 500;
-  display: flex;
-}
-
-.durationSlider,
-.priceSlider {
-  height: 24px;
-  margin: 20px 0 40px;
-  position: relative;
-}
-
-.sliderTrack {
-  background-color: #033;
-  height: 2px;
-  position: absolute;
-  top: 11px;
-  left: 23px;
-  right: 23px;
-}
-
-.sliderHandleLeft,
-.sliderHandleRight {
-  cursor: pointer;
-  background-color: #00afa0;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: 0;
-}
-
-.durationLabels,
-.priceLabels {
-  color: #033;
-  justify-content: space-between;
-  margin-top: 8px;
-  font-family: 'Poppins', serif;
-  font-size: var(--step--1);
-  display: flex;
-}
-
 .divider {
   opacity: 0.25;
-  background-color: #033;
+  background-color: var(--separator);
   height: 1px;
-  margin: 32px 0;
+  margin: 32px 50px 32px 0;
   border: none;
+}
+
+.filterLabel {
+  margin-bottom: 16px;
+  font-size: var(--step--1);
 }
 
 .ratingButtons {
@@ -84,20 +42,14 @@
 }
 
 .ratingBtn {
-  color: #033;
+  color: var(--forest);
   background: transparent;
-  border: 1px solid #00afa0;
+  border: 1px solid var(--earth-sky);
   border-radius: 4px;
   width: 40px;
   height: 32px;
-  font-family: 'Poppins', serif;
   font-size: var(--step--2);
   cursor: pointer;
-}
-
-.selectedRatingBtn {
-  background-color: #00afa0;
-  color: #fff;
 }
 
 .checkboxGroup {
@@ -107,10 +59,9 @@
 }
 
 .checkboxItem {
-  color: #033;
+  color: var(--forest);
   align-items: center;
   gap: 8px;
-  font-family: 'Poppins', serif;
   font-size: var(--step--2);
   display: flex;
   cursor: pointer;
@@ -118,7 +69,6 @@
 
 .checkboxItem input[type='checkbox'] {
   appearance: none;
-  background-color: transparent; /* Fondo transparente */
   border: 2px solid black; /* Borde negro */
   width: 16px;
   height: 16px;
@@ -128,7 +78,7 @@
 }
 
 .checkboxItem input[type='checkbox']:checked {
-  background-color: #00afa0; /* Fondo #00AFA0 cuando está seleccionado */
+  background-color: var(--earth-sky);
 }
 
 @media (width <= 991px) {

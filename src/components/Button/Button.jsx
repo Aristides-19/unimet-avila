@@ -10,6 +10,7 @@ function Button({
   backgroundColor,
   hoverBackgroundColor = backgroundColor,
   onClick,
+  icon = <></>,
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const buttonStyle = {
@@ -28,18 +29,20 @@ function Button({
       onMouseLeave={() => setIsHovered(false)}
     >
       {text}
+      {icon}
     </button>
   );
 }
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   borderRadius: PropTypes.string,
   color: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string.isRequired,
   hoverBackgroundColor: PropTypes.string,
   onClick: PropTypes.func,
+  icon: PropTypes.node,
 };
 
 export default Button;

@@ -1,16 +1,51 @@
 .customCalendar {
   width: 100%;
-  max-width: 300px;
   border: none;
   border-radius: 10px;
-  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #333;
-  font-family: 'Poppins', serif;
   padding: 10px;
 }
 
-.react-calendar__tile--active {
-  background-color: #00afa0;
-  color: #fff;
+.customCalendar :global(.react-calendar__tile) {
+  color: var(--gray-text);
+  font-weight: 540;
+}
+
+.customCalendar :global(.react-calendar__tile--now) {
+  border-radius: 10px;
+}
+
+.customCalendar :global(.react-calendar__tile:enabled:hover) {
+  border-radius: 10px;
+}
+
+.customCalendar :global(.react-calendar__tile--active) {
+  background-color: var(--earth-sky) !important;
+  color: var(--sunlight) !important;
+  border-radius: 10px;
+}
+
+.customCalendar :global(.react-calendar__month-view__weekdays) {
+  color: var(--forest);
+  font-weight: 540;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+.customCalendar :global(.react-calendar__navigation__label) {
+  color: var(--gray-text);
+}
+
+.customCalendar :global(.react-calendar__navigation__arrow) {
+  color: var(--forest);
+}
+
+@media (max-width: 991px) {
+  .customCalendar {
+    max-width: 300px;
+  }
 }
