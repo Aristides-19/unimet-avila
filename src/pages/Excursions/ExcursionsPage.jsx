@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Filters from './Filters';
 import ExcursionList from './ExcursionList';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import styles from './ExcursionsPage.module.css';
 import { useExcursions, useExcursionsSize } from '../../hooks/useExcursions.js';
 
@@ -23,15 +23,13 @@ const ExcursionsPage = () => {
     available: false,
   });
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
+  const [query, setQuery] = useState(searchQuery);
 
-  const navigate = useNavigate();
-  const [query, setQuery] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`?search=${encodeURIComponent(query)}`);
+    setSearchParams({ search: query });
   };
 
   const [isAscending, setIsAscending] = useState(false);

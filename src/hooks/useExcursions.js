@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getExcursions, getExcursionsSize, saveExcursion } from '../services/excursions';
+import { getExcursionById, getExcursions, getExcursionsSize, saveExcursion } from '../services/excursions';
 
 /**
  * Custom hook to fetch excursions with pagination.
@@ -91,6 +91,34 @@ export const useExcursions = (
   };
 
   return { excursions, loading, error, hasMore, loadMore };
+};
+
+/**
+ * Custom hook to fetch excursion by ID.
+ * @param excursionId excursion ID
+ * @returns {{excursion: unknown, loading: boolean, error: unknown}}
+ */
+export const useExcursionById = (excursionId) => {
+  const [excursion, setExcursion] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchExcursion = async () => {
+      try {
+        const excursionData = await getExcursionById(excursionId);
+        setExcursion(excursionData);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchExcursion();
+  }, []);
+
+  return { excursion, loading, error };
 };
 
 /**
