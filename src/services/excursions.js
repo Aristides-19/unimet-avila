@@ -11,6 +11,7 @@ import {
   setDoc,
   where,
   Timestamp,
+  getDoc,
 } from 'firebase/firestore';
 
 /**
@@ -118,6 +119,34 @@ export const getExcursions = async (
   });
   const newLastDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
   return { excursions, lastDoc: newLastDoc };
+};
+
+/**
+ * Fetch excursion by id
+ * @param excursionId excursion id
+ * @returns {Promise<null|{[p: string]: any, id, date: *}>}
+ */
+export const getExcursionById = async (excursionId) => {
+  try {
+    const excursionRef = doc(db, 'excursions', excursionId);
+    const excursionSnapshot = await getDoc(excursionRef);
+
+    if (excursionSnapshot.exists()) {
+      const data = excursionSnapshot.data();
+      const date = data.date.toDate();
+      return {
+        id: excursionId,
+        ...data,
+        date,
+      };
+    } else {
+      console.error('No such excursion!');
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching excursion: ', error);
+    throw error;
+  }
 };
 
 /**

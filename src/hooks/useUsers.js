@@ -86,7 +86,6 @@ export const useSaveUser = () => {
     bannerPicture,
     excursionsHistory,
     forumEntries,
-    likes,
   }) => {
     setLoading(true);
     setError(null);
@@ -105,7 +104,6 @@ export const useSaveUser = () => {
         bannerPicture,
         excursionsHistory,
         forumEntries,
-        likes,
       });
       setUser(savedUser);
     } catch (err) {

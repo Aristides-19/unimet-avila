@@ -1,11 +1,10 @@
 .backButtonContainer {
-  margin-bottom: 20px;
   text-align: left;
 }
 
 .backButton {
   text-align: left;
-  padding: 10px 20px;
+  padding: 0;
   color: var(--forest); /* Color del texto */
   border-radius: 5px;
   border: none;

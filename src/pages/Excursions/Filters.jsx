@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomCalendar from './CustomCalendar';
 import { SliderRange } from '../../components/SliderRange/SliderRange';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
@@ -22,6 +22,21 @@ const Filters = ({
   const difficultyTypes = ['all', 'light', 'advanced', 'extreme'];
   const stateTypes = ['all', 'finished', 'available'];
   const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 991) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const toggleRating = (rating) => {
     setSelectedRating(selectedRating === rating ? null : rating);
