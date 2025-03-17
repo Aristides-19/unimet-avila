@@ -12,8 +12,10 @@ import {
 } from 'react-icons/fa';
 import styles from './ExcursionCard.module.css';
 import { Rating } from 'react-simple-star-rating';
+import { useNavigate } from 'react-router-dom';
 
 const ExcursionCard = ({
+  id,
   title,
   images,
   price,
@@ -29,6 +31,10 @@ const ExcursionCard = ({
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const year = date.getFullYear();
   const { user: guide } = useUser(guideId ? guideId.id : null);
+  const navigate = useNavigate();
+  const handleExcursionClick = (excursionId) => {
+    navigate(`/excursions/${excursionId}`); //
+  };
 
   return (
     <Card
@@ -37,6 +43,7 @@ const ExcursionCard = ({
       alignItems=''
       textAlign=''
       additionalStyles={styles.card}
+      onClick={() => handleExcursionClick(id)}
     >
       <img
         src={
@@ -110,5 +117,6 @@ ExcursionCard.propTypes = {
   status: PropTypes.string.isRequired,
   averageRating: PropTypes.number.isRequired,
   hasLunch: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
 };
 export default ExcursionCard;
