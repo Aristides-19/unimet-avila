@@ -1,0 +1,35 @@
+.contenedorpadre {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-inline: 10%;
+  padding-block: 3%;
+}
+
+.tag {
+  padding: 10px;
+  background-color: var(--earth-sky);
+  color: var(--sunlight);
+  border-radius: 5px;
+}
+
+.titulo,
+.comentario {
+  color: #033;
+  font-family: 'Poppins', sans-serif;
+  align-items: center;
+}
+
+.parrafos {
+  color: var(--gray-text);
+  font-family: 'Poppins', sans-serif;
+  align-items: center;
+
+}
+
+.comentario {
+  padding-inline: 5%;
+  padding-block: 3%;
+}

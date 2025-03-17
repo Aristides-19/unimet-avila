@@ -6,9 +6,9 @@ import Home from './pages/Home/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Contact from './pages/Contact/Contact';
 import Register from './pages/Register/Register';
-import Login from './pages/Login/Login';
+import Login from './pages/LogIn/Login';
 import Excursions from './pages/Excursions/ExcursionsPage';
-import Blog from './pages/Blog/Blog';
+import Blog from './pages/Blog/BlogArticle';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 import Layout from './components/Layout.jsx';
 
