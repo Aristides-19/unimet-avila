@@ -35,7 +35,6 @@ const generateUserData = (user, data = {}) => ({
   bannerPicture: '',
   excursionsHistory: [],
   forumEntries: [],
-  likes: [],
 });
 
 /**

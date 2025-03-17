@@ -17,7 +17,6 @@
     por `createdAt`(referencias a `excursions`).
   - `forumEntries` (Array[Reference]): Lista de preguntas/respuestas del usuario distinguidas por `type`(referencias
     a `forumEntry`).
-  - `likes` (Array[Reference]): Lista de likes en el foro (referencias a `forumEntry`).
 
 #### 2. **Colección: `excursions`**
 
@@ -73,5 +72,4 @@
   - `createdAt` (Timestamp): Fecha de creación de la entrada.
   - `type` (String): Tipo de entrada (`question`, `answer`).
   - `title` (String): Título de la pregunta (aplica a `question`).
-  - `likes` (Array[Reference]): Likes de la pregunta (aplica a `question`).
   - `parentId` (Reference): Pregunta a la que responde (aplica a `answer` con referencia a `forumEntry`).
