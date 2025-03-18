@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { getExcursionById, getExcursions, getExcursionsSize, saveExcursion } from '../services/excursions';
+import {
+  addStudentToExcursion,
+  getExcursionById,
+  getExcursions,
+  getExcursionsSize,
+  saveExcursion,
+} from '../services/excursions';
 
 /**
  * Custom hook to fetch excursions with pagination.
@@ -209,4 +215,29 @@ export const useSaveExcursion = () => {
   };
 
   return { saveExcursionData, excursion, loading, error };
+};
+
+/**
+ * Custom hook to add student to enrolled students.
+ * @returns {{addStudentToExcursionData: function, loading: boolean, error: unknown}}
+ * An object containing a function to add student, loading state, and error.
+ */
+export const useAddStudentToExcursion = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const addStudentToExcursionData = async (userId, excursionId) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      await addStudentToExcursion(userId, excursionId);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { addStudentToExcursionData, loading, error };
 };

@@ -3,6 +3,9 @@
 }
 
 .backButton {
+  display: flex;
+  align-items: center;
+  gap: 3px;
   text-align: left;
   padding: 0;
   color: var(--forest); /* Color del texto */

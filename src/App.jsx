@@ -9,12 +9,14 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Excursions from './pages/Excursions/ExcursionsPage';
 import Excursion from './pages/Excursions/Excursion/Excursion';
+import Reserve from './pages/Excursions/Reserve/Reserve';
 import Blog from './pages/Blog/Blog';
 import Foro from './pages/Foro/ForumLayout.jsx';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 import Layout from './components/Layout.jsx';
 import CreatePost from './pages/Foro/CreatePost.jsx';
 import PostDetails from './pages/Foro/PostDetails';
+import { AuthenticatedRoute } from './context/AuthenticatedRoute.jsx';
 
 function App() {
   return (
@@ -23,9 +25,16 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/home' element={<Home />} />
         <Route path='/excursions' element={<Excursions />} />
         <Route path='/excursions/:excursionId' element={<Excursion />} />
+        <Route
+          path='/excursions/:excursionId/reserve'
+          element={
+            <AuthenticatedRoute scope='Estudiante'>
+              <Reserve />
+            </AuthenticatedRoute>
+          }
+        />
         <Route path='/blog' element={<Blog />} />
         <Route path='/forum' element={<Foro />} />
         <Route path='/post/:postId' element={<PostDetails />} />

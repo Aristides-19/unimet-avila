@@ -1,5 +1,15 @@
 import { db } from '../firebase';
-import { doc, getDoc, collection, getCountFromServer, setDoc, query, where } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  collection,
+  getCountFromServer,
+  setDoc,
+  query,
+  where,
+  updateDoc,
+  arrayUnion,
+} from 'firebase/firestore';
 
 /**
  * Fetch user by id.
@@ -107,5 +117,24 @@ export const saveUser = async (userData) => {
   } catch (error) {
     console.error('Error saving/updating user ' + userIdOrPath + ' : ', error);
     throw error;
+  }
+};
+
+/**
+ * Add excursion to user's history.
+ * @param userId user id
+ * @param excursionId excursion id
+ * @returns {Promise<void>}
+ */
+export const addExcursionToHistory = async (userId, excursionId) => {
+  try {
+    const userRef = doc(db, 'users', userId);
+    const excursionRef = doc(db, 'excursions', excursionId);
+    await updateDoc(userRef, {
+      excursionsHistory: arrayUnion(excursionRef),
+    });
+    console.log('Excursion added successfully.');
+  } catch (error) {
+    console.error('Failed to add excursion to history: ', error);
   }
 };

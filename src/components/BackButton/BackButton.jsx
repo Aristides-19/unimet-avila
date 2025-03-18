@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { IoChevronBackOutline } from 'react-icons/io5';
 import styles from './BackButton.module.css';
 
 const BackButton = ({ text = 'Regresar', onClick, where }) => {
@@ -17,7 +18,7 @@ const BackButton = ({ text = 'Regresar', onClick, where }) => {
   return (
     <div className={styles.backButtonContainer}>
       <button className={styles.backButton} onClick={handleBack}>
-        &#8592; {text}
+        <IoChevronBackOutline /> {text}
       </button>
     </div>
   );

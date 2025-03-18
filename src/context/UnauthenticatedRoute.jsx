@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 export const UnauthenticatedRoute = ({ children }) => {
   const { currentUser: currentUser } = useAuth();
 
-  return currentUser ? <Navigate to='/home' replace /> : children;
+  return currentUser ? <Navigate to='/' replace /> : children;
 };
 
 UnauthenticatedRoute.propTypes = {
