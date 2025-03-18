@@ -10,7 +10,7 @@ export const AuthenticatedRoute = ({ scope, children }) => {
   if (!currentUser) return <Navigate to='/login' />;
   if (loading) return <></>;
 
-  return user?.role === scope ? children : <Navigate to='/home' replace />;
+  return user?.role === scope ? children : <Navigate to='/' replace />;
 };
 
 AuthenticatedRoute.propTypes = {

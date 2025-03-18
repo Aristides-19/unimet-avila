@@ -48,7 +48,7 @@ const Register = () => {
     if (currentUser) {
       setSuccessMessage('Registro exitoso. Redirigiendo...');
       setTimeout(() => {
-        navigate('/home');
+        navigate('/');
       }, 2000);
     }
   }, [currentUser]);
@@ -67,7 +67,7 @@ const Register = () => {
         <div className={styles.registerForm}>
           {/*Boton de regresae*/}
           <div className={styles.backButtonContainer}>
-            <BackButton where='/home' />
+            <BackButton where='/' />
           </div>
           <h2>Crear Cuenta</h2>
           {successMessage && <SuccessMessage message={successMessage} />}

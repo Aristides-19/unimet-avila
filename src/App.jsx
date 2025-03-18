@@ -22,7 +22,6 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/home' element={<Home />} />
         <Route path='/excursions' element={<Excursions />} />
         <Route path='/excursions/:excursionId' element={<Excursion />} />
         <Route
