@@ -1,0 +1,103 @@
+.fieldContainer {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px 100px;
+  width: 100%;
+  display: flex;
+}
+
+.fieldContainer:not(:first-child) {
+  margin-top: 32px;
+}
+
+@media (width <= 991px) {
+  .fieldContainer {
+    max-width: 100%;
+  }
+}
+
+.fieldInfo {
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+  min-width: 240px;
+}
+
+.fieldLabel {
+  opacity: 0.75;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  display: block;
+}
+
+.fieldValue {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+@media (width <= 991px) {
+  .fieldValue {
+    max-width: 100%;
+  }
+}
+
+.editButton {
+  white-space: nowrap;
+  align-self: stretch;
+  width: 140px;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+@media (width <= 991px) {
+  .editButton {
+    white-space: initial;
+  }
+}
+
+.buttonContent {
+  border: 1px solid #00afa0;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 16px;
+  display: flex;
+}
+
+@media (width <= 991px) {
+  .buttonContent {
+    white-space: initial;
+  }
+}
+
+.editIcon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  width: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.buttonText {
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+}

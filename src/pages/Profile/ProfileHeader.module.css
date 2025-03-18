@@ -1,0 +1,101 @@
+.headerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (width <= 991px) {
+  .headerContainer {
+    max-width: 100%;
+  }
+}
+
+.profileWrapper {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+@media (width <= 991px) {
+  .profileWrapper {
+    max-width: 100%;
+  }
+}
+
+.avatarContainer {
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  align-items: center;
+  width: 325px;
+  min-width: 240px;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  position: relative;
+}
+
+.avatarImage {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  z-index: 0;
+  border-radius: 50%;
+  width: 160px;
+  max-width: 100%;
+  box-shadow: 0 4px 16px #00000014;
+}
+
+.userInfo {
+  z-index: 0;
+  color: #033;
+  text-align: center;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+}
+
+.userName {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0;
+}
+
+.userEmail {
+  opacity: 0.75;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.editButton {
+  z-index: 0;
+  background-color: #f68629;
+  border: none;
+  border-radius: 45px;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  display: flex;
+  position: absolute;
+  bottom: 88px;
+  right: 83px;
+  cursor: pointer;
+}
+
+.editIcon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 24px;
+}

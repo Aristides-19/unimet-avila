@@ -11,6 +11,7 @@ import Excursions from './pages/Excursions/ExcursionsPage';
 import Excursion from './pages/Excursions/Excursion/Excursion';
 import Reserve from './pages/Excursions/Reserve/Reserve';
 import Blog from './pages/Blog/Blog';
+import UserProfile from './pages/Profile/UserProfile.jsx';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 import Layout from './components/Layout.jsx';
 import { AuthenticatedRoute } from './context/AuthenticatedRoute.jsx';
@@ -25,6 +26,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/excursions' element={<Excursions />} />
         <Route path='/excursions/:excursionId' element={<Excursion />} />
+        <Route path='/forum' element={<UserProfile />} />
         <Route
           path='/excursions/:excursionId/reserve'
           element={
