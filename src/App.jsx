@@ -11,8 +11,11 @@ import Excursions from './pages/Excursions/ExcursionsPage';
 import Excursion from './pages/Excursions/Excursion/Excursion';
 import Reserve from './pages/Excursions/Reserve/Reserve';
 import Blog from './pages/Blog/Blog';
+import Foro from './pages/Foro/ForumLayout.jsx';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 import Layout from './components/Layout.jsx';
+import CreatePost from './pages/Foro/CreatePost.jsx';
+import PostDetails from './pages/Foro/PostDetails';
 import { AuthenticatedRoute } from './context/AuthenticatedRoute.jsx';
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
           }
         />
         <Route path='/blog' element={<Blog />} />
+        <Route path='/forum' element={<Foro />} />
+        <Route path='/post/:postId' element={<PostDetails />} />
+        <Route path='/CreatePost' element={<CreatePost />} />
         <Route path='*' element={<NotFound />} />
         <Route
           path='/register'

@@ -1,0 +1,32 @@
+.postListContainer {
+  flex: 1;
+}
+
+.searchContainer {
+  gap: 8px;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.searchInput {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  flex: 1;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.searchButton {
+  color: #fff;
+  cursor: pointer;
+  background-color: #0d4a3e;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+}
+
+.postList {
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+}
