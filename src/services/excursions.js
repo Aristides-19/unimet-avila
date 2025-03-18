@@ -12,6 +12,8 @@ import {
   where,
   Timestamp,
   getDoc,
+  updateDoc,
+  arrayUnion,
 } from 'firebase/firestore';
 
 /**
@@ -224,5 +226,24 @@ export const saveExcursion = async (excursionData) => {
   } catch (error) {
     console.error('Error saving/updating excursion ' + excursionIdOrPath + ': ', error);
     throw error;
+  }
+};
+
+/**
+ * Add student to enrolled students.
+ * @param userId user id
+ * @param excursionId excursion id
+ * @returns {Promise<void>}
+ */
+export const addStudentToExcursion = async (userId, excursionId) => {
+  try {
+    const userRef = doc(db, 'users', userId);
+    const excursionRef = doc(db, 'excursions', excursionId);
+    await updateDoc(excursionRef, {
+      enrolledStudents: arrayUnion(userRef),
+    });
+    console.log('User added successfully.');
+  } catch (error) {
+    console.error('Failed to add user to enrolled students: ', error);
   }
 };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUser, getUsersSize, saveUser } from '../services/users';
+import { getUser, getUsersSize, saveUser, addExcursionToHistory } from '../services/users';
 
 /**
  * Custom hook to fetch user by id. It rerenders when userId changes.
@@ -114,4 +114,29 @@ export const useSaveUser = () => {
   };
 
   return { saveUserData, user, loading, error };
+};
+
+/**
+ * Custom hook to add excursion to user's history.
+ * @returns {{addExcursionToUserHistory: function, loading: boolean, error: unknown}}
+ * An object containing a function to add excursion to history, loading state, and error.
+ */
+export const useAddExcursionToHistory = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const addExcursionToUserHistory = async (userId, excursionId) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      await addExcursionToHistory(userId, excursionId);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { addExcursionToUserHistory, loading, error };
 };

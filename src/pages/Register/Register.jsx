@@ -67,7 +67,7 @@ const Register = () => {
         <div className={styles.registerForm}>
           {/*Boton de regresae*/}
           <div className={styles.backButtonContainer}>
-            <BackButton />
+            <BackButton where='/home' />
           </div>
           <h2>Crear Cuenta</h2>
           {successMessage && <SuccessMessage message={successMessage} />}

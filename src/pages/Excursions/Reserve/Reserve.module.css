@@ -1,0 +1,44 @@
+.container {
+  box-sizing: border-box;
+  padding: 75px var(--margin);
+  width: 100%;
+  gap: 6%;
+  display: flex;
+  align-items: stretch;
+}
+
+.container .img {
+  border-radius: 30px;
+  height: 590px;
+  width: 30%;
+  object-fit: cover;
+}
+
+.container h1 {
+  margin: 0;
+}
+
+.container p {
+  margin: 0;
+}
+
+.container .grayText {
+  color: var(--gray-text);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.button {
+  gap: 10px;
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding: 30px var(--margin);
+  }
+}

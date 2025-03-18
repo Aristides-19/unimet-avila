@@ -49,7 +49,7 @@ function Login() {
         <div className={styles.loginForm}>
           {/* Botón de regresar*/}
           <div className={styles.backButtonContainer}>
-            <BackButton />
+            <BackButton where='/home' />
           </div>
           <h2>Iniciar sesión</h2>
           {successMessage && <SuccessMessage message={successMessage} />}

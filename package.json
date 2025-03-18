@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.8.2",
     "@supabase/supabase-js": "^2.49.1",
     "firebase": "^11.3.1",
     "leaflet": "^1.9.4",
