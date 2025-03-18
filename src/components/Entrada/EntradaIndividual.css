@@ -1,0 +1,34 @@
+.entrada-card {
+    border: #E0E0E0 solid 1px;
+    border-radius: 12px;
+    max-width: 400px;
+    padding: 16px;
+    padding-bottom: 22px;
+}
+
+.entrada-card .imagen-card-blog{
+    width: 100%;
+    height: 230px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+}
+
+.entrada-card .categoria{
+    color: #00AFA0;
+    width: fit-content;
+    padding: 4px 10px;
+    font-size: 16px;
+    margin: 0;
+}
+
+.entrada-card h2{
+    margin: 0;
+    font-size: 20px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+.entrada-card .fecha{
+    color: #828282;
+    font-size: 16px;
+}
