@@ -1,0 +1,1 @@
+Para mostrar la pagina del perfil del usuario importar el compenente UserProfile
