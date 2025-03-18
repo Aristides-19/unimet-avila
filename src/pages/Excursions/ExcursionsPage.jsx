@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Filters from './Filters';
 import ExcursionList from './ExcursionList';
-import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import styles from './ExcursionsPage.module.css';
+import { useExcursions, useExcursionsSize } from '../../hooks/useExcursions.js';
 
 const ExcursionsPage = () => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(null);
   const [selectedRating, setSelectedRating] = useState(null);
   const [duration, setDuration] = useState([1, 6]);
   const [price, setPrice] = useState([5, 100]);
@@ -22,11 +23,40 @@ const ExcursionsPage = () => {
     available: false,
   });
 
-  const navigate = useNavigate();
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('search') || '';
+  const [query, setQuery] = useState(searchQuery);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`?search=${encodeURIComponent(query)}`);
+    setSearchParams({ search: query });
+  };
+
+  const [isAscending, setIsAscending] = useState(false);
+  const {
+    excursions,
+    loadMore: loadMore,
+    hasMore: hasMore,
+  } = useExcursions(
+    4,
+    searchQuery,
+    isAscending,
+    date,
+    selectedRating,
+    duration,
+    price,
+    difficulty,
+    state
+  );
+  const [currentLength, setCurrentLength] = useState(0);
+  const { size } = useExcursionsSize();
+
+  useEffect(() => {
+    setCurrentLength(excursions.length);
+  }, [excursions]);
+
+  const toggleSortOrder = () => {
+    setIsAscending(!isAscending);
   };
 
   return (
@@ -51,7 +81,15 @@ const ExcursionsPage = () => {
           setState={setState}
         />
         <hr className={styles.separator} />
-        <ExcursionList />
+        <ExcursionList
+          excursions={excursions}
+          loadMore={loadMore}
+          toggleSortOrder={toggleSortOrder}
+          size={size}
+          currentLength={currentLength}
+          hasMore={hasMore}
+          isAscending={isAscending}
+        />
       </section>
     </div>
   );

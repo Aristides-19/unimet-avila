@@ -1,10 +1,20 @@
 import { db } from '../firebase';
-import { doc, getDoc, collection, getCountFromServer, setDoc, query, where } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  collection,
+  getCountFromServer,
+  setDoc,
+  query,
+  where,
+  updateDoc,
+  arrayUnion,
+} from 'firebase/firestore';
 
 /**
  * Fetch user by id.
  * @param userIdOrPath User ID or path to the document.
- * @returns {Promise<DocumentData>}
+ * @returns {Promise<{userId: string, email: any, name: any, bio: any, phone: any, genre: any, role: any, profilePicture: any, bannerPicture: any, excursionsHistory: (*|*[]), forumEntries: (*|*[]), likes: (*|*[])}>}
  * Resolved with a user object.
  */
 export const getUser = async (userIdOrPath) => {
@@ -17,7 +27,12 @@ export const getUser = async (userIdOrPath) => {
     const userDoc = await getDoc(userRef);
 
     if (userDoc.exists()) {
-      return userDoc.data();
+      const data = userDoc.data();
+
+      return {
+        userId: userDoc.id,
+        ...data,
+      };
     } else {
       console.log('Not found user by id: ', userIdOrPath);
       return null;
@@ -57,7 +72,7 @@ export const getUsersSize = async () => {
 /**
  * Save or edit a user.
  * @param userData User data object.
- * @returns {Promise<{email, name, bio, phone, genre, role, profilePicture, bannerPicture, excursionsHistory, forumEntries, likes}>}
+ * @returns {Promise<{email, name, bio, phone, genre, role, profilePicture, bannerPicture, excursionsHistory, forumEntries}>}
  * Resolved with a user objects.
  */
 export const saveUser = async (userData) => {
@@ -73,7 +88,6 @@ export const saveUser = async (userData) => {
     bannerPicture,
     excursionsHistory,
     forumEntries,
-    likes,
   } = userData;
 
   try {
@@ -93,7 +107,6 @@ export const saveUser = async (userData) => {
       bannerPicture,
       excursionsHistory,
       forumEntries,
-      likes,
     };
 
     // merge: true, if there is an update, it won't change the entire document, only the fields that are passed in the object
@@ -104,5 +117,24 @@ export const saveUser = async (userData) => {
   } catch (error) {
     console.error('Error saving/updating user ' + userIdOrPath + ' : ', error);
     throw error;
+  }
+};
+
+/**
+ * Add excursion to user's history.
+ * @param userId user id
+ * @param excursionId excursion id
+ * @returns {Promise<void>}
+ */
+export const addExcursionToHistory = async (userId, excursionId) => {
+  try {
+    const userRef = doc(db, 'users', userId);
+    const excursionRef = doc(db, 'excursions', excursionId);
+    await updateDoc(userRef, {
+      excursionsHistory: arrayUnion(excursionRef),
+    });
+    console.log('Excursion added successfully.');
+  } catch (error) {
+    console.error('Failed to add excursion to history: ', error);
   }
 };
