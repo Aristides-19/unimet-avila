@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { getExcursions, getExcursionsSize, saveExcursion } from '../services/excursions';
+import {
+  addStudentToExcursion,
+  getExcursionById,
+  getExcursions,
+  getExcursionsSize,
+  saveExcursion,
+} from '../services/excursions';
 
 /**
  * Custom hook to fetch excursions with pagination.
@@ -94,6 +100,34 @@ export const useExcursions = (
 };
 
 /**
+ * Custom hook to fetch excursion by ID.
+ * @param excursionId excursion ID
+ * @returns {{excursion: unknown, loading: boolean, error: unknown}}
+ */
+export const useExcursionById = (excursionId) => {
+  const [excursion, setExcursion] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchExcursion = async () => {
+      try {
+        const excursionData = await getExcursionById(excursionId);
+        setExcursion(excursionData);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchExcursion();
+  }, []);
+
+  return { excursion, loading, error };
+};
+
+/**
  * Custom hook to fetch excursion's collection size.
  * @returns {{size: number, loading: boolean, error: unknown}}
  * An object containing the excursion's collection size, loading state, and error.
@@ -181,4 +215,29 @@ export const useSaveExcursion = () => {
   };
 
   return { saveExcursionData, excursion, loading, error };
+};
+
+/**
+ * Custom hook to add student to enrolled students.
+ * @returns {{addStudentToExcursionData: function, loading: boolean, error: unknown}}
+ * An object containing a function to add student, loading state, and error.
+ */
+export const useAddStudentToExcursion = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const addStudentToExcursionData = async (userId, excursionId) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      await addStudentToExcursion(userId, excursionId);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { addStudentToExcursionData, loading, error };
 };

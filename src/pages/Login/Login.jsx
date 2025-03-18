@@ -33,7 +33,7 @@ function Login() {
     if (currentUser) {
       setSuccessMessage('Inicio de sesión exitoso. Redirigiendo...');
       setTimeout(() => {
-        navigate('/home');
+        navigate('/');
       }, 2000);
     }
   }, [currentUser]);
@@ -49,7 +49,7 @@ function Login() {
         <div className={styles.loginForm}>
           {/* Botón de regresar*/}
           <div className={styles.backButtonContainer}>
-            <BackButton />
+            <BackButton where='/' />
           </div>
           <h2>Iniciar sesión</h2>
           {successMessage && <SuccessMessage message={successMessage} />}

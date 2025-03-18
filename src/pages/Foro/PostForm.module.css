@@ -1,0 +1,137 @@
+/* Estilo principal del layout */
+.mainLayout {
+  background-color: #fff; /* Fondo blanco */
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+  display: flex;
+  flex-direction: column; /* Alinea en columna */
+  padding: 24px; /* Espaciado interno */
+  gap: 24px; /* Espaciado entre secciones */
+}
+
+/* Sección del formulario */
+.postSection {
+  background-color: #f9fafb;
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 24px; /* Espaciado interno */
+  display: flex;
+  flex-direction: column; /* Alinea en columna */
+  gap: 16px; /* Espaciado entre elementos */
+}
+
+/* Botón de retroceso */
+.backNav {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center; /* Alinea verticalmente */
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #033;
+  cursor: pointer;
+}
+
+.backIcon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Formulario */
+.postForm {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Input de título */
+.titleInput {
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.titleInput:focus {
+  border-color: #38a169; /* Verde cuando el input está activo */
+}
+
+/* Editor de Quill */
+.richTextEditor {
+  min-height: 200px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+  font-family: Inter, sans-serif;
+  background-color: #fff;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Acciones del formulario */
+.formActions {
+  display: flex;
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  gap: 16px; /* Espaciado entre botones */
+}
+
+/* Botón de enviar */
+.submitButton {
+  background-color: #38a169;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.submitButton:hover {
+  background-color: #2f855a; /* Verde oscuro al pasar el cursor */
+  transform: scale(1.05); /* Efecto de crecimiento */
+}
+
+.buttonIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 991px) {
+  .mainLayout {
+    padding: 16px;
+  }
+
+  .postSection {
+    padding: 16px;
+  }
+
+  .postForm {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .formActions {
+    flex-direction: column; /* Botones en columna para pantallas pequeñas */
+    align-items: stretch;
+  }
+
+  .submitButton {
+    width: 100%; /* Botón ocupa todo el ancho */
+  }
+}

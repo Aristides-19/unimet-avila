@@ -60,6 +60,24 @@
   flex-direction: row;
 }
 
+.profilePicture {
+  width: 42px;
+  height: 42px;
+  border-radius: 45px;
+  border: 2px solid var(--earth-sky);
+}
+
+.loggedContainer {
+  display: flex;
+  align-items: center;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 @media (max-width: 900px) {
   .navList {
     flex-direction: column;
@@ -104,5 +122,14 @@
 
   .hamburger {
     display: flex;
+  }
+
+  .profileLink {
+    gap: 90px;
+  }
+
+  .profilePicture {
+    width: 32px;
+    height: 32px;
   }
 }

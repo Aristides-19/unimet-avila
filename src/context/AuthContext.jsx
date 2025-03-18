@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { auth } from '../firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 // This context provides authentication state and user information to the rest of the app.
 const AuthContext = createContext({
@@ -18,6 +18,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const logout = () => signOut(auth);
 
   useEffect(() => {
     /* Subscribe to changes on firebase auth (login, logout, register)
@@ -35,6 +36,7 @@ export const AuthProvider = ({ children }) => {
   const value = {
     currentUser,
     loading,
+    logout,
   };
 
   // Context provider changes data whenever currentUser or loading changes according to the useEffect subscription

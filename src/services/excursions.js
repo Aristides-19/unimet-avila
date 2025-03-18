@@ -11,6 +11,9 @@ import {
   setDoc,
   where,
   Timestamp,
+  getDoc,
+  updateDoc,
+  arrayUnion,
 } from 'firebase/firestore';
 
 /**
@@ -121,6 +124,34 @@ export const getExcursions = async (
 };
 
 /**
+ * Fetch excursion by id
+ * @param excursionId excursion id
+ * @returns {Promise<null|{[p: string]: any, id, date: *}>}
+ */
+export const getExcursionById = async (excursionId) => {
+  try {
+    const excursionRef = doc(db, 'excursions', excursionId);
+    const excursionSnapshot = await getDoc(excursionRef);
+
+    if (excursionSnapshot.exists()) {
+      const data = excursionSnapshot.data();
+      const date = data.date.toDate();
+      return {
+        id: excursionId,
+        ...data,
+        date,
+      };
+    } else {
+      console.error('No such excursion!');
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching excursion: ', error);
+    throw error;
+  }
+};
+
+/**
  * Fetch excursion's collection size
  */
 export const getExcursionsSize = async () => {
@@ -195,5 +226,24 @@ export const saveExcursion = async (excursionData) => {
   } catch (error) {
     console.error('Error saving/updating excursion ' + excursionIdOrPath + ': ', error);
     throw error;
+  }
+};
+
+/**
+ * Add student to enrolled students.
+ * @param userId user id
+ * @param excursionId excursion id
+ * @returns {Promise<void>}
+ */
+export const addStudentToExcursion = async (userId, excursionId) => {
+  try {
+    const userRef = doc(db, 'users', userId);
+    const excursionRef = doc(db, 'excursions', excursionId);
+    await updateDoc(excursionRef, {
+      enrolledStudents: arrayUnion(userRef),
+    });
+    console.log('User added successfully.');
+  } catch (error) {
+    console.error('Failed to add user to enrolled students: ', error);
   }
 };
