@@ -12,11 +12,8 @@
   - `genre` (String): Género del usuario (`Masculino`, `Femenino`, `N/A`).
   - `role` (String): Rol del usuario (`Estudiante`, `Guía`, `admin`).
   - `profilePicture` (String): URL de la foto de perfil del usuario en Supabase (aplica a `Estudiante` y `Guía`).
-  - `bannerPicture` (String): URL de la foto de perfil del usuario en Supabase (aplica a `Estudiante` y `Guía`).
   - `excursionsHistory` (Array[Reference]): Lista de excursiones o reservas si es `Estudiante` del usuario distinguido
     por `createdAt`(referencias a `excursions`).
-  - `forumEntries` (Array[Reference]): Lista de preguntas/respuestas del usuario distinguidas por `type`(referencias
-    a `forumEntry`).
 
 #### 2. **Colección: `excursions`**
 

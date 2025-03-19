@@ -3,60 +3,73 @@ import styles from './PostForm.module.css';
 import BackButton from '../../components/BackButton/BackButton';
 import TextArea from '../../components/TextArea/TextArea';
 import { FiSend } from 'react-icons/fi';
+import Button from '../../components/Button/Button.jsx';
+import InputField from '../../components/InputField/InputField.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
+import { useCreateQuestion } from '../../hooks/useForum.js';
+import { useNavigate } from 'react-router-dom';
+import SuccessMessage from '../../components/SuccessMessage/SuccessMessage.jsx';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
 
 const PostForm = () => {
-  const [content, setContent] = useState(''); // Estado para el contenido del texto
+  const [content, setContent] = useState('');
+  const [title, setTitle] = useState('');
+  const { create, error: error } = useCreateQuestion();
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
+  const [success, setSuccess] = useState(false);
 
-  const handleContentChange = (e) => {
-    setContent(e.target.value); // Actualiza el estado con el valor del TextArea
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const postTitle = e.target.title.value;
-
-    // Simula el envío al backend o la generación de un ID de post
-    const newPost = {
-      id: Date.now(), // Genera un ID único basado en la marca de tiempo
-      title: postTitle,
-      content: content, // Contenido del textarea
-    };
-
-    console.log('Nuevo post creado:', newPost);
-    alert('¡Publicación creada con éxito!');
+    await create(currentUser?.uid, title, content);
+    if (!error) {
+      setSuccess(true);
+      setTitle('');
+      setContent('');
+      setTimeout(() => {
+        navigate(`/forum`);
+      }, 2000);
+    }
   };
 
   return (
     <main className={styles.mainLayout}>
       <div>
-        <BackButton text='Regresar' />
+        <BackButton text='Regresar' where='/forum' />
       </div>
 
-      <section className={styles.formSection}>
+      <section>
         <form className={styles.postForm} onSubmit={handleSubmit}>
-          {/* Input para el título del post */}
-          <input
+          <InputField
             type='text'
             name='title'
             placeholder='Escribe un título que llame la atención'
-            className={styles.titleInput}
+            required
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
-
-          {/* TextArea para el contenido del post */}
           <TextArea
             name='content'
             placeholder='Escribe el contenido aquí...'
             value={content}
-            onChange={handleContentChange}
+            onChange={(e) => setContent(e.target.value)}
             required
           />
-
-          {/* Botón de envío */}
           <div className={styles.formActions}>
-            <button type='submit' className={styles.submitButton}>
-              <FiSend />
-              <span>Subir</span>
-            </button>
+            {success && (
+              <SuccessMessage message='Pregunta Creada Exitosamente' />
+            )}
+            {error && <ErrorMessage message='Error al crear la pregunta' />}
+            {!success && (
+              <Button
+                color='var(--forest)'
+                backgroundColor='var(--earth-sky)'
+                text='Subir'
+                icon={<FiSend />}
+                type='submit'
+                className={styles.submitButton}
+              />
+            )}
           </div>
         </form>
       </section>

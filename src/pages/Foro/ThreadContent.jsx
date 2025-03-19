@@ -1,15 +1,24 @@
 import React from 'react';
 import CommentSection from './CommentSection';
-import PropTypes from 'prop-types';
 import styles from './ThreadContent.module.css';
 import BackButton from '../../components/BackButton/BackButton';
+import { useParams } from 'react-router-dom';
+import { useGetForumEntryById } from '../../hooks/useForum.js';
+import { useUser } from '../../hooks/useUsers.js';
+import { formatDistanceToNow } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 const ThreadContent = () => {
+  const { postId } = useParams();
+  const { entry } = useGetForumEntryById(postId);
+  const { user } = useUser(entry?.authorId.id);
+  if (!entry) return <></>;
+
   return (
     <section className={styles.content}>
       <div className={styles.backNav}>
         <div className={styles.backNav}>
-          <BackButton text='Regresar' />
+          <BackButton text='Regresar' where='/forum' />
         </div>
       </div>
 
@@ -17,48 +26,34 @@ const ThreadContent = () => {
         <div className={styles.mainPost}>
           <div className={styles.postHeader}>
             <img
-              src='https://placehold.co/40x40/4B5563/4B5563'
-              alt='User'
+              src={user?.profilePicture}
+              alt={user?.name}
               className={styles.userAvatar}
             />
             <div className={styles.postContent}>
               <div className={styles.postMeta}>
                 <div className={styles.userInfo}>
-                  <span className={styles.username}>@danielgiya</span>
+                  <span className={styles.username}>{user?.name}</span>
                   <span className={styles.timestamp}>
-                    12 Noviembre 2023 19:35
+                    {formatDistanceToNow(entry?.createdAt.toDate(), {
+                      addSuffix: true,
+                      locale: es,
+                    })}
                   </span>
                 </div>
                 <button className={styles.menuButton}>
                   <i className='ti ti-dots' />
                 </button>
               </div>
-              <h1 className={styles.postTitle}>Ruta Sur</h1>
-              <p className={styles.postText}>
-                ¡Hola a todos!
-                <br />
-                <br />
-                Quería contarles brevemente mi experiencia en la ruta sur del
-                Ávila. El sendero estaba lleno de sorpresas, y aunque encontré
-                algunos tramos complicados, la vista en la cima hizo que todo
-                valiera la pena.
-                <br />
-                <br />
-                ¿Alguien más ha recorrido esta ruta? Me gustaría saber si tienen
-                algún consejo para mejorar la experiencia.
-              </p>
+              <h1 className={styles.postTitle}>{entry?.title}</h1>
+              <p className={styles.postText}>{entry?.content}</p>
             </div>
           </div>
         </div>
-
         <CommentSection />
       </article>
     </section>
   );
-};
-
-ThreadContent.propTypes = {
-  postId: PropTypes.string.isRequired, // Validación del prop postId
 };
 
 export default ThreadContent;

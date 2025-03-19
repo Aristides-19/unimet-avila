@@ -1,37 +1,31 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ForumLayout.module.css';
-import Sidebar from './Sidebar';
 import PostList from './PostList';
 import Button from '../../components/Button/Button';
+import { MdArrowOutward } from 'react-icons/md';
 
 const ForumLayout = () => {
-  const navigate = useNavigate(); // Hook para manejar la navegación
+  const navigate = useNavigate();
 
-  // Redirigir al formulario de creación de post
   const handleCreatePost = () => {
-    navigate('/CreatePost');
+    navigate('/forum/create-post');
   };
   return (
     <div className={styles.layout}>
       <main className={styles.mainContent}>
         <div>
-          <Sidebar />
-        </div>
-
-        <PostList />
-
-        <div>
           <Button
             text='Crear Post'
-            color='#fff'
+            color='var(--forest)'
             onClick={handleCreatePost}
-            backgroundColor='#38a169'
-            hoverBackgroundColor='#2f855a'
-            borderRadius='6px'
+            backgroundColor='var(--earth-sky)'
+            borderRadius='60px'
             className={styles.createPostButton}
+            icon={<MdArrowOutward />}
           />
         </div>
+        <PostList />
       </main>
     </div>
   );
