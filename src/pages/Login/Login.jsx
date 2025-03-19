@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLoginUser, useLoginValidation } from '../../hooks/useAuth.js';
 
 import styles from './Login.module.css';
-import ResponsiveImage from './ResponsiveIMGlogin.jsx';
 import GoogleButton from '../../components/GoogleButton/GoogleButton';
 import Button from '../../components/Button/Button';
 import BackButton from '../../components/BackButton/BackButton';
@@ -97,9 +96,6 @@ function Login() {
               <GoogleButton onError={(message) => setErrorMessage(message)} />
             </div>
           </div>
-        </div>
-        <div>
-          <ResponsiveImage />
         </div>
       </div>
     </div>
