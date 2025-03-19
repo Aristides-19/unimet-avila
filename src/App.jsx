@@ -18,6 +18,7 @@ import Layout from './components/Layout.jsx';
 import CreatePost from './pages/Foro/CreatePost.jsx';
 import PostDetails from './pages/Foro/PostDetails';
 import { AuthenticatedRoute } from './context/AuthenticatedRoute.jsx';
+import ReviewForm from './pages/Excursions/Excursion/ReviewForm.jsx';
 
 function App() {
   return (
@@ -38,7 +39,11 @@ function App() {
         />
         <Route
           path='/excursions/:excursionId/comment'
-          element={<AuthenticatedRoute scope='Estudiante'></AuthenticatedRoute>}
+          element={
+            <AuthenticatedRoute scope='Estudiante'>
+              <ReviewForm />
+            </AuthenticatedRoute>
+          }
         />
         <Route path='/blog' element={<Blog />} />
         <Route path='/blog/:blogId' element={<BlogContent />} />

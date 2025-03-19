@@ -46,7 +46,6 @@
   - `studentId` (Reference): Referencia al estudiante que escribió la reseña (referencia a `users`).
   - `rating` (Number): Calificación de la excursión (1-5).
   - `comment` (String): Comentario del usuario sobre la excursión.
-  - `createdAt` (Timestamp): Fecha de creación de la reseña.
 
 #### 4. **Colección: `blogPosts`**
 
