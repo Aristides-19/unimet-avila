@@ -11,7 +11,7 @@ import Excursions from './pages/Excursions/ExcursionsPage';
 import Excursion from './pages/Excursions/Excursion/Excursion';
 import Reserve from './pages/Excursions/Reserve/Reserve';
 import Blog from './pages/Blog/Blog';
-import UserProfile from './pages/Profile/UserProfile.jsx'; /*Para mostrar la pagina de perfil de usuario*/
+import UserProfile from './pages/Profile/UserProfile.jsx';
 import BlogContent from './pages/Blog/BlogContent';
 import Foro from './pages/Foro/ForumLayout.jsx';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
