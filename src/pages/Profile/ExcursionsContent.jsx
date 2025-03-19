@@ -18,9 +18,6 @@ function ExcursionsContent() {
             Cuando reserves una excursión, aparecerá aquí para que puedas
             gestionarla.
           </p>
-          <button className={styles.browseButton}>
-            <div className={styles.buttonContent}>Explorar excursiones</div>
-          </button>
         </div>
       </div>
     </section>

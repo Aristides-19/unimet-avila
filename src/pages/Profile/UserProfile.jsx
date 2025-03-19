@@ -4,6 +4,7 @@ import ProfileTabs from './ProfileTabs';
 import AccountDetails from './AccountDetails';
 import ExcursionsContent from './ExcursionsContent';
 import EditProfile from './EditProfile';
+import ExcursionDashboard from './ExcursionDashboard';
 import styles from './UserProfile.module.css';
 import image from '../../assets/404-NotFound-Illustration.png';
 
@@ -60,7 +61,7 @@ function UserProfile() {
         />
       )}
 
-      {activeTab === 'excursions' && <ExcursionsContent />}
+      {activeTab === 'excursions' && <ExcursionDashboard />}
       {activeTab === 'edit' && <EditProfile />}
     </main>
   );
