@@ -55,6 +55,7 @@
   - `postId` (String): Identificador único del artículo.
   - `authorId` (Reference): Identificador del administrador que escribió el artículo (referencia a `users`).
   - `title` (String): Título del artículo.
+  - `image` (String): URL de la imagen destacada del artículo en Supabase.
   - `content` (String): Contenido del artículo.
   - `createdAt` (Timestamp): Fecha de creación del artículo.
   - `category` (String): Etiquetas relacionadas con el artículo (ej. `senderismo`, `conservación`).

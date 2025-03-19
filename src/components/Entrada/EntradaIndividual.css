@@ -3,6 +3,12 @@
   border-radius: 12px;
   max-width: 400px;
   padding: 16px 16px 22px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.entrada-card:hover {
+  transform: scale(1.02);
 }
 
 .entrada-card .imagen-card-blog {

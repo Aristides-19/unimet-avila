@@ -183,6 +183,7 @@ export const useSaveExcursion = () => {
     status,
     averageRating,
   }) => {
+    if (loading) return;
     setLoading(true);
     setError(null);
     setExcursion(null);

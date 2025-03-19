@@ -36,8 +36,12 @@ function App() {
             </AuthenticatedRoute>
           }
         />
+        <Route
+          path='/excursions/:excursionId/comment'
+          element={<AuthenticatedRoute scope='Estudiante'></AuthenticatedRoute>}
+        />
         <Route path='/blog' element={<Blog />} />
-        <Route path='/blog/:id' element={<BlogContent />} />
+        <Route path='/blog/:blogId' element={<BlogContent />} />
         <Route path='/forum' element={<Foro />} />
         <Route path='/forum/:postId' element={<PostDetails />} />
         <Route

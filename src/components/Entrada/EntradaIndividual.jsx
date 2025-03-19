@@ -2,39 +2,47 @@ import React from 'react';
 import './EntradaIndividual.css';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { formatDistanceToNow } from 'date-fns';
+import { es } from 'date-fns/locale';
 
-function EntradaIndividual({ id, title, category, image, date }) {
+function EntradaIndividual({ article }) {
   const navigate = useNavigate();
-  const linkCompleto = '/src/assets' + image;
+  const createdAt = formatDistanceToNow(article.createdAt.toDate(), {
+    addSuffix: true,
+    locale: es,
+  });
+  console.log(article);
   return (
     <div
       className='entrada-card'
       onClick={() => {
-        navigate('/blog/' + id.toString(), {
-          state: { id, title, category, image, date },
+        navigate(`/blog/${article.id}`, {
+          state: { ...article, createdAt: createdAt },
         });
       }}
     >
       <img
-        src={linkCompleto}
+        src={article.image}
         alt='Imagen de fondo'
         className='imagen-card-blog'
       />
       <div className='contenedor-entrada'>
-        <p className='categoria'>{category}</p>
-        <h2>{title}</h2>
-        <p className='fecha'>{date}</p>
+        <p className='categoria'>{article.category}</p>
+        <h2>{article.title}</h2>
+        <p className='fecha'>{createdAt}</p>
       </div>
     </div>
   );
 }
 
 EntradaIndividual.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  article: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+  }),
 };
 
 export default EntradaIndividual;
