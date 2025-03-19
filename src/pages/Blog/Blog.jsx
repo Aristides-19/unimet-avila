@@ -1,91 +1,105 @@
 import React from 'react';
-import './Blog.css'; // Asegúrate de que la ruta sea correcta
+import './Blog.css';
+import EntradaIndividual from '../../components/Entrada/EntradaIndividual';
+import Button from '../../components/Button/Button';
+
+import imagen_principal from '../../assets/blog/m-post-card-overlay.png';
 
 function Blog() {
-  // Falta importar la imagen de la montaña
-  // Donde dice Maria Alvarado hay que atraer el nombre del usuario
-  // Falta importar la imagen de la persona con la maleta
+  const blogPosts = [
+    {
+      id: 1,
+      category: 'Rutas',
+      title:
+        'Descubre las Rutas Secretas del Ávila: Guía para Aficionados al Senderismo',
+      date: '20 de Enero, 2025',
+      image: '/blog/rutas.jpg',
+      link: '/blog/rutas-secretas',
+    },
+    {
+      id: 2,
+      category: 'Testimonios',
+      title: 'Historias de Aventura: Experiencias Inolvidables en el Ávila',
+      date: '1 de Febrero, 2025',
+      image: '/blog/testimonios.jpg',
+      link: '/blog/historias-aventura',
+    },
+    {
+      id: 3,
+      category: 'Equipo',
+      title: 'El Equipo Esencial para Tus Aventuras en la Naturaleza',
+      date: '31 de Enero, 2025',
+      image: '/blog/equipo.png',
+      link: '/blog/equipo-esencial',
+    },
+    {
+      id: 4,
+      category: 'Consejos',
+      title: 'Tips para Conservar el Medio Ambiente Durante Tus Excursiones',
+      date: '15 de Enero, 2025',
+      image: '/blog/consejos.jpg',
+      link: '/blog/conservar-medio-ambiente',
+    },
+    {
+      id: 5,
+      category: 'Conservación',
+      title:
+        'Impacto Ambiental y Conservación: Cuidando Nuestro Parque Nacional',
+      date: '3 de Febrero, 2025',
+      image: '/blog/conservacion.png',
+      link: '/blog/impacto-ambiental',
+    },
+    {
+      id: 6,
+      category: 'Preparación',
+      title: 'Cómo Prepararte Físicamente para una Excursión en el Ávila',
+      date: '23 de Enero, 2025',
+      image: '/blog/preparacion.jpg',
+      link: '/blog/preparacion-excursion',
+    },
+  ];
 
   return (
-    <div className='contenedorpadre'>
-      <div className='contenedorhijo1'>
-        <h2 className='titulo'>
-          5 Consejos para una Excursión Segura en el Parque Nacional El Ávila
-        </h2>
-        <p className='parrafos'>Maria Alvarado 30 de enero, 2025</p>
-        <p className='parrafos'>
-          Explorar el Parque Nacional El Ávila es una experiencia única para los
-          amantes de la naturaleza y la aventura. Sin embargo, la seguridad debe
-          ser siempre una prioridad. En este artículo, te ofrecemos 5 consejos
-          esenciales para disfrutar de una excursión segura, sin sacrificar la
-          emoción de descubrir nuevos paisajes y rutas.
-        </p>
-
-        <div>
-          <h2 className='titulo'>
-            Consejo 1: Planifica tu Ruta y Conoce el Terreno
+    <div className='contenedorpadre-blog'>
+      <div className='entrada-principal'>
+        <img
+          src={imagen_principal}
+          alt='Imagen de fondo'
+          className='imagen-fondo'
+        />
+        <div className='contenedor-entrada'>
+          <p className='categoria'>Seguridad</p>
+          <h2>
+            5 Consejos para una Excursión Segura en el Parque Nacional El Ávila
           </h2>
-          <p className='parrafos'>
-            Antes de salir, investiga las rutas disponibles y elige aquella que
-            se adapte a tu nivel de experiencia. Consulta mapas, revisa
-            pronósticos meteorológicos y pregunta a expertos o a otros
-            excursionistas sobre las condiciones actuales del sendero.
-          </p>
+          <div className='datos'>
+            <p>María Alvarado</p>
+            <p>30 de Enero, 2025</p>
+          </div>
         </div>
-
-        <div>
-          <h2 className='titulo'>
-            Consejo 2: Informa a Alguien Sobre tu Itinerario
-          </h2>
-          <p className='parrafos'>
-            Nunca salgas a caminar solo sin avisar a alguien de confianza sobre
-            tu plan. Comparte la ruta, el horario estimado de regreso y, en lo
-            posible, mantén un dispositivo de comunicación (como un celular con
-            batería extra) para emergencias.
-          </p>
-        </div>
-
-        <div>
-          <h2 className='titulo'>Consejo 3: Equípate Adecuadamente</h2>
-          <p className='parrafos'>
-            Lleva ropa y calzado adecuados para el terreno, así como una mochila
-            con agua, alimentos energéticos, botiquín básico y protección contra
-            el sol y la lluvia. No olvides un mapa físico o una aplicación de
-            navegación offline, ya que la señal móvil puede ser inestable.
-          </p>
-        </div>
-
-        <div>
-          <h2 className='titulo'>
-            Consejo 4: Respeta tu Ritmo y el Medio Ambiente
-          </h2>
-          <p className='parrafos'>
-            Escucha a tu cuerpo y toma descansos cuando sea necesario. Recuerda
-            que el objetivo es disfrutar de la naturaleza de forma responsable.
-            No dejes basura y sigue las indicaciones de conservación para
-            preservar el ecosistema del Ávila.
-          </p>
-        </div>
-
-        <div>
-          <h2 className='titulo'>
-            Consejo 5: Conoce y Respeta las Normas del Parque
-          </h2>
-          <p className='parrafos'>
-            Infórmate sobre las regulaciones del parque, como las áreas
-            restringidas y las recomendaciones de seguridad. Estas normas están
-            diseñadas para proteger tanto a los visitantes como al medio
-            ambiente. Acatar estas pautas te permitirá tener una experiencia
-            segura y respetuosa.
-          </p>
-        </div>
-
-        <p className='comentario'>
-          “ Traveling can expose you to new environments and potential health
-          risks, so it&apos;s crucial to take precautions to stay safe and
-          healthy. ”
-        </p>
       </div>
+      <div className='entradas'>
+        {blogPosts.map((blogPost, index) => (
+          <EntradaIndividual
+            key={index}
+            id={blogPost.id}
+            title={blogPost.title}
+            category={blogPost.category}
+            image={blogPost.image}
+            date={blogPost.date}
+            link={blogPost.link}
+          />
+        ))}
+      </div>
+      <Button
+        text='Cargar más'
+        type='submit'
+        borderRadius='6px'
+        color='#828282'
+        backgroundColor='#fff'
+        onClick={() => {}}
+        className='boton-ver-mas'
+      />
     </div>
   );
 }
