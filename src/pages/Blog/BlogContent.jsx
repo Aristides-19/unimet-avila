@@ -4,7 +4,7 @@ import './Blog.css';
 
 function BlogContent() {
   const location = useLocation();
-  const { title, category, image, date, link } = location.state || {};
+  const { title, category, image, date } = location.state || {};
 
   const linkCompleto = '/src/assets' + image;
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import './EntradaIndividual.css';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import imagen_principal from '../../assets/blog/m-post-card-overlay.png';
-
-function EntradaIndividual({ id, title, category, image, date, link }) {
+function EntradaIndividual({ id, title, category, image, date }) {
   const navigate = useNavigate();
   const linkCompleto = '/src/assets' + image;
   return (
@@ -12,7 +11,7 @@ function EntradaIndividual({ id, title, category, image, date, link }) {
       className='entrada-card'
       onClick={() => {
         navigate('/blog/' + id.toString(), {
-          state: { id, title, category, image, date, link },
+          state: { id, title, category, image, date },
         });
       }}
     >
@@ -29,5 +28,13 @@ function EntradaIndividual({ id, title, category, image, date, link }) {
     </div>
   );
 }
+
+EntradaIndividual.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+};
 
 export default EntradaIndividual;
