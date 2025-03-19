@@ -23,7 +23,7 @@ function ProfileTabs({ tabs, activeTab, onTabChange }) {
       <div
         className={styles.activeIndicator}
         style={{
-          left: activeTab === 'account' ? '0' : '50%',
+          left: activeTab === 'account' ? '0' : '33%',
           width: activeTab === 'account' ? '280px' : '280px',
         }}
       />

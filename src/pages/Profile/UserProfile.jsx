@@ -3,6 +3,7 @@ import ProfileHeader from './ProfileHeader';
 import ProfileTabs from './ProfileTabs';
 import AccountDetails from './AccountDetails';
 import ExcursionsContent from './ExcursionsContent';
+import EditProfile from './EditProfile';
 import styles from './UserProfile.module.css';
 import image from '../../assets/404-NotFound-Illustration.png';
 
@@ -20,10 +21,12 @@ function UserProfile() {
         name='Daniel Alvarez'
         email='daniel.alvarez@correo.unimet.edu.ve'
       />
+
       <ProfileTabs
         tabs={[
           { id: 'account', label: 'Mi Cuenta' },
           { id: 'excursions', label: 'Mis excursiones' },
+          { id: 'edit', label: 'Editar Perfil' },
         ]}
         activeTab={activeTab}
         onTabChange={handleTabChange}
@@ -58,6 +61,7 @@ function UserProfile() {
       )}
 
       {activeTab === 'excursions' && <ExcursionsContent />}
+      {activeTab === 'edit' && <EditProfile />}
     </main>
   );
 }
