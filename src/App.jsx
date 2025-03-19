@@ -10,7 +10,7 @@ import Login from './pages/LogIn/Login';
 import Excursions from './pages/Excursions/ExcursionsPage';
 import Excursion from './pages/Excursions/Excursion/Excursion';
 import Reserve from './pages/Excursions/Reserve/Reserve';
-import Blog from './pages/Blog/BlogArticle';
+import Blog from './pages/Blog/Blog';
 import BlogContent from './pages/Blog/BlogContent';
 import Foro from './pages/Foro/ForumLayout.jsx';
 import AdminStudents from './pages/Admin/AdminStudents';
