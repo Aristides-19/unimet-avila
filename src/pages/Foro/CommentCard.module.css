@@ -1,0 +1,45 @@
+.comment {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.commentHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.commentContent {
+  flex: 1;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.username {
+  color: #111827;
+  font-size: var(--step--1);
+  font-weight: 500;
+}
+
+.timestamp {
+  color: #6b7280;
+  font-size: var(--step--2);
+}
+
+.text {
+  color: #4b5563;
+  font-size: var(--step--1);
+  margin-top: 8px;
+}

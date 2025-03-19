@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLoginUser, useLoginValidation } from '../../hooks/useAuth.js';
 
 import styles from './Login.module.css';
-import ResponsiveImage from './ResponsiveIMGlogin.jsx';
 import GoogleButton from '../../components/GoogleButton/GoogleButton';
 import Button from '../../components/Button/Button';
 import BackButton from '../../components/BackButton/BackButton';
@@ -33,7 +32,7 @@ function Login() {
     if (currentUser) {
       setSuccessMessage('Inicio de sesión exitoso. Redirigiendo...');
       setTimeout(() => {
-        navigate('/home');
+        navigate('/');
       }, 2000);
     }
   }, [currentUser]);
@@ -49,7 +48,7 @@ function Login() {
         <div className={styles.loginForm}>
           {/* Botón de regresar*/}
           <div className={styles.backButtonContainer}>
-            <BackButton where='/home' />
+            <BackButton where='/' />
           </div>
           <h2>Iniciar sesión</h2>
           {successMessage && <SuccessMessage message={successMessage} />}
@@ -97,9 +96,6 @@ function Login() {
               <GoogleButton onError={(message) => setErrorMessage(message)} />
             </div>
           </div>
-        </div>
-        <div>
-          <ResponsiveImage />
         </div>
       </div>
     </div>

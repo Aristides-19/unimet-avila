@@ -31,10 +31,9 @@ function Testimonial({ testimonials }) {
           <TestimonialCard
             key={index}
             name={testimonial.name}
-            title={testimonial.title}
-            review={testimonial.review}
+            comment={testimonial.review}
             image={testimonial.image}
-            stars={testimonial.stars}
+            rating={testimonial.stars}
           />
         ))}
       </div>
@@ -70,10 +69,9 @@ Testimonial.propTypes = {
   testimonials: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      review: PropTypes.string.isRequired,
+      comment: PropTypes.string.isRequired,
       image: PropTypes.object.isRequired,
-      stars: PropTypes.number.isRequired,
+      rating: PropTypes.number.isRequired,
     })
   ).isRequired,
 };

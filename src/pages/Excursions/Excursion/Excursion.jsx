@@ -187,12 +187,14 @@ const Excursion = () => {
           <div className={styles.reviews}>
             <div className={styles.title}>
               <h2>Reseñas</h2>
-              <Button
-                color='var(--forest)'
-                backgroundColor='var(--earth-sky)'
-                icon={<MdInsertComment />}
-              />
-              {/* Botón de Comentar Review */}
+              {user && userData?.role === 'Estudiante' && (
+                <Button
+                  color='var(--forest)'
+                  backgroundColor='var(--earth-sky)'
+                  icon={<MdInsertComment />}
+                  onClick={() => navigate(`/excursions/${excursionId}/comment`)}
+                />
+              )}
             </div>
             <div className={styles.title}>
               <h3>

@@ -12,11 +12,8 @@
   - `genre` (String): Género del usuario (`Masculino`, `Femenino`, `N/A`).
   - `role` (String): Rol del usuario (`Estudiante`, `Guía`, `admin`).
   - `profilePicture` (String): URL de la foto de perfil del usuario en Supabase (aplica a `Estudiante` y `Guía`).
-  - `bannerPicture` (String): URL de la foto de perfil del usuario en Supabase (aplica a `Estudiante` y `Guía`).
   - `excursionsHistory` (Array[Reference]): Lista de excursiones o reservas si es `Estudiante` del usuario distinguido
     por `createdAt`(referencias a `excursions`).
-  - `forumEntries` (Array[Reference]): Lista de preguntas/respuestas del usuario distinguidas por `type`(referencias
-    a `forumEntry`).
 
 #### 2. **Colección: `excursions`**
 
@@ -49,7 +46,6 @@
   - `studentId` (Reference): Referencia al estudiante que escribió la reseña (referencia a `users`).
   - `rating` (Number): Calificación de la excursión (1-5).
   - `comment` (String): Comentario del usuario sobre la excursión.
-  - `createdAt` (Timestamp): Fecha de creación de la reseña.
 
 #### 4. **Colección: `blogPosts`**
 
@@ -58,6 +54,7 @@
   - `postId` (String): Identificador único del artículo.
   - `authorId` (Reference): Identificador del administrador que escribió el artículo (referencia a `users`).
   - `title` (String): Título del artículo.
+  - `image` (String): URL de la imagen destacada del artículo en Supabase.
   - `content` (String): Contenido del artículo.
   - `createdAt` (Timestamp): Fecha de creación del artículo.
   - `category` (String): Etiquetas relacionadas con el artículo (ej. `senderismo`, `conservación`).

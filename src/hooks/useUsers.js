@@ -74,19 +74,8 @@ export const useSaveUser = () => {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
-  const saveUserData = async ({
-    userId,
-    email,
-    name,
-    bio,
-    phone,
-    genre,
-    role,
-    profilePicture,
-    bannerPicture,
-    excursionsHistory,
-    forumEntries,
-  }) => {
+  const saveUserData = async ({ userId, email, name, bio, phone, genre, role, profilePicture, excursionsHistory }) => {
+    if (loading) return;
     setLoading(true);
     setError(null);
     setUser(null);
@@ -101,9 +90,7 @@ export const useSaveUser = () => {
         genre,
         role,
         profilePicture,
-        bannerPicture,
         excursionsHistory,
-        forumEntries,
       });
       setUser(savedUser);
     } catch (err) {
