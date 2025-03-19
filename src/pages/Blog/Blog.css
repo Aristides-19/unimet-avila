@@ -18,11 +18,7 @@
   /* Añadir estilos específicos si es necesario */
 }
 
-
-
 /* Pagina General del blog */
-
-
 
 .entrada-principal {
   position: relative;
@@ -57,8 +53,9 @@
   padding: 40px;
 }
 
-.entrada-principal .contenedor-entrada .categoria,  .ContenidoBlog .categoria{
-  background-color: #00AFA0;
+.entrada-principal .contenedor-entrada .categoria,
+.ContenidoBlog .categoria {
+  background-color: #00afa0;
   color: white;
   width: fit-content;
   padding: 4px 10px;
@@ -66,21 +63,21 @@
   font-size: 16px;
   margin: 0;
 }
-.entrada-principal .contenedor-entrada h2{
+.entrada-principal .contenedor-entrada h2 {
   margin-top: 16px;
   margin-bottom: 24px;
   width: 80%;
 }
-.entrada-principal .contenedor-entrada .datos{
+.entrada-principal .contenedor-entrada .datos {
   display: flex;
   gap: 20px;
   font-size: 16px;
 }
-.entrada-principal .contenedor-entrada .datos p{
+.entrada-principal .contenedor-entrada .datos p {
   margin: 0;
 }
 
-.entradas{
+.entradas {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -88,13 +85,13 @@
   margin-bottom: 30px;
 }
 
-.boton-ver-mas{
+.boton-ver-mas {
   margin: auto;
-  border: rgba(105, 106, 117, 0.30) solid 1px;
+  border: rgba(105, 106, 117, 0.3) solid 1px;
   margin-bottom: 30px;
 }
 
-.ContenidoBlog{
+.ContenidoBlog {
   padding: 140px;
   padding-top: 50px;
 }
@@ -103,14 +100,14 @@
   width: 75%;
 }
 
-.ContenidoBlog .imagen-contenido{
+.ContenidoBlog .imagen-contenido {
   width: 100%;
   height: 400px;
   object-fit: cover;
   border-radius: 6px;
 }
 
-.ContenidoBlog .datos{
+.ContenidoBlog .datos {
   display: flex;
   gap: 30px;
   font-size: 16px;

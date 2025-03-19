@@ -6,7 +6,6 @@ import Button from '../../components/Button/Button';
 import imagen_principal from '../../assets/blog/m-post-card-overlay.png';
 
 function Blog() {
-
   const blogPosts = [
     {
       id: 1,
@@ -44,7 +43,8 @@ function Blog() {
     {
       id: 5,
       category: 'Conservación',
-      title: 'Impacto Ambiental y Conservación: Cuidando Nuestro Parque Nacional',
+      title:
+        'Impacto Ambiental y Conservación: Cuidando Nuestro Parque Nacional',
       date: '3 de Febrero, 2025',
       image: '/blog/conservacion.png',
       link: '/blog/impacto-ambiental',
@@ -58,33 +58,38 @@ function Blog() {
       link: '/blog/preparacion-excursion',
     },
   ];
-  
 
   return (
     <div className='contenedorpadre-blog'>
       <div className='entrada-principal'>
-        <img src={imagen_principal} alt="Imagen de fondo" className="imagen-fondo"/>
+        <img
+          src={imagen_principal}
+          alt='Imagen de fondo'
+          className='imagen-fondo'
+        />
         <div className='contenedor-entrada'>
-          <p className="categoria">Seguridad</p>
-          <h2>5 Consejos para una Excursión Segura en el Parque Nacional El Ávila</h2>
-          <div className="datos">
+          <p className='categoria'>Seguridad</p>
+          <h2>
+            5 Consejos para una Excursión Segura en el Parque Nacional El Ávila
+          </h2>
+          <div className='datos'>
             <p>María Alvarado</p>
             <p>30 de Enero, 2025</p>
           </div>
         </div>
       </div>
-      <div className="entradas">
+      <div className='entradas'>
         {blogPosts.map((blogPost, index) => (
-            <EntradaIndividual 
-              key={index}
-              id={blogPost.id}
-              title={blogPost.title}
-              category={blogPost.category}
-              image={blogPost.image}
-              date={blogPost.date}
-              link={blogPost.link}
-            />
-          ))}
+          <EntradaIndividual
+            key={index}
+            id={blogPost.id}
+            title={blogPost.title}
+            category={blogPost.category}
+            image={blogPost.image}
+            date={blogPost.date}
+            link={blogPost.link}
+          />
+        ))}
       </div>
       <Button
         text='Cargar más'
