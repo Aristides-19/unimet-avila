@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styles from './ProfileTabs.module.css';
 import PropTypes from 'prop-types';
 
 function ProfileTabs({ tabs, activeTab, onTabChange }) {
+  const activeIndex = tabs.findIndex((tab) => tab.id === activeTab);
+  const tabWidth = 100 / tabs.length;
+
   return (
-    <nav className={styles.tabsContainer}>
+    <nav className={styles.tabsContainer} role='tablist'>
       {tabs.map((tab, index) => (
-        <React.Fragment key={tab.id}>
+        <Fragment key={tab.id}>
           <button
             type='button'
             className={styles.tabItem}
@@ -18,21 +21,27 @@ function ProfileTabs({ tabs, activeTab, onTabChange }) {
             {tab.label}
           </button>
           {index < tabs.length - 1 && <div className={styles.tabDivider} />}
-        </React.Fragment>
+        </Fragment>
       ))}
       <div
         className={styles.activeIndicator}
         style={{
-          left: activeTab === 'account' ? '0' : '33%',
-          width: activeTab === 'account' ? '280px' : '280px',
+          left: `${activeIndex * tabWidth}%`,
+          width: `calc(${tabWidth}% - 1%)`,
         }}
       />
     </nav>
   );
 }
+
 ProfileTabs.propTypes = {
-  tabs: PropTypes.isRequired,
-  activeTab: PropTypes.isRequired,
-  onTabChange: PropTypes.isRequired,
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  activeTab: PropTypes.string.isRequired,
+  onTabChange: PropTypes.func.isRequired,
 };
 export default ProfileTabs;

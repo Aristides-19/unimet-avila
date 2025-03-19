@@ -77,23 +77,25 @@ export const getUsersSize = async () => {
  */
 export const saveUser = async (userData) => {
   const { userIdOrPath, email, name, bio, phone, genre, role, profilePicture, excursionsHistory } = userData;
-
   try {
     const userRef =
       userIdOrPath.startsWith('users') || userIdOrPath.startsWith('/users')
         ? doc(db, userIdOrPath)
         : doc(db, 'users', userIdOrPath);
 
-    const user = {
-      email,
-      name,
-      bio,
-      phone,
-      genre,
-      role,
-      profilePicture,
-      excursionsHistory,
-    };
+    const user = Object.fromEntries(
+      Object.entries({
+        email,
+        name,
+        bio,
+        phone,
+        genre,
+        role,
+        profilePicture,
+        excursionsHistory,
+        // eslint-disable-next-line no-unused-vars
+      }).filter(([_, value]) => value !== undefined)
+    );
 
     // merge: true, if there is an update, it won't change the entire document, only the fields that are passed in the object
     await setDoc(userRef, user, { merge: true });

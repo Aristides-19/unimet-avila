@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from './ExcursionsContent.module.css';
-import image from '../../assets/404-NotFound-Illustration.png';
 
 function ExcursionsContent() {
   return (
     <section className={styles.excursionsContainer}>
       <h2 className={styles.sectionTitle}>Mis excursiones</h2>
       <div className={styles.excursionsContent}>
-        <div className={styles.emptyState}>
+        {/*<div className={styles.emptyState}>
           <img
             src={image}
             alt='No excursions'
@@ -18,7 +17,7 @@ function ExcursionsContent() {
             Cuando reserves una excursión, aparecerá aquí para que puedas
             gestionarla.
           </p>
-        </div>
+        </div>*/}
       </div>
     </section>
   );

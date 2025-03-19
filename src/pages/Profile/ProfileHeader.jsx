@@ -3,31 +3,28 @@ import styles from './ProfileHeader.module.css';
 import { MdEdit } from 'react-icons/md';
 import PropTypes from 'prop-types';
 
-function ProfileHeader({ avatarUrl, name, email }) {
+function ProfileHeader({ image, name, email }) {
   return (
     <section className={styles.headerContainer}>
       <div className={styles.profileWrapper}>
         <div className={styles.avatarContainer}>
-          <img
-            src={avatarUrl}
-            alt={`${name}'s profile picture`}
-            className={styles.avatarImage}
-          />
+          <img src={image} alt={name} className={styles.avatarImage} />
           <div className={styles.userInfo}>
             <h1 className={styles.userName}>{name}</h1>
             <p className={styles.userEmail}>{email}</p>
           </div>
-          <button className={styles.editButton} aria-label='Edit profile'>
-            <MdEdit className={styles.editIcon} />
+          <button className={styles.editButton} aria-label='Edit image'>
+            <MdEdit /> {/* Editar Imagen */}
           </button>
         </div>
       </div>
     </section>
   );
 }
+
 ProfileHeader.propTypes = {
-  avatarUrl: PropTypes.isRequired,
-  name: PropTypes.isRequired,
-  email: PropTypes.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };
 export default ProfileHeader;

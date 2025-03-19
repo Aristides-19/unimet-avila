@@ -82,7 +82,7 @@ export const useSaveUser = () => {
 
     try {
       const savedUser = await saveUser({
-        userId,
+        userIdOrPath: userId,
         email,
         name,
         bio,
