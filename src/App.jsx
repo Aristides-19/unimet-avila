@@ -10,7 +10,8 @@ import Login from './pages/LogIn/Login';
 import Excursions from './pages/Excursions/ExcursionsPage';
 import Excursion from './pages/Excursions/Excursion/Excursion';
 import Reserve from './pages/Excursions/Reserve/Reserve';
-import Blog from './pages/Blog/Blog';
+import Blog from './pages/Blog/BlogArticle';
+import AdminStudents from './pages/Admin/AdminStudents';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 import Layout from './components/Layout.jsx';
 import { AuthenticatedRoute } from './context/AuthenticatedRoute.jsx';
@@ -20,6 +21,7 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path='/' element={<Home />} />
+        <Route path='/adminStudents' element={<AdminStudents />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/excursions' element={<Excursions />} />

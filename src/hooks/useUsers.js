@@ -34,6 +34,37 @@ export const useUser = (userId) => {
   return { user, loading, error };
 };
 
+import { getUsersByRole } from '../services/users';
+
+/**
+ * Custom hook to fetch users by role.
+ * @param role Role to filter by ('Estudiante' or 'Guía').
+ * @returns {{users: Array, loading: boolean, error: unknown}}
+ * An object containing users, loading state, and error.
+ */
+export const useUsersByRole = (role) => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const usersData = await getUsersByRole(role);
+        setUsers(usersData);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, [role]);
+
+  return { users, loading, error };
+};
+
 /**
  * Custom hook to fetch user's collection size per type.
  * @returns {{studentsSize: number, guidesSize: number, loading: boolean, error: unknown}}
