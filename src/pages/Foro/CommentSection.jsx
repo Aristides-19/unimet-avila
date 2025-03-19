@@ -1,45 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CommentCard from './CommentCard';
 import styles from './CommentSection.module.css';
+import Button from '../../components/Button/Button.jsx';
+import InputField from '../../components/InputField/InputField.jsx';
+import { useParams } from 'react-router-dom';
+import {
+  useCreateAnswer,
+  useGetAnswersByQuestionId,
+} from '../../hooks/useForum.js';
+import { formatDistanceToNow } from 'date-fns';
+import { es } from 'date-fns/locale';
+import { useAuth } from '../../context/AuthContext.jsx';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
 
 const CommentSection = () => {
+  const { postId } = useParams();
+  const [refresh, setRefresh] = useState(false);
+  const { answers } = useGetAnswersByQuestionId(postId, refresh);
+  const { create, error: error } = useCreateAnswer();
+  const [answer, setAnswer] = useState('');
+  const { currentUser } = useAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await create(currentUser?.uid, answer, postId);
+    setAnswer('');
+    setRefresh((prev) => !prev);
+  };
+
   return (
     <section className={styles.comments}>
       <h2 className={styles.title}>Respuestas</h2>
-
-      <div className={styles.inputSection}>
-        <div className={styles.inputContainer}>
-          <input
-            type='text'
-            placeholder='Escribe aquí tu respuesta'
-            className={styles.input}
-          />
-          <div className={styles.buttonGroup}>
-            <button className={styles.cancelButton}>Cancelar</button>
-            <button className={styles.submitButton}>Publicar</button>
-          </div>
+      {currentUser && (
+        <div className={styles.inputSection}>
+          <form className={styles.inputContainer} onSubmit={handleSubmit}>
+            <InputField
+              type='text'
+              name='answer'
+              placeholder='Escribe aquí tu respuesta'
+              required
+              className={styles.input}
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+            />
+            <div className={styles.buttonGroup}>
+              <Button
+                color='var(--sunlight)'
+                backgroundColor='var(--forest)'
+                text='Publicar'
+                type='submit'
+              />
+            </div>
+          </form>
         </div>
-      </div>
+      )}
 
       <div className={styles.commentList}>
-        <CommentCard
-          username='@parkind'
-          timestamp='12 Noviembre 2023 19:35'
-          content='Gracias por compartir tu experiencia. Yo también recorrí la ruta sur y te recomiendo llevar una chaqueta impermeable, ya que el clima puede cambiar rápidamente. ¡Espero que sigas disfrutando de nuevas aventuras!'
-          likes={12}
-        />
-        <CommentCard
-          username='@morgenstern'
-          timestamp='12 Noviembre 2023 19:53'
-          content='Me alegra ver que otros disfrutan de esta ruta. Una sugerencia es utilizar bastones de trekking, que ayudan a mantener el equilibrio en terrenos irregulares. ¡Sigue compartiendo tus experiencias!'
-          likes={256}
-        />
-        <CommentCard
-          username='@kzaru'
-          timestamp='12 Noviembre 2023 18:25'
-          content='Excelente resumen. Mi consejo es empezar temprano para evitar las horas de más calor y aprovechar la luz del día. Además, siempre revisar el pronóstico del tiempo antes de salir.'
-          likes={1}
-        />
+        {error && <ErrorMessage message='Error al crear la respuesta' />}
+        {answers.map((post) => {
+          return (
+            <CommentCard
+              key={post.id}
+              answer={{
+                ...post,
+                createdAt: formatDistanceToNow(post.createdAt.toDate(), {
+                  addSuffix: true,
+                  locale: es,
+                }),
+              }}
+            />
+          );
+        })}
       </div>
     </section>
   );

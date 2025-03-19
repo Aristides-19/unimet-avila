@@ -39,8 +39,15 @@ function App() {
         <Route path='/blog' element={<Blog />} />
         <Route path='/blog/:id' element={<BlogContent />} />
         <Route path='/forum' element={<Foro />} />
-        <Route path='/post/:postId' element={<PostDetails />} />
-        <Route path='/CreatePost' element={<CreatePost />} />
+        <Route path='/forum/:postId' element={<PostDetails />} />
+        <Route
+          path='/forum/create-post'
+          element={
+            <AuthenticatedRoute scope='users'>
+              <CreatePost />
+            </AuthenticatedRoute>
+          }
+        />
         <Route path='*' element={<NotFound />} />
         <Route
           path='/register'

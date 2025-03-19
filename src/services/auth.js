@@ -32,9 +32,7 @@ const generateUserData = (user, data = {}) => ({
   phone: data.phone || '',
   role: 'Estudiante',
   profilePicture: user.photoURL || '',
-  bannerPicture: '',
   excursionsHistory: [],
-  forumEntries: [],
 });
 
 /**

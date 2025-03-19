@@ -76,19 +76,7 @@ export const getUsersSize = async () => {
  * Resolved with a user objects.
  */
 export const saveUser = async (userData) => {
-  const {
-    userIdOrPath,
-    email,
-    name,
-    bio,
-    phone,
-    genre,
-    role,
-    profilePicture,
-    bannerPicture,
-    excursionsHistory,
-    forumEntries,
-  } = userData;
+  const { userIdOrPath, email, name, bio, phone, genre, role, profilePicture, excursionsHistory } = userData;
 
   try {
     const userRef =
@@ -104,9 +92,7 @@ export const saveUser = async (userData) => {
       genre,
       role,
       profilePicture,
-      bannerPicture,
       excursionsHistory,
-      forumEntries,
     };
 
     // merge: true, if there is an update, it won't change the entire document, only the fields that are passed in the object
