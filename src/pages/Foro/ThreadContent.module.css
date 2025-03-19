@@ -1,0 +1,85 @@
+.content {
+  background-color: #f9fafb;
+  flex: 1;
+  padding: 24px;
+}
+
+.backNav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.mainPost {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.postHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.postContent {
+  flex: 1;
+}
+
+.postMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.username {
+  color: #111827;
+  font-size: var(--step--1);
+  font-weight: 500;
+}
+
+.timestamp {
+  color: #6b7280;
+  font-size: var(--step--2);
+}
+
+.menuButton {
+  color: #6b7280;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.postTitle {
+  color: #111827;
+  font-size: var(--step-0);
+  margin-top: 8px;
+}
+
+.postText {
+  color: #4b5563;
+  font-size: var(--step--1);
+  margin-top: 16px;
+}

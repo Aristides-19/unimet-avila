@@ -5,17 +5,15 @@ import { Rating } from 'react-simple-star-rating';
 import { FaQuoteLeft } from 'react-icons/fa';
 import styles from './TestimonialCard.module.css';
 
-function TestimonialCard({ name, title, review, image, stars }) {
-  title = title.length > 33 ? title.slice(0, 33) + '...' : title;
-  review = review.length > 165 ? review.slice(0, 165) + '...' : review;
+function TestimonialCard({ name, comment, image, rating }) {
+  comment = comment.length > 165 ? comment.slice(0, 165) + '...' : comment;
 
   return (
     <Card padding={'20px'} gap={'0'} additionalStyles={styles.card}>
       <FaQuoteLeft className={styles.icon} size={28} />
-      <h3 className={styles.title}>{title}</h3>
-      <p className={styles.review}>{review}</p>
+      <p className={styles.review}>{comment}</p>
       <Rating
-        initialValue={stars}
+        initialValue={rating}
         readonly={true}
         size={20}
         fillColor={'var(--unimet)'}
@@ -30,10 +28,9 @@ function TestimonialCard({ name, title, review, image, stars }) {
 
 TestimonialCard.propTypes = {
   name: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  review: PropTypes.string.isRequired,
+  comment: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  stars: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
 };
 
 export default TestimonialCard;

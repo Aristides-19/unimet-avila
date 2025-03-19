@@ -1,22 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Contact.module.css';
 import Button from '../../components/Button/Button';
 import InputField from '../../components/InputField/InputField';
 import TextArea from '../../components/TextArea/TextArea';
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
 import { MdLocationCity } from 'react-icons/md';
 import { MdAddIcCall } from 'react-icons/md';
 import { TbMailFilled } from 'react-icons/tb';
+import { useAuth } from '../../context/AuthContext.jsx';
+import { useUser } from '../../hooks/useUsers.js';
+import { useSendEmail } from '../../hooks/useEmail.js';
+import SuccessMessage from '../../components/SuccessMessage/SuccessMessage.jsx';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
 
 function Contact() {
+  const { currentUser } = useAuth();
+  const { user } = useUser(currentUser?.uid);
   const [formData, setFormData] = useState({
     nombre: '',
-    apellido: '',
     email: '',
-    telefono: '',
     mensaje: '',
   });
+  const { sendEmail, error: error } = useSendEmail();
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (currentUser) {
+      setFormData((prevData) => ({
+        ...prevData,
+        nombre: user?.name || '',
+        email: user?.email || '',
+      }));
+    }
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,15 +43,19 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = { uid: 'example-uid' };
-    await setDoc(doc(db, 'mensajes usuarios', user.uid), {
-      nombre: formData.nombre,
-      apellido: formData.apellido,
-      correo: formData.email,
-      telefono: formData.telefono,
-      mensaje: formData.mensaje,
-      uid: user.uid,
-    });
+    await sendEmail(
+      ['unimetavila@gmail.com'],
+      `Contacto de ${formData.nombre}`,
+      `${formData.email} dice: ${formData.mensaje}`
+    );
+    if (!error) {
+      setSuccess(true);
+      setFormData({
+        nombre: '',
+        email: '',
+        mensaje: '',
+      });
+    }
   };
 
   return (
@@ -68,11 +87,15 @@ function Contact() {
               <TbMailFilled className={styles.icon} />
               <a
                 className={styles.contactItem}
-                href='mailto:contacto@unimetavila.com'
+                href='mailto:unimetavila@gmail.com'
               >
-                contacto@unimetavila.com
+                unimetavila@gmail.com
               </a>
             </div>
+            {success && (
+              <SuccessMessage message='Mensaje enviado correctamente' />
+            )}
+            {error && <ErrorMessage message='Error al enviar el mensaje' />}
           </div>
         </div>
         <div className={styles.contactForm}>
@@ -86,14 +109,6 @@ function Contact() {
                 onChange={handleChange}
                 required
               />
-              <InputField
-                type='text'
-                name='apellido'
-                placeholder='Apellido*'
-                value={formData.apellido}
-                onChange={handleChange}
-                required
-              />
             </div>
             <div className={styles.inputsContainer}>
               <InputField
@@ -101,14 +116,6 @@ function Contact() {
                 name='email'
                 placeholder='Email*'
                 value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              <InputField
-                type='text'
-                name='telefono'
-                placeholder='Teléfono*'
-                value={formData.titulo}
                 onChange={handleChange}
                 required
               />

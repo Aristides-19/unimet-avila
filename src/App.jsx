@@ -11,10 +11,15 @@ import Excursions from './pages/Excursions/ExcursionsPage';
 import Excursion from './pages/Excursions/Excursion/Excursion';
 import Reserve from './pages/Excursions/Reserve/Reserve';
 import Blog from './pages/Blog/BlogArticle';
+import BlogContent from './pages/Blog/BlogContent';
+import Foro from './pages/Foro/ForumLayout.jsx';
 import AdminStudents from './pages/Admin/AdminStudents';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 import Layout from './components/Layout.jsx';
+import CreatePost from './pages/Foro/CreatePost.jsx';
+import PostDetails from './pages/Foro/PostDetails';
 import { AuthenticatedRoute } from './context/AuthenticatedRoute.jsx';
+import ReviewForm from './pages/Excursions/Excursion/ReviewForm.jsx';
 
 function App() {
   return (
@@ -34,7 +39,26 @@ function App() {
             </AuthenticatedRoute>
           }
         />
+        <Route
+          path='/excursions/:excursionId/comment'
+          element={
+            <AuthenticatedRoute scope='Estudiante'>
+              <ReviewForm />
+            </AuthenticatedRoute>
+          }
+        />
         <Route path='/blog' element={<Blog />} />
+        <Route path='/blog/:blogId' element={<BlogContent />} />
+        <Route path='/forum' element={<Foro />} />
+        <Route path='/forum/:postId' element={<PostDetails />} />
+        <Route
+          path='/forum/create-post'
+          element={
+            <AuthenticatedRoute scope='users'>
+              <CreatePost />
+            </AuthenticatedRoute>
+          }
+        />
         <Route path='*' element={<NotFound />} />
         <Route
           path='/register'

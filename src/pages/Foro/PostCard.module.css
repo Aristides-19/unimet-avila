@@ -1,0 +1,74 @@
+.postCard {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.postHeader {
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.authorAvatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.authorInfo {
+  flex: 1;
+}
+
+.authorName {
+  color: #111827;
+  font-size: var(--step--1);
+  font-weight: 500;
+}
+
+.postTime {
+  color: #6b7280;
+  font-size: var(--step--2);
+}
+
+.postTitle {
+  color: #111827;
+  margin-bottom: 8px;
+  font-size: var(--step-0);
+  font-weight: 600;
+}
+
+.postText {
+  color: #4b5563;
+  margin-bottom: 12px;
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+.tagContainer {
+  gap: 8px;
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.postFooter {
+  gap: 16px;
+  display: flex;
+}
+
+.stat {
+  color: #6b7280;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  display: flex;
+}
+
+@media (max-width: 640px) {
+  .postCard {
+    padding: 12px;
+  }
+}

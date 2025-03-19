@@ -1,0 +1,23 @@
+.layout {
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.mainContent {
+  background-color: #f9fafb;
+  gap: 24px;
+  padding: 24px;
+  display: flex;
+}
+
+@media (max-width: 991px) {
+  .mainContent {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainContent {
+    padding: 16px;
+  }
+}
