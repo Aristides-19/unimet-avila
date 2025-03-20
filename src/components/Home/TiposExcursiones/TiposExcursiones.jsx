@@ -7,14 +7,11 @@ import { LiaWalkingSolid } from 'react-icons/lia';
 import { LiaRunningSolid } from 'react-icons/lia';
 import { LiaHikingSolid } from 'react-icons/lia';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 const TiposExcursiones = () => {
-  const [setIsOpen] = useState(false);
   const navigate = useNavigate();
   const handleExcursionsClick = () => {
     navigate('/excursions');
-    setIsOpen(false);
   };
   return (
     <div className={styles.section}>
