@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUser, getUsersSize, saveUser, addExcursionToHistory } from '../services/users';
+import { getUser, getUsersSize, saveUser, addExcursionToHistory, updateUserProfileImage } from '../services/users';
 
 /**
  * Custom hook to fetch user by id. It rerenders when userId changes.
@@ -82,7 +82,7 @@ export const useSaveUser = () => {
 
     try {
       const savedUser = await saveUser({
-        userId,
+        userIdOrPath: userId,
         email,
         name,
         bio,
@@ -126,4 +126,30 @@ export const useAddExcursionToHistory = () => {
   };
 
   return { addExcursionToUserHistory, loading, error };
+};
+
+/**
+ * Custom hook to update user profile image.
+ * @returns {{updateProfileImage: ((function(*, *): Promise<undefined|string>)|*), loading: boolean, error: unknown}}
+ */
+export const useUpdateUserProfileImage = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const updateProfileImage = async (userId, file) => {
+    if (loading) return;
+    setLoading(true);
+    setError(null);
+
+    try {
+      return (await updateUserProfileImage(userId, file)).publicUrl;
+    } catch (err) {
+      setError(err.message);
+      console.error('Error updating profile image: ', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { updateProfileImage, loading, error };
 };

@@ -1,0 +1,44 @@
+.infoItem {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+  font-size: var(--step--1);
+}
+
+.iconContainer {
+  background-color: #ebf6f2;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 6px 5px 5px;
+  display: flex;
+}
+
+@media (width <= 640px) {
+  .iconContainer {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.textContainer {
+  flex-direction: column;
+  display: flex;
+}
+
+.label {
+  color: #033;
+  opacity: 0.6;
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.value {
+  color: #033;
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  line-height: 160%;
+}

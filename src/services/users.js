@@ -10,6 +10,7 @@ import {
   updateDoc,
   arrayUnion,
 } from 'firebase/firestore';
+import { supabase } from '../supabaseClient.js';
 
 /**
  * Fetch user by id.
@@ -72,28 +73,30 @@ export const getUsersSize = async () => {
 /**
  * Save or edit a user.
  * @param userData User data object.
- * @returns {Promise<{email, name, bio, phone, genre, role, profilePicture, bannerPicture, excursionsHistory, forumEntries}>}
+ * @returns {Promise<{[p: string]: unknown}>}
  * Resolved with a user objects.
  */
 export const saveUser = async (userData) => {
   const { userIdOrPath, email, name, bio, phone, genre, role, profilePicture, excursionsHistory } = userData;
-
   try {
     const userRef =
       userIdOrPath.startsWith('users') || userIdOrPath.startsWith('/users')
         ? doc(db, userIdOrPath)
         : doc(db, 'users', userIdOrPath);
 
-    const user = {
-      email,
-      name,
-      bio,
-      phone,
-      genre,
-      role,
-      profilePicture,
-      excursionsHistory,
-    };
+    const user = Object.fromEntries(
+      Object.entries({
+        email,
+        name,
+        bio,
+        phone,
+        genre,
+        role,
+        profilePicture,
+        excursionsHistory,
+        // eslint-disable-next-line no-unused-vars
+      }).filter(([_, value]) => value !== undefined)
+    );
 
     // merge: true, if there is an update, it won't change the entire document, only the fields that are passed in the object
     await setDoc(userRef, user, { merge: true });
@@ -122,5 +125,43 @@ export const addExcursionToHistory = async (userId, excursionId) => {
     console.log('Excursion added successfully.');
   } catch (error) {
     console.error('Failed to add excursion to history: ', error);
+  }
+};
+
+/**
+ * Updates the profile image of a user in Supabase Storage.
+ * Deletes any previous image (profile.jpg or profile.png) before uploading the new one.
+ *
+ * @param {string} userId - The user's UID.
+ * @param {File} file - The image file (PNG or JPG).
+ * @returns {Promise<{publicUrl: string, error: null}>} - The result of the operation.
+ */
+export const updateUserProfileImage = async (userId, file) => {
+  try {
+    const filesToDelete = [`${userId}/profile.jpg`, `${userId}/profile.png`, `${userId}/profile.jpeg`];
+    const { error: deleteError } = await supabase.storage.from('users').remove(filesToDelete);
+
+    if (deleteError) {
+      throw new Error(deleteError.message);
+    }
+
+    const fileExtension = file.name.substring(file.name.lastIndexOf('.') + 1);
+    const filePath = `${userId}/profile.${fileExtension}`;
+
+    const { error: uploadError } = await supabase.storage.from('users').upload(filePath, file, {
+      upsert: true,
+    });
+
+    if (uploadError) {
+      throw new Error(uploadError.message);
+    }
+
+    const { data: publicUrlData } = supabase.storage.from('users').getPublicUrl(filePath);
+    await saveUser({ userIdOrPath: userId, profilePicture: publicUrlData.publicUrl });
+
+    return { publicUrl: publicUrlData.publicUrl, error: null };
+  } catch (error) {
+    console.error(`Failed to upload image ${file.name}: `, error.message);
+    return null;
   }
 };
