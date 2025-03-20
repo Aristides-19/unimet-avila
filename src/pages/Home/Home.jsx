@@ -10,6 +10,7 @@ import imageVision from '../../assets/Imagen_Vision.jpg';
 import MissionVision from '../../components/Home/MissionVision/MissionVision';
 import HomeStats from '../../components/Home/HomeStats/HomeStats.jsx';
 import Goals from '../../components/Home/Goals/Goals';
+import TiposExcursiones from '../../components/Home/TiposExcursiones/TiposExcursiones';
 
 function Home() {
   const { imageUrl } = useImage('presentation.jpeg');
@@ -88,6 +89,7 @@ function Home() {
         image={imageVision}
         imageRight
       />
+      <TiposExcursiones />
       <Testimonial testimonials={testimonialsData} />
     </>
   );
