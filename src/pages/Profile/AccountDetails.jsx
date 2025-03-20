@@ -98,7 +98,7 @@ function AccountDetails({ fields }) {
                 onChange={handleChange}
               />
             )}
-            {editMode && ['email', 'password'].includes(field.id) && (
+            {editMode && ['email', 'password', 'role'].includes(field.id) && (
               <input type='text' id={field.id} value={field.value} readOnly />
             )}
           </div>

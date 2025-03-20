@@ -1,39 +1,18 @@
 .dashboard {
-    flex-direction: column;
-    gap: 21px;
-    padding: 5px;
-    display: flex;
-  }
-  
-  @media (width<=991px) {
-    .dashboard {
-      padding: 24px;
-    }
-  }
-  
-  @media (width<=640px) {
-    .dashboard {
-      padding: 16px;
-    }
-  }
-  
-  .sectionTitle {
-    color: #033;
-    font-family: Poppins;
-    font-size: 30px;
-    font-weight: 400;
-    margin-bottom: 21px;
-  }
-  
-  @media (width<=991px) {
-    .sectionTitle {
-      font-size: 26px;
-    }
-  }
-  
-  @media (width<=640px) {
-    .sectionTitle {
-      font-size: 24px;
-    }
-  }
-  
+  flex-direction: column;
+  gap: 21px;
+  width: 100%;
+  padding: 5px var(--margin);
+  box-sizing: border-box;
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--forest);
+}

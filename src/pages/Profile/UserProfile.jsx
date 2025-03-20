@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import ProfileHeader from './ProfileHeader';
 import ProfileTabs from './ProfileTabs';
 import AccountDetails from './AccountDetails';
-import ExcursionsContent from './ExcursionsContent';
 import styles from './UserProfile.module.css';
 import { useUser } from '../../hooks/useUsers.js';
 import { useAuth } from '../../context/AuthContext.jsx';
+import ExcursionDashboard from './ExcursionDashboard.jsx';
 
 function UserProfile() {
   const [activeTab, setActiveTab] = useState('account');
@@ -56,10 +56,20 @@ function UserProfile() {
               label: 'Número de Teléfono',
               value: user?.phone,
             },
+            {
+              id: 'role',
+              label: 'Tipo de Usuario',
+              value: user?.role,
+            },
           ]}
         />
       )}
-      {activeTab === 'excursions' && <ExcursionsContent />}
+      {activeTab === 'excursions' && (
+        <ExcursionDashboard
+          excursionsHistory={user?.excursionsHistory}
+          role={user?.role}
+        />
+      )}
     </div>
   );
 }

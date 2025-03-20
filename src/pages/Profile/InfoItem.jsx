@@ -1,5 +1,6 @@
-import React from "react";
-import styles from "./InfoItem.module.css";
+import React from 'react';
+import styles from './InfoItem.module.css';
+import PropTypes from 'prop-types';
 
 function InfoItem({ icon, label, value }) {
   return (
@@ -12,5 +13,11 @@ function InfoItem({ icon, label, value }) {
     </div>
   );
 }
+
+InfoItem.propTypes = {
+  icon: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
 export default InfoItem;
