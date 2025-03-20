@@ -14,6 +14,7 @@ import Blog from './pages/Blog/Blog';
 import UserProfile from './pages/Profile/UserProfile.jsx';
 import BlogContent from './pages/Blog/BlogContent';
 import Foro from './pages/Foro/ForumLayout.jsx';
+import AdminStudents from './pages/Admin/AdminStudents';
 import { UnauthenticatedRoute } from './context/UnauthenticatedRoute.jsx';
 import Layout from './components/Layout.jsx';
 import CreatePost from './pages/Foro/CreatePost.jsx';
@@ -26,11 +27,19 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path='/' element={<Home />} />
+        <Route path='/adminStudents' element={<AdminStudents />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/excursions' element={<Excursions />} />
         <Route path='/excursions/:excursionId' element={<Excursion />} />
-        <Route path='/profile' element={<UserProfile />} />
+        <Route
+          path='/profile'
+          element={
+            <AuthenticatedRoute scope='users'>
+              <UserProfile />
+            </AuthenticatedRoute>
+          }
+        />
         <Route
           path='/excursions/:excursionId/reserve'
           element={
