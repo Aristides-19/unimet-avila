@@ -2,6 +2,7 @@ import { db } from '../firebase';
 import {
   doc,
   getDoc,
+  getDocs,
   collection,
   getCountFromServer,
   setDoc,
@@ -40,6 +41,24 @@ export const getUser = async (userIdOrPath) => {
     }
   } catch (error) {
     console.error('Failed to fetch user by id: ' + userIdOrPath + ' : ', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch all students or guides.
+ * @param role Role to filter by ('Estudiante' or 'Guía').
+ * @returns {Promise<Array>} List of users with the specified role.
+ */
+export const getUsersByRole = async (role) => {
+  try {
+    const usersCollection = collection(db, 'users');
+    const q = query(usersCollection, where('role', '==', role));
+    const querySnapshot = await getDocs(q);
+    const usersList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return usersList;
+  } catch (error) {
+    console.error('Failed to fetch users by role: ', error);
     throw error;
   }
 };

@@ -1,0 +1,6 @@
+.contentPage {
+  display: flex;
+  flex: wrap;
+  flex-direction: column;
+  padding: 10%;
+}
