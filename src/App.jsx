@@ -6,7 +6,7 @@ import Home from './pages/Home/Home';
 import Gallery from './pages/Gallery/Gallery';
 import Contact from './pages/Contact/Contact';
 import Register from './pages/Register/Register';
-import Login from './pages/LogIn/Login';
+import Login from './pages/Login/Login';
 import Excursions from './pages/Excursions/ExcursionsPage';
 import Excursion from './pages/Excursions/Excursion/Excursion';
 import Reserve from './pages/Excursions/Reserve/Reserve';
@@ -32,7 +32,14 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/excursions' element={<Excursions />} />
         <Route path='/excursions/:excursionId' element={<Excursion />} />
-        <Route path='/profile' element={<UserProfile />} />
+        <Route
+          path='/profile'
+          element={
+            <AuthenticatedRoute scope='users'>
+              <UserProfile />
+            </AuthenticatedRoute>
+          }
+        />
         <Route
           path='/excursions/:excursionId/reserve'
           element={

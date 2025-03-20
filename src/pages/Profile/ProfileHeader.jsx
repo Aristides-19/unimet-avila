@@ -31,7 +31,15 @@ function ProfileHeader({ image, name, email }) {
       <div className={styles.profileWrapper}>
         <div className={styles.avatarContainer}>
           {error && <ErrorMessage message='Error al subir la imagen' />}
-          <img src={imageState} alt={name} className={styles.avatarImage} />
+          <img
+            src={
+              imageState
+                ? imageState
+                : 'https://placehold.co/200x200/4a7c59/4a7c59'
+            }
+            alt={name}
+            className={styles.avatarImage}
+          />
           <div className={styles.userInfo}>
             <h1 className={styles.userName}>{name}</h1>
             <p className={styles.userEmail}>{email}</p>
