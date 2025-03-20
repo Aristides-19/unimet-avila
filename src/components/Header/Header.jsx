@@ -34,6 +34,8 @@ function Header() {
     setIsOpen(false);
   };
 
+  const linksToDisplay = user?.role === 'admin' ? adminNavLinks : navLinks;
+
   return (
     <header className={styles.header}>
       {/* Logo & Title */}
@@ -45,8 +47,7 @@ function Header() {
       {/* Navigation */}
       <nav>
         <ul className={`${styles.navList} ${isOpen ? styles.show : ''}`}>
-          {navLinks.map((link) => {
-            // Ocultar "Unirse" e "Iniciar Sesión" si el usuario está logeado
+          {linksToDisplay.map((link) => {
             if (
               currentUser &&
               (link.path === '/register' || link.path === '/login')
@@ -71,7 +72,7 @@ function Header() {
                         ? 'var(--earth-sky)'
                         : 'var(--forest)',
                   }}
-                  onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
+                  onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </Link>
@@ -80,40 +81,44 @@ function Header() {
           })}
 
           {currentUser && (
-            <li key='/profile' className={styles.authLink}>
-              <Link
-                to='/profile'
-                onClick={() => setIsOpen(false)}
-                className={`${styles.navLink} ${styles.profileLink}`}
-                style={{
-                  color:
-                    currentPath === '/profile'
-                      ? 'var(--earth-sky)'
-                      : 'var(--forest)',
-                }}
-              >
-                Mi Perfil
-                <img
-                  src={user?.profilePicture}
-                  alt='Perfil'
-                  className={styles.profilePicture}
-                />
-              </Link>
-            </li>
-          )}
-          {currentUser && (
-            <li key='/logout' className={styles.authLink}>
-              <Link
-                to='/'
-                className={styles.navLink}
-                onClick={() => {
-                  setIsOpen(false);
-                  handleLogoutClick();
-                }}
-              >
-                Cerrar Sesión
-              </Link>
-            </li>
+            <>
+              <li key='/profile' className={styles.authLink}>
+                <Link
+                  to={user?.role !== 'admin' ? '/profile' : '/'}
+                  onClick={() => setIsOpen(false)}
+                  className={`${styles.navLink} ${styles.profileLink}`}
+                  style={{
+                    color:
+                      currentPath === '/profile'
+                        ? 'var(--earth-sky)'
+                        : 'var(--forest)',
+                  }}
+                >
+                  {user?.role !== 'admin' ? 'Mi Perfil' : 'Administrador'}
+                  <img
+                    src={
+                      user?.profilePicture
+                        ? user?.profilePicture
+                        : 'https://placehold.co/200x200/4a7c59/4a7c59'
+                    }
+                    alt='Perfil'
+                    className={styles.profilePicture}
+                  />
+                </Link>
+              </li>
+              <li key='/logout' className={styles.authLink}>
+                <Link
+                  to='/'
+                  className={styles.navLink}
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleLogoutClick();
+                  }}
+                >
+                  Cerrar Sesión
+                </Link>
+              </li>
+            </>
           )}
         </ul>
         {/* Dropdown para pantallas pequeñas */}
@@ -127,7 +132,7 @@ function Header() {
         {currentUser ? (
           <div className={styles.loggedContainer}>
             <Link
-              to='/profile'
+              to={user?.role !== 'admin' ? '/profile' : '/'}
               className={`${styles.navLink} ${styles.profileLink}`}
               style={{
                 color:
@@ -137,7 +142,7 @@ function Header() {
               }}
               onClick={() => setIsOpen(false)}
             >
-              Mi Perfil
+              {user?.role !== 'admin' ? 'Mi Perfil' : 'Administrador'}
               <img
                 src={user?.profilePicture}
                 alt='Perfil'
@@ -189,6 +194,15 @@ const navLinks = [
   { path: '/contact', name: 'Contacto' },
   { path: '/register', name: 'Unirse' },
   { path: '/login', name: 'Iniciar Sesión' },
+];
+
+const adminNavLinks = [
+  { path: '/', name: 'Inicio' },
+  { path: '/excursions-admin', name: 'Excursiones' },
+  { path: '/guides-admin', name: 'Guías' },
+  { path: '/students-admin', name: 'Estudiantes' },
+  { path: '/blog-admin', name: 'Blog' },
+  { path: '/gallery', name: 'Galería' },
 ];
 
 export default Header;

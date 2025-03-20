@@ -51,6 +51,12 @@ export default [
                 printWidth: 120,
               },
             },
+            {
+              files: 'src/routes/**/*.{js,jsx}',
+              options: {
+                printWidth: 150,
+              },
+            },
           ],
         },
       ], // Marca errores si el código no sigue las reglas de Prettier
