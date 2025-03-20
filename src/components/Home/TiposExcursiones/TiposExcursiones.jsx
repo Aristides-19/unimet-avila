@@ -49,7 +49,7 @@ const TiposExcursiones = () => {
         </div>
         <div className={styles.card}>
           <LiaHikingSolid className={styles.extremo} />
-          <h4>Senderismo Extemo</h4>
+          <h4>Senderismo Extremo</h4>
           <p>
             <b>Solo para los más audaces.</b> Estas excursiones extremas están
             diseñadas para los más experimentados. Son rutas técnicas de alta
